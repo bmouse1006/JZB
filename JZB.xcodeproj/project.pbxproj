@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2267F20D1340C22200693D61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20C1340C22200693D61 /* UIKit.framework */; };
+		2267F20F1340C22200693D61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20E1340C22200693D61 /* Foundation.framework */; };
+		2267F2111340C22200693D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F2101340C22200693D61 /* CoreGraphics.framework */; };
+		2267F2171340C22200693D61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2151340C22200693D61 /* InfoPlist.strings */; };
+		2267F21A1340C22200693D61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F2191340C22200693D61 /* main.m */; };
+		2267F21D1340C22200693D61 /* JZBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F21C1340C22200693D61 /* JZBAppDelegate.m */; };
+		2267F2201340C22200693D61 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2267F21E1340C22200693D61 /* MainWindow.xib */; };
+		2267F2231340C22200693D61 /* JZBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F2221340C22200693D61 /* JZBViewController.m */; };
+		2267F2261340C22200693D61 /* JZBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2241340C22200693D61 /* JZBViewController.xib */; };
+		2267F22D1340C22200693D61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20C1340C22200693D61 /* UIKit.framework */; };
+		2267F22E1340C22200693D61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20E1340C22200693D61 /* Foundation.framework */; };
+		2267F22F1340C22200693D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F2101340C22200693D61 /* CoreGraphics.framework */; };
+		2267F2371340C22200693D61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2351340C22200693D61 /* InfoPlist.strings */; };
+		2267F23A1340C22300693D61 /* JZBTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2391340C22200693D61 /* JZBTests.h */; };
+		2267F23C1340C22300693D61 /* JZBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F23B1340C22300693D61 /* JZBTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2267F2301340C22200693D61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2267F1FF1340C22200693D61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2267F2071340C22200693D61;
+			remoteInfo = JZB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2267F2081340C22200693D61 /* JZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2267F20C1340C22200693D61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2267F20E1340C22200693D61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2267F2101340C22200693D61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2267F2141340C22200693D61 /* JZB-Info.plist */ = {isa = PBXFileReference; path = "JZB-Info.plist"; sourceTree = "<group>"; };
+		2267F2161340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2267F2181340C22200693D61 /* JZB-Prefix.pch */ = {isa = PBXFileReference; path = "JZB-Prefix.pch"; sourceTree = "<group>"; };
+		2267F2191340C22200693D61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2267F21B1340C22200693D61 /* JZBAppDelegate.h */ = {isa = PBXFileReference; path = JZBAppDelegate.h; sourceTree = "<group>"; };
+		2267F21C1340C22200693D61 /* JZBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBAppDelegate.m; sourceTree = "<group>"; };
+		2267F21F1340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2267F2211340C22200693D61 /* JZBViewController.h */ = {isa = PBXFileReference; path = JZBViewController.h; sourceTree = "<group>"; };
+		2267F2221340C22200693D61 /* JZBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBViewController.m; sourceTree = "<group>"; };
+		2267F2251340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/JZBViewController.xib; sourceTree = "<group>"; };
+		2267F22C1340C22200693D61 /* JZBTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JZBTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2267F2341340C22200693D61 /* JZBTests-Info.plist */ = {isa = PBXFileReference; path = "JZBTests-Info.plist"; sourceTree = "<group>"; };
+		2267F2361340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2267F2381340C22200693D61 /* JZBTests-Prefix.pch */ = {isa = PBXFileReference; path = "JZBTests-Prefix.pch"; sourceTree = "<group>"; };
+		2267F2391340C22200693D61 /* JZBTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZBTests.h; sourceTree = "<group>"; };
+		2267F23B1340C22300693D61 /* JZBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2267F2051340C22200693D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F20D1340C22200693D61 /* UIKit.framework in Frameworks */,
+				2267F20F1340C22200693D61 /* Foundation.framework in Frameworks */,
+				2267F2111340C22200693D61 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2267F2281340C22200693D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F22D1340C22200693D61 /* UIKit.framework in Frameworks */,
+				2267F22E1340C22200693D61 /* Foundation.framework in Frameworks */,
+				2267F22F1340C22200693D61 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2267F1FD1340C22200693D61 = {
+			isa = PBXGroup;
+			children = (
+				2267F2121340C22200693D61 /* JZB */,
+				2267F2321340C22200693D61 /* JZBTests */,
+				2267F20B1340C22200693D61 /* Frameworks */,
+				2267F2091340C22200693D61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2267F2091340C22200693D61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2267F2081340C22200693D61 /* JZB.app */,
+				2267F22C1340C22200693D61 /* JZBTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2267F20B1340C22200693D61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2267F20C1340C22200693D61 /* UIKit.framework */,
+				2267F20E1340C22200693D61 /* Foundation.framework */,
+				2267F2101340C22200693D61 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2267F2121340C22200693D61 /* JZB */ = {
+			isa = PBXGroup;
+			children = (
+				2267F21B1340C22200693D61 /* JZBAppDelegate.h */,
+				2267F21C1340C22200693D61 /* JZBAppDelegate.m */,
+				2267F21E1340C22200693D61 /* MainWindow.xib */,
+				2267F2211340C22200693D61 /* JZBViewController.h */,
+				2267F2221340C22200693D61 /* JZBViewController.m */,
+				2267F2241340C22200693D61 /* JZBViewController.xib */,
+				2267F2131340C22200693D61 /* Supporting Files */,
+			);
+			path = JZB;
+			sourceTree = "<group>";
+		};
+		2267F2131340C22200693D61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2267F2141340C22200693D61 /* JZB-Info.plist */,
+				2267F2151340C22200693D61 /* InfoPlist.strings */,
+				2267F2181340C22200693D61 /* JZB-Prefix.pch */,
+				2267F2191340C22200693D61 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2267F2321340C22200693D61 /* JZBTests */ = {
+			isa = PBXGroup;
+			children = (
+				2267F2391340C22200693D61 /* JZBTests.h */,
+				2267F23B1340C22300693D61 /* JZBTests.m */,
+				2267F2331340C22200693D61 /* Supporting Files */,
+			);
+			path = JZBTests;
+			sourceTree = "<group>";
+		};
+		2267F2331340C22200693D61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2267F2341340C22200693D61 /* JZBTests-Info.plist */,
+				2267F2351340C22200693D61 /* InfoPlist.strings */,
+				2267F2381340C22200693D61 /* JZBTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2267F2071340C22200693D61 /* JZB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2267F23F1340C22300693D61 /* Build configuration list for PBXNativeTarget "JZB" */;
+			buildPhases = (
+				2267F2041340C22200693D61 /* Sources */,
+				2267F2051340C22200693D61 /* Frameworks */,
+				2267F2061340C22200693D61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JZB;
+			productName = JZB;
+			productReference = 2267F2081340C22200693D61 /* JZB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2267F22B1340C22200693D61 /* JZBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2267F2421340C22300693D61 /* Build configuration list for PBXNativeTarget "JZBTests" */;
+			buildPhases = (
+				2267F2271340C22200693D61 /* Sources */,
+				2267F2281340C22200693D61 /* Frameworks */,
+				2267F2291340C22200693D61 /* Resources */,
+				2267F22A1340C22200693D61 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2267F2311340C22200693D61 /* PBXTargetDependency */,
+			);
+			name = JZBTests;
+			productName = JZBTests;
+			productReference = 2267F22C1340C22200693D61 /* JZBTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2267F1FF1340C22200693D61 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 2267F2021340C22200693D61 /* Build configuration list for PBXProject "JZB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2267F1FD1340C22200693D61;
+			productRefGroup = 2267F2091340C22200693D61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2267F2071340C22200693D61 /* JZB */,
+				2267F22B1340C22200693D61 /* JZBTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2267F2061340C22200693D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F2171340C22200693D61 /* InfoPlist.strings in Resources */,
+				2267F2201340C22200693D61 /* MainWindow.xib in Resources */,
+				2267F2261340C22200693D61 /* JZBViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2267F2291340C22200693D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F2371340C22200693D61 /* InfoPlist.strings in Resources */,
+				2267F23A1340C22300693D61 /* JZBTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2267F22A1340C22200693D61 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2267F2041340C22200693D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F21A1340C22200693D61 /* main.m in Sources */,
+				2267F21D1340C22200693D61 /* JZBAppDelegate.m in Sources */,
+				2267F2231340C22200693D61 /* JZBViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2267F2271340C22200693D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2267F23C1340C22300693D61 /* JZBTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2267F2311340C22200693D61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2267F2071340C22200693D61 /* JZB */;
+			targetProxy = 2267F2301340C22200693D61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2267F2151340C22200693D61 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2267F2161340C22200693D61 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2267F21E1340C22200693D61 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2267F21F1340C22200693D61 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		2267F2241340C22200693D61 /* JZBViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2267F2251340C22200693D61 /* en */,
+			);
+			name = JZBViewController.xib;
+			sourceTree = "<group>";
+		};
+		2267F2351340C22200693D61 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2267F2361340C22200693D61 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2267F23D1340C22300693D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2267F23E1340C22300693D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		2267F2401340C22300693D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZB/JZB-Prefix.pch";
+				INFOPLIST_FILE = "JZB/JZB-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2267F2411340C22300693D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZB/JZB-Prefix.pch";
+				INFOPLIST_FILE = "JZB/JZB-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2267F2431340C22300693D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JZB.app/JZB";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZBTests/JZBTests-Prefix.pch";
+				INFOPLIST_FILE = "JZBTests/JZBTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2267F2441340C22300693D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JZB.app/JZB";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZBTests/JZBTests-Prefix.pch";
+				INFOPLIST_FILE = "JZBTests/JZBTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2267F2021340C22200693D61 /* Build configuration list for PBXProject "JZB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2267F23D1340C22300693D61 /* Debug */,
+				2267F23E1340C22300693D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2267F23F1340C22300693D61 /* Build configuration list for PBXNativeTarget "JZB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2267F2401340C22300693D61 /* Debug */,
+				2267F2411340C22300693D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2267F2421340C22300693D61 /* Build configuration list for PBXNativeTarget "JZBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2267F2431340C22300693D61 /* Debug */,
+				2267F2441340C22300693D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2267F1FF1340C22200693D61 /* Project object */;
+}
