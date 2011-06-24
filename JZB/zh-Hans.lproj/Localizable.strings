@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  JZB
+
+  Created by Jin Jin on 11-4-9.
+  Copyright 2011年 __MyCompanyName__. All rights reserved.
+*/
+
+"label_title" = "标题";
+"label_amount" = "金额（￥）";
+"label_catalog" = "分类";
+"label_date" = "日期";
+"label_desc" = "详细";
+"label_account" = "账户";
+"label_to_account" = "转入帐户";
+"label_no_account" = "（无帐户）";
+"label_no_catalog" = "（无分类）";
+"label_kind" = "种类";
+"label_name" = "名称";
+"label_initAmt" = "初始金额";
+"title" = "标题";
+"button_OK" = "OK";
+"button_cancel" = "取消";
+"Please input title" = "请输入标题";
+"income" = "收入";
+"expend" = "支出";
+"loan" = "借贷";
+"transfer" = "转账";
+"account" = "帐户";
+"budget" = "预算";
+"all_accounts" = "所有帐户";
+"edit_accounts" = "编辑帐户";
+"accountList" = "帐户列表";
+"catalogList" = "类别列表";
+"cash" = "现金";
+"creditcard" = "信用卡";
+"bankcard" = "银行卡";
+"stock" = "股票";
+"fund" = "基金";
+"other" = "其它";
+"title_new_account" = "新帐户";
+"title_edit_account" = "编辑帐户";
+"title_edit_catalog" = "编辑类别";
+"title_new_catalog" = "新类别"; 
+"seg_income" = "收入";
+"seg_expend" = "支出";

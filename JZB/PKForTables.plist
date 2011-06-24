@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>jzb_accounts</key>
+	<string>account_id</string>
+	<key>jzb_bills</key>
+	<string>bill_id</string>
+	<key>jzb_borrowers</key>
+	<string>borrower_id</string>
+	<key>jzb_budget_items</key>
+	<string>budget_item_id</string>
+	<key>jzb_budgets</key>
+	<string>budget_id</string>
+	<key>jzb_catelogs</key>
+	<string>catelog_id</string>
+</dict>
+</plist>

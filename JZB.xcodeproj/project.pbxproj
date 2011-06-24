@@ -7,6 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220051D4135EE12D00AE0A5F /* AccountListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051D3135EE12D00AE0A5F /* AccountListDataSource.m */; };
+		220051D6135EF13A00AE0A5F /* AccountListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220051D5135EF13900AE0A5F /* AccountListViewController.xib */; };
+		220051DA136014E200AE0A5F /* AccountSimpleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051D8136014DD00AE0A5F /* AccountSimpleListController.m */; };
+		220051DB136014E200AE0A5F /* AccountSimpleListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220051D9136014DF00AE0A5F /* AccountSimpleListController.xib */; };
+		220051DE1360321B00AE0A5F /* CatalogListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051DD1360321B00AE0A5F /* CatalogListDataSource.m */; };
+		220051E1136032D900AE0A5F /* CatalogListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051E0136032D800AE0A5F /* CatalogListCell.m */; };
+		220051E3136032ED00AE0A5F /* CatalogListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220051E2136032EB00AE0A5F /* CatalogListCell.xib */; };
+		220051E71360345200AE0A5F /* CatalogSimpleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051E51360343700AE0A5F /* CatalogSimpleListController.m */; };
+		220051E81360345200AE0A5F /* CatalogSimpleListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220051E61360343E00AE0A5F /* CatalogSimpleListController.xib */; };
+		220051EF136035C300AE0A5F /* JZBDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051EE136035C200AE0A5F /* JZBDataSource.m */; };
+		220051F21360387B00AE0A5F /* JZBSimpleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220051F11360387500AE0A5F /* JZBSimpleListController.m */; };
+		22090E7E13495DE300497BBE /* JZBSyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 22090E7D13495DE300497BBE /* JZBSyncRequest.m */; };
+		22090E8813496BEA00497BBE /* URLParameterSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 22090E8613496BEA00497BBE /* URLParameterSet.m */; };
+		2210EBA2135441F6007407DF /* analysis@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2210EBA1135441F6007407DF /* analysis@2x.png */; };
+		2210EBA613544310007407DF /* TotalStatisticController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2210EBA41354430F007407DF /* TotalStatisticController.m */; };
+		2210EBA713544310007407DF /* TotalStatisticController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2210EBA51354430F007407DF /* TotalStatisticController.xib */; };
+		222219021342C7A3001D60F1 /* JZBDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */; };
+		2222190E13430FBB001D60F1 /* JZBDataAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2222190D13430FBB001D60F1 /* JZBDataAccessManager.m */; };
+		222E9E101354904900EFB613 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 222E9E0F1354904900EFB613 /* libsqlite3.0.dylib */; };
+		22327CEC1366FD1D00FEA82D /* NSString+JZBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22327CEB1366FD1D00FEA82D /* NSString+JZBHelper.m */; };
+		22327DF01366FF9500FEA82D /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 22327DEF1366FF9500FEA82D /* RegexKitLite.m */; };
+		2249A25C1372A5CF008BF3E0 /* BillListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */; };
+		224C058D13447D3800E01F55 /* JZBSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C058C13447D3800E01F55 /* JZBSynchronizer.m */; };
+		224C05911345704500E01F55 /* JZBDataChangeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05901345704500E01F55 /* JZBDataChangeUnit.m */; };
+		224C05A01345743A00E01F55 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05951345743A00E01F55 /* NSObject+SBJSON.m */; };
+		224C05A11345743A00E01F55 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05971345743A00E01F55 /* NSString+SBJSON.m */; };
+		224C05A21345743A00E01F55 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05991345743A00E01F55 /* SBJSON.m */; };
+		224C05A31345743A00E01F55 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C059B1345743A00E01F55 /* SBJsonBase.m */; };
+		224C05A41345743A00E01F55 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C059D1345743A00E01F55 /* SBJsonParser.m */; };
+		224C05A51345743A00E01F55 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C059F1345743A00E01F55 /* SBJsonWriter.m */; };
+		224C05A91345750300E01F55 /* JZBDataChangeJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05A81345750300E01F55 /* JZBDataChangeJSON.m */; };
+		224FB10D134AA571006DD105 /* PKForTables.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FB10C134AA571006DD105 /* PKForTables.plist */; };
+		224FB110134AA5F5006DD105 /* ModelNameForTables.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */; };
+		224FB113134AAE04006DD105 /* JZBBudgets.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB112134AAE03006DD105 /* JZBBudgets.m */; };
+		224FB116134AAE73006DD105 /* JZBAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB115134AAE72006DD105 /* JZBAccounts.m */; };
+		224FB119134AAE81006DD105 /* JZBBills.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB118134AAE80006DD105 /* JZBBills.m */; };
+		224FB11C134AAE8B006DD105 /* JZBBorrowers.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB11B134AAE8A006DD105 /* JZBBorrowers.m */; };
+		224FB11F134AAE9A006DD105 /* JZBBudgetItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB11E134AAE99006DD105 /* JZBBudgetItems.m */; };
+		224FB122134AAEA5006DD105 /* JZBCatalogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB121134AAEA4006DD105 /* JZBCatalogs.m */; };
+		224FB127134AC42E006DD105 /* JZBManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB126134AC42D006DD105 /* JZBManagedObject.m */; };
+		224FB154134F4C46006DD105 /* BillEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB152134F4C44006DD105 /* BillEditViewController.m */; };
+		224FB155134F4C46006DD105 /* BillEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FB153134F4C45006DD105 /* BillEditViewController.xib */; };
+		224FB16213503C40006DD105 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 224FB16413503C40006DD105 /* Localizable.strings */; };
+		224FB16F1352D3B5006DD105 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB16D1352D38A006DD105 /* HomeViewController.m */; };
+		224FB1701352D3B6006DD105 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FB16E1352D39A006DD105 /* HomeViewController.xib */; };
+		224FB1731352D9CB006DD105 /* AccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB1721352D9C8006DD105 /* AccountListViewController.m */; };
+		224FB17C1352E18F006DD105 /* AccountStatisticController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB17A1352E18B006DD105 /* AccountStatisticController.m */; };
+		224FB17D1352E18F006DD105 /* AccountStatisticController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FB17B1352E18D006DD105 /* AccountStatisticController.xib */; };
+		224FB186135331E9006DD105 /* BudgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB184135331D6006DD105 /* BudgetViewController.m */; };
+		224FB187135331E9006DD105 /* BudgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FB185135331DF006DD105 /* BudgetViewController.xib */; };
 		2267F20D1340C22200693D61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20C1340C22200693D61 /* UIKit.framework */; };
 		2267F20F1340C22200693D61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F20E1340C22200693D61 /* Foundation.framework */; };
 		2267F2111340C22200693D61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F2101340C22200693D61 /* CoreGraphics.framework */; };
@@ -22,6 +72,21 @@
 		2267F2371340C22200693D61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2351340C22200693D61 /* InfoPlist.strings */; };
 		2267F23A1340C22300693D61 /* JZBTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 2267F2391340C22200693D61 /* JZBTests.h */; };
 		2267F23C1340C22300693D61 /* JZBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F23B1340C22300693D61 /* JZBTests.m */; };
+		2267F25113418A5800693D61 /* JJObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F25013418A5800693D61 /* JJObjectManager.m */; };
+		2267F25313418E8700693D61 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F25213418E8700693D61 /* CoreData.framework */; };
+		229B405D1357E331005E5DD9 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B405C1357E331005E5DD9 /* NSDate+Helper.m */; };
+		229B40661357FB5E005E5DD9 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B40651357FB5E005E5DD9 /* AccountListCell.m */; };
+		229B40681357FBBA005E5DD9 /* AccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B40671357FBBA005E5DD9 /* AccountListCell.xib */; };
+		229B407213584A03005E5DD9 /* AccountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B4070135849FB005E5DD9 /* AccountEditViewController.m */; };
+		229B407313584A03005E5DD9 /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B4071135849FE005E5DD9 /* AccountEditViewController.xib */; };
+		229B407713584C49005E5DD9 /* BillListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B407513584C47005E5DD9 /* BillListViewController.m */; };
+		229B407813584C49005E5DD9 /* BillListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B407613584C48005E5DD9 /* BillListViewController.xib */; };
+		22A0FEB0136571D100F2F1CE /* JZBErrorProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A0FEAF136571D000F2F1CE /* JZBErrorProcessor.m */; };
+		22DE878B1349CE2F0024EF6C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE87891349CE2F0024EF6C /* LoginViewController.m */; };
+		22DE878C1349CE2F0024EF6C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22DE878A1349CE2F0024EF6C /* LoginViewController.xib */; };
+		22E0B67C1367FCB8009403D0 /* CatalogEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0B67A1367FCB7009403D0 /* CatalogEditViewController.m */; };
+		22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */; };
+		22E0B68013680368009403D0 /* JZBEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0B67F13680364009403D0 /* JZBEditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,26 +100,140 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		220051D2135EE12D00AE0A5F /* AccountListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountListDataSource.h; sourceTree = "<group>"; };
+		220051D3135EE12D00AE0A5F /* AccountListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountListDataSource.m; sourceTree = "<group>"; };
+		220051D5135EF13900AE0A5F /* AccountListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountListViewController.xib; sourceTree = "<group>"; };
+		220051D7136014DA00AE0A5F /* AccountSimpleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSimpleListController.h; sourceTree = "<group>"; };
+		220051D8136014DD00AE0A5F /* AccountSimpleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSimpleListController.m; sourceTree = "<group>"; };
+		220051D9136014DF00AE0A5F /* AccountSimpleListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSimpleListController.xib; sourceTree = "<group>"; };
+		220051DC1360321B00AE0A5F /* CatalogListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogListDataSource.h; sourceTree = "<group>"; };
+		220051DD1360321B00AE0A5F /* CatalogListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogListDataSource.m; sourceTree = "<group>"; };
+		220051DF136032D600AE0A5F /* CatalogListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogListCell.h; sourceTree = "<group>"; };
+		220051E0136032D800AE0A5F /* CatalogListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogListCell.m; sourceTree = "<group>"; };
+		220051E2136032EB00AE0A5F /* CatalogListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogListCell.xib; sourceTree = "<group>"; };
+		220051E41360343500AE0A5F /* CatalogSimpleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogSimpleListController.h; sourceTree = "<group>"; };
+		220051E51360343700AE0A5F /* CatalogSimpleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogSimpleListController.m; sourceTree = "<group>"; };
+		220051E61360343E00AE0A5F /* CatalogSimpleListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogSimpleListController.xib; sourceTree = "<group>"; };
+		220051ED136035C100AE0A5F /* JZBDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataSource.h; sourceTree = "<group>"; };
+		220051EE136035C200AE0A5F /* JZBDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBDataSource.m; sourceTree = "<group>"; };
+		220051F01360386F00AE0A5F /* JZBSimpleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSimpleListController.h; sourceTree = "<group>"; };
+		220051F11360387500AE0A5F /* JZBSimpleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSimpleListController.m; sourceTree = "<group>"; };
+		22090E7C13495DE300497BBE /* JZBSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSyncRequest.h; sourceTree = "<group>"; };
+		22090E7D13495DE300497BBE /* JZBSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSyncRequest.m; sourceTree = "<group>"; };
+		22090E8613496BEA00497BBE /* URLParameterSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParameterSet.m; sourceTree = "<group>"; };
+		22090E8713496BEA00497BBE /* URLParameterSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParameterSet.h; sourceTree = "<group>"; };
+		2210EBA1135441F6007407DF /* analysis@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "analysis@2x.png"; sourceTree = "<group>"; };
+		2210EBA31354430F007407DF /* TotalStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalStatisticController.h; sourceTree = "<group>"; };
+		2210EBA41354430F007407DF /* TotalStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalStatisticController.m; sourceTree = "<group>"; };
+		2210EBA51354430F007407DF /* TotalStatisticController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TotalStatisticController.xib; sourceTree = "<group>"; };
+		222219011342C7A3001D60F1 /* JZBDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JZBDataModel.xcdatamodel; sourceTree = "<group>"; };
+		2222190C13430FBB001D60F1 /* JZBDataAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataAccessManager.h; sourceTree = "<group>"; };
+		2222190D13430FBB001D60F1 /* JZBDataAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBDataAccessManager.m; sourceTree = "<group>"; };
+		222E9E0F1354904900EFB613 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		222E9E121355873300EFB613 /* JZBSQLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSQLConstants.h; sourceTree = "<group>"; };
+		22327CEA1366FD1D00FEA82D /* NSString+JZBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JZBHelper.h"; sourceTree = "<group>"; };
+		22327CEB1366FD1D00FEA82D /* NSString+JZBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JZBHelper.m"; sourceTree = "<group>"; };
+		22327DEE1366FF9500FEA82D /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		22327DEF1366FF9500FEA82D /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		2249A25A1372A5CF008BF3E0 /* BillListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillListDataSource.h; sourceTree = "<group>"; };
+		2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillListDataSource.m; sourceTree = "<group>"; };
+		224C058B13447D3800E01F55 /* JZBSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSynchronizer.h; sourceTree = "<group>"; };
+		224C058C13447D3800E01F55 /* JZBSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSynchronizer.m; sourceTree = "<group>"; };
+		224C058F1345704500E01F55 /* JZBDataChangeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataChangeUnit.h; sourceTree = "<group>"; };
+		224C05901345704500E01F55 /* JZBDataChangeUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBDataChangeUnit.m; sourceTree = "<group>"; };
+		224C05931345743A00E01F55 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		224C05941345743A00E01F55 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		224C05951345743A00E01F55 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		224C05961345743A00E01F55 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		224C05971345743A00E01F55 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		224C05981345743A00E01F55 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		224C05991345743A00E01F55 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		224C059A1345743A00E01F55 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		224C059B1345743A00E01F55 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		224C059C1345743A00E01F55 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		224C059D1345743A00E01F55 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		224C059E1345743A00E01F55 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		224C059F1345743A00E01F55 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		224C05A71345750300E01F55 /* JZBDataChangeJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataChangeJSON.h; sourceTree = "<group>"; };
+		224C05A81345750300E01F55 /* JZBDataChangeJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBDataChangeJSON.m; sourceTree = "<group>"; };
+		224FB10C134AA571006DD105 /* PKForTables.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PKForTables.plist; sourceTree = "<group>"; };
+		224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ModelNameForTables.plist; sourceTree = "<group>"; };
+		224FB111134AAE02006DD105 /* JZBBudgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBudgets.h; sourceTree = "<group>"; };
+		224FB112134AAE03006DD105 /* JZBBudgets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBudgets.m; sourceTree = "<group>"; };
+		224FB114134AAE72006DD105 /* JZBAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBAccounts.h; sourceTree = "<group>"; };
+		224FB115134AAE72006DD105 /* JZBAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBAccounts.m; sourceTree = "<group>"; };
+		224FB117134AAE7F006DD105 /* JZBBills.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBills.h; sourceTree = "<group>"; };
+		224FB118134AAE80006DD105 /* JZBBills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBills.m; sourceTree = "<group>"; };
+		224FB11A134AAE89006DD105 /* JZBBorrowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBorrowers.h; sourceTree = "<group>"; };
+		224FB11B134AAE8A006DD105 /* JZBBorrowers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBorrowers.m; sourceTree = "<group>"; };
+		224FB11D134AAE98006DD105 /* JZBBudgetItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBudgetItems.h; sourceTree = "<group>"; };
+		224FB11E134AAE99006DD105 /* JZBBudgetItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBudgetItems.m; sourceTree = "<group>"; };
+		224FB120134AAEA3006DD105 /* JZBCatalogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBCatalogs.h; sourceTree = "<group>"; };
+		224FB121134AAEA4006DD105 /* JZBCatalogs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBCatalogs.m; sourceTree = "<group>"; };
+		224FB125134AC42C006DD105 /* JZBManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBManagedObject.h; sourceTree = "<group>"; };
+		224FB126134AC42D006DD105 /* JZBManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBManagedObject.m; sourceTree = "<group>"; };
+		224FB13C134DF429006DD105 /* JZBPredefinedNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBPredefinedNotification.h; sourceTree = "<group>"; };
+		224FB151134F4C44006DD105 /* BillEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillEditViewController.h; sourceTree = "<group>"; };
+		224FB152134F4C44006DD105 /* BillEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillEditViewController.m; sourceTree = "<group>"; };
+		224FB153134F4C45006DD105 /* BillEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillEditViewController.xib; sourceTree = "<group>"; };
+		224FB16313503C40006DD105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		224FB16513503C4F006DD105 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		224FB16C1352D385006DD105 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		224FB16D1352D38A006DD105 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		224FB16E1352D39A006DD105 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		224FB1711352D9C6006DD105 /* AccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountListViewController.h; sourceTree = "<group>"; };
+		224FB1721352D9C8006DD105 /* AccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountListViewController.m; sourceTree = "<group>"; };
+		224FB1791352E188006DD105 /* AccountStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStatisticController.h; sourceTree = "<group>"; };
+		224FB17A1352E18B006DD105 /* AccountStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStatisticController.m; sourceTree = "<group>"; };
+		224FB17B1352E18D006DD105 /* AccountStatisticController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountStatisticController.xib; sourceTree = "<group>"; };
+		224FB183135331C7006DD105 /* BudgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BudgetViewController.h; sourceTree = "<group>"; };
+		224FB184135331D6006DD105 /* BudgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BudgetViewController.m; sourceTree = "<group>"; };
+		224FB185135331DF006DD105 /* BudgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BudgetViewController.xib; sourceTree = "<group>"; };
 		2267F2081340C22200693D61 /* JZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2267F20C1340C22200693D61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2267F20E1340C22200693D61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2267F2101340C22200693D61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2267F2141340C22200693D61 /* JZB-Info.plist */ = {isa = PBXFileReference; path = "JZB-Info.plist"; sourceTree = "<group>"; };
+		2267F2141340C22200693D61 /* JZB-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JZB-Info.plist"; sourceTree = "<group>"; };
 		2267F2161340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2267F2181340C22200693D61 /* JZB-Prefix.pch */ = {isa = PBXFileReference; path = "JZB-Prefix.pch"; sourceTree = "<group>"; };
+		2267F2181340C22200693D61 /* JZB-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JZB-Prefix.pch"; sourceTree = "<group>"; };
 		2267F2191340C22200693D61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2267F21B1340C22200693D61 /* JZBAppDelegate.h */ = {isa = PBXFileReference; path = JZBAppDelegate.h; sourceTree = "<group>"; };
+		2267F21B1340C22200693D61 /* JZBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZBAppDelegate.h; sourceTree = "<group>"; };
 		2267F21C1340C22200693D61 /* JZBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBAppDelegate.m; sourceTree = "<group>"; };
 		2267F21F1340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		2267F2211340C22200693D61 /* JZBViewController.h */ = {isa = PBXFileReference; path = JZBViewController.h; sourceTree = "<group>"; };
+		2267F2211340C22200693D61 /* JZBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZBViewController.h; sourceTree = "<group>"; };
 		2267F2221340C22200693D61 /* JZBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBViewController.m; sourceTree = "<group>"; };
 		2267F2251340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/JZBViewController.xib; sourceTree = "<group>"; };
 		2267F22C1340C22200693D61 /* JZBTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JZBTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2267F2341340C22200693D61 /* JZBTests-Info.plist */ = {isa = PBXFileReference; path = "JZBTests-Info.plist"; sourceTree = "<group>"; };
+		2267F2341340C22200693D61 /* JZBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JZBTests-Info.plist"; sourceTree = "<group>"; };
 		2267F2361340C22200693D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2267F2381340C22200693D61 /* JZBTests-Prefix.pch */ = {isa = PBXFileReference; path = "JZBTests-Prefix.pch"; sourceTree = "<group>"; };
+		2267F2381340C22200693D61 /* JZBTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JZBTests-Prefix.pch"; sourceTree = "<group>"; };
 		2267F2391340C22200693D61 /* JZBTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZBTests.h; sourceTree = "<group>"; };
 		2267F23B1340C22300693D61 /* JZBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZBTests.m; sourceTree = "<group>"; };
+		2267F24F13418A5800693D61 /* JJObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJObjectManager.h; sourceTree = "<group>"; };
+		2267F25013418A5800693D61 /* JJObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJObjectManager.m; sourceTree = "<group>"; };
+		2267F25213418E8700693D61 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		229B405B1357E331005E5DD9 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		229B405C1357E331005E5DD9 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		229B40641357FB5D005E5DD9 /* AccountListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
+		229B40651357FB5E005E5DD9 /* AccountListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountListCell.m; sourceTree = "<group>"; };
+		229B40671357FBBA005E5DD9 /* AccountListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountListCell.xib; sourceTree = "<group>"; };
+		229B406F135849F9005E5DD9 /* AccountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AccountEditViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		229B4070135849FB005E5DD9 /* AccountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AccountEditViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		229B4071135849FE005E5DD9 /* AccountEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountEditViewController.xib; sourceTree = "<group>"; };
+		229B407413584C46005E5DD9 /* BillListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillListViewController.h; sourceTree = "<group>"; };
+		229B407513584C47005E5DD9 /* BillListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillListViewController.m; sourceTree = "<group>"; };
+		229B407613584C48005E5DD9 /* BillListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillListViewController.xib; sourceTree = "<group>"; };
+		22A0FEAC13656D8B00F2F1CE /* JZBPredifinedErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBPredifinedErrorMessage.h; sourceTree = "<group>"; };
+		22A0FEAE136571D000F2F1CE /* JZBErrorProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBErrorProcessor.h; sourceTree = "<group>"; };
+		22A0FEAF136571D000F2F1CE /* JZBErrorProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBErrorProcessor.m; sourceTree = "<group>"; };
+		22DE87881349CE2F0024EF6C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		22DE87891349CE2F0024EF6C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		22DE878A1349CE2F0024EF6C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		22E0B6791367FCB6009403D0 /* CatalogEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogEditViewController.h; sourceTree = "<group>"; };
+		22E0B67A1367FCB7009403D0 /* CatalogEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogEditViewController.m; sourceTree = "<group>"; };
+		22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogEditViewController.xib; sourceTree = "<group>"; };
+		22E0B67E13680363009403D0 /* JZBEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBEditViewController.h; sourceTree = "<group>"; };
+		22E0B67F13680364009403D0 /* JZBEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBEditViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +241,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222E9E101354904900EFB613 /* libsqlite3.0.dylib in Frameworks */,
+				2267F25313418E8700693D61 /* CoreData.framework in Frameworks */,
 				2267F20D1340C22200693D61 /* UIKit.framework in Frameworks */,
 				2267F20F1340C22200693D61 /* Foundation.framework in Frameworks */,
 				2267F2111340C22200693D61 /* CoreGraphics.framework in Frameworks */,
@@ -81,9 +262,200 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220051D1135EE11300AE0A5F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				220051D2135EE12D00AE0A5F /* AccountListDataSource.h */,
+				220051D3135EE12D00AE0A5F /* AccountListDataSource.m */,
+				220051DC1360321B00AE0A5F /* CatalogListDataSource.h */,
+				220051DD1360321B00AE0A5F /* CatalogListDataSource.m */,
+				2249A25A1372A5CF008BF3E0 /* BillListDataSource.h */,
+				2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */,
+				220051ED136035C100AE0A5F /* JZBDataSource.h */,
+				220051EE136035C200AE0A5F /* JZBDataSource.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		220051E91360346300AE0A5F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				229B40641357FB5D005E5DD9 /* AccountListCell.h */,
+				229B40651357FB5E005E5DD9 /* AccountListCell.m */,
+				229B40671357FBBA005E5DD9 /* AccountListCell.xib */,
+				220051DF136032D600AE0A5F /* CatalogListCell.h */,
+				220051E0136032D800AE0A5F /* CatalogListCell.m */,
+				220051E2136032EB00AE0A5F /* CatalogListCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		2210EB9E13544188007407DF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2210EBA1135441F6007407DF /* analysis@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		2222190F134330E1001D60F1 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				220051D1135EE11300AE0A5F /* DataSource */,
+				2222191113433104001D60F1 /* Views */,
+				22221910134330F7001D60F1 /* ViewControllers */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		22221910134330F7001D60F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				229B407413584C46005E5DD9 /* BillListViewController.h */,
+				229B407513584C47005E5DD9 /* BillListViewController.m */,
+				22DE87881349CE2F0024EF6C /* LoginViewController.h */,
+				22DE87891349CE2F0024EF6C /* LoginViewController.m */,
+				224FB151134F4C44006DD105 /* BillEditViewController.h */,
+				224FB152134F4C44006DD105 /* BillEditViewController.m */,
+				229B406F135849F9005E5DD9 /* AccountEditViewController.h */,
+				229B4070135849FB005E5DD9 /* AccountEditViewController.m */,
+				22E0B6791367FCB6009403D0 /* CatalogEditViewController.h */,
+				22E0B67A1367FCB7009403D0 /* CatalogEditViewController.m */,
+				22E0B67E13680363009403D0 /* JZBEditViewController.h */,
+				22E0B67F13680364009403D0 /* JZBEditViewController.m */,
+				224FB16C1352D385006DD105 /* HomeViewController.h */,
+				224FB16D1352D38A006DD105 /* HomeViewController.m */,
+				224FB1711352D9C6006DD105 /* AccountListViewController.h */,
+				224FB1721352D9C8006DD105 /* AccountListViewController.m */,
+				224FB1791352E188006DD105 /* AccountStatisticController.h */,
+				224FB17A1352E18B006DD105 /* AccountStatisticController.m */,
+				224FB183135331C7006DD105 /* BudgetViewController.h */,
+				224FB184135331D6006DD105 /* BudgetViewController.m */,
+				2210EBA31354430F007407DF /* TotalStatisticController.h */,
+				2210EBA41354430F007407DF /* TotalStatisticController.m */,
+				220051D7136014DA00AE0A5F /* AccountSimpleListController.h */,
+				220051D8136014DD00AE0A5F /* AccountSimpleListController.m */,
+				220051E41360343500AE0A5F /* CatalogSimpleListController.h */,
+				220051E51360343700AE0A5F /* CatalogSimpleListController.m */,
+				220051F01360386F00AE0A5F /* JZBSimpleListController.h */,
+				220051F11360387500AE0A5F /* JZBSimpleListController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2222191113433104001D60F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				220051E91360346300AE0A5F /* Cells */,
+				224FB153134F4C45006DD105 /* BillEditViewController.xib */,
+				22DE878A1349CE2F0024EF6C /* LoginViewController.xib */,
+				224FB16E1352D39A006DD105 /* HomeViewController.xib */,
+				224FB17B1352E18D006DD105 /* AccountStatisticController.xib */,
+				2210EBA51354430F007407DF /* TotalStatisticController.xib */,
+				224FB185135331DF006DD105 /* BudgetViewController.xib */,
+				229B4071135849FE005E5DD9 /* AccountEditViewController.xib */,
+				229B407613584C48005E5DD9 /* BillListViewController.xib */,
+				220051D5135EF13900AE0A5F /* AccountListViewController.xib */,
+				220051D9136014DF00AE0A5F /* AccountSimpleListController.xib */,
+				220051E61360343E00AE0A5F /* CatalogSimpleListController.xib */,
+				22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		22327CF31366FF5B00FEA82D /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				22327DEE1366FF9500FEA82D /* RegexKitLite.h */,
+				22327DEF1366FF9500FEA82D /* RegexKitLite.m */,
+			);
+			name = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		224C05921345743A00E01F55 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				224C05931345743A00E01F55 /* JSON.h */,
+				224C05941345743A00E01F55 /* NSObject+SBJSON.h */,
+				224C05951345743A00E01F55 /* NSObject+SBJSON.m */,
+				224C05961345743A00E01F55 /* NSString+SBJSON.h */,
+				224C05971345743A00E01F55 /* NSString+SBJSON.m */,
+				224C05981345743A00E01F55 /* SBJSON.h */,
+				224C05991345743A00E01F55 /* SBJSON.m */,
+				224C059A1345743A00E01F55 /* SBJsonBase.h */,
+				224C059B1345743A00E01F55 /* SBJsonBase.m */,
+				224C059C1345743A00E01F55 /* SBJsonParser.h */,
+				224C059D1345743A00E01F55 /* SBJsonParser.m */,
+				224C059E1345743A00E01F55 /* SBJsonWriter.h */,
+				224C059F1345743A00E01F55 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		224C05A61345745F00E01F55 /* SharedLib */ = {
+			isa = PBXGroup;
+			children = (
+				22327CF31366FF5B00FEA82D /* RegexKitLite */,
+				224C05921345743A00E01F55 /* JSON */,
+				229B405B1357E331005E5DD9 /* NSDate+Helper.h */,
+				229B405C1357E331005E5DD9 /* NSDate+Helper.m */,
+				22327CEA1366FD1D00FEA82D /* NSString+JZBHelper.h */,
+				22327CEB1366FD1D00FEA82D /* NSString+JZBHelper.m */,
+			);
+			name = SharedLib;
+			sourceTree = "<group>";
+		};
+		224FB123134AAEF0006DD105 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				224FB10C134AA571006DD105 /* PKForTables.plist */,
+				224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */,
+				222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */,
+				224FB120134AAEA3006DD105 /* JZBCatalogs.h */,
+				224FB121134AAEA4006DD105 /* JZBCatalogs.m */,
+				224FB11D134AAE98006DD105 /* JZBBudgetItems.h */,
+				224FB11E134AAE99006DD105 /* JZBBudgetItems.m */,
+				224FB11A134AAE89006DD105 /* JZBBorrowers.h */,
+				224FB11B134AAE8A006DD105 /* JZBBorrowers.m */,
+				224FB117134AAE7F006DD105 /* JZBBills.h */,
+				224FB118134AAE80006DD105 /* JZBBills.m */,
+				224FB114134AAE72006DD105 /* JZBAccounts.h */,
+				224FB115134AAE72006DD105 /* JZBAccounts.m */,
+				224FB111134AAE02006DD105 /* JZBBudgets.h */,
+				224FB112134AAE03006DD105 /* JZBBudgets.m */,
+				2267F24F13418A5800693D61 /* JJObjectManager.h */,
+				2267F25013418A5800693D61 /* JJObjectManager.m */,
+				2222190C13430FBB001D60F1 /* JZBDataAccessManager.h */,
+				2222190D13430FBB001D60F1 /* JZBDataAccessManager.m */,
+				224FB125134AC42C006DD105 /* JZBManagedObject.h */,
+				224FB126134AC42D006DD105 /* JZBManagedObject.m */,
+				222E9E121355873300EFB613 /* JZBSQLConstants.h */,
+			);
+			name = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		224FB124134AAF1B006DD105 /* Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+				224C058B13447D3800E01F55 /* JZBSynchronizer.h */,
+				224C058C13447D3800E01F55 /* JZBSynchronizer.m */,
+				22090E7C13495DE300497BBE /* JZBSyncRequest.h */,
+				22090E7D13495DE300497BBE /* JZBSyncRequest.m */,
+				22090E8613496BEA00497BBE /* URLParameterSet.m */,
+				22090E8713496BEA00497BBE /* URLParameterSet.h */,
+				224C058F1345704500E01F55 /* JZBDataChangeUnit.h */,
+				224C05901345704500E01F55 /* JZBDataChangeUnit.m */,
+				224C05A71345750300E01F55 /* JZBDataChangeJSON.h */,
+				224C05A81345750300E01F55 /* JZBDataChangeJSON.m */,
+			);
+			name = Synchronizer;
+			sourceTree = "<group>";
+		};
 		2267F1FD1340C22200693D61 = {
 			isa = PBXGroup;
 			children = (
+				222E9E0F1354904900EFB613 /* libsqlite3.0.dylib */,
+				224C05A61345745F00E01F55 /* SharedLib */,
 				2267F2121340C22200693D61 /* JZB */,
 				2267F2321340C22200693D61 /* JZBTests */,
 				2267F20B1340C22200693D61 /* Frameworks */,
@@ -103,6 +475,7 @@
 		2267F20B1340C22200693D61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2267F25213418E8700693D61 /* CoreData.framework */,
 				2267F20C1340C22200693D61 /* UIKit.framework */,
 				2267F20E1340C22200693D61 /* Foundation.framework */,
 				2267F2101340C22200693D61 /* CoreGraphics.framework */,
@@ -113,6 +486,9 @@
 		2267F2121340C22200693D61 /* JZB */ = {
 			isa = PBXGroup;
 			children = (
+				2210EB9E13544188007407DF /* Images */,
+				2267F24513416F8200693D61 /* Model */,
+				2222190F134330E1001D60F1 /* iPhone */,
 				2267F21B1340C22200693D61 /* JZBAppDelegate.h */,
 				2267F21C1340C22200693D61 /* JZBAppDelegate.m */,
 				2267F21E1340C22200693D61 /* MainWindow.xib */,
@@ -131,6 +507,11 @@
 				2267F2151340C22200693D61 /* InfoPlist.strings */,
 				2267F2181340C22200693D61 /* JZB-Prefix.pch */,
 				2267F2191340C22200693D61 /* main.m */,
+				22A0FEAC13656D8B00F2F1CE /* JZBPredifinedErrorMessage.h */,
+				22A0FEAE136571D000F2F1CE /* JZBErrorProcessor.h */,
+				22A0FEAF136571D000F2F1CE /* JZBErrorProcessor.m */,
+				224FB13C134DF429006DD105 /* JZBPredefinedNotification.h */,
+				224FB16413503C40006DD105 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,6 +534,15 @@
 				2267F2381340C22200693D61 /* JZBTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2267F24513416F8200693D61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				224FB124134AAF1B006DD105 /* Synchronizer */,
+				224FB123134AAEF0006DD105 /* CoreDataModel */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +595,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 2267F1FD1340C22200693D61;
 			productRefGroup = 2267F2091340C22200693D61 /* Products */;
@@ -225,6 +616,24 @@
 				2267F2171340C22200693D61 /* InfoPlist.strings in Resources */,
 				2267F2201340C22200693D61 /* MainWindow.xib in Resources */,
 				2267F2261340C22200693D61 /* JZBViewController.xib in Resources */,
+				22DE878C1349CE2F0024EF6C /* LoginViewController.xib in Resources */,
+				224FB10D134AA571006DD105 /* PKForTables.plist in Resources */,
+				224FB110134AA5F5006DD105 /* ModelNameForTables.plist in Resources */,
+				224FB155134F4C46006DD105 /* BillEditViewController.xib in Resources */,
+				224FB16213503C40006DD105 /* Localizable.strings in Resources */,
+				224FB1701352D3B6006DD105 /* HomeViewController.xib in Resources */,
+				224FB17D1352E18F006DD105 /* AccountStatisticController.xib in Resources */,
+				224FB187135331E9006DD105 /* BudgetViewController.xib in Resources */,
+				2210EBA2135441F6007407DF /* analysis@2x.png in Resources */,
+				2210EBA713544310007407DF /* TotalStatisticController.xib in Resources */,
+				229B40681357FBBA005E5DD9 /* AccountListCell.xib in Resources */,
+				229B407313584A03005E5DD9 /* AccountEditViewController.xib in Resources */,
+				229B407813584C49005E5DD9 /* BillListViewController.xib in Resources */,
+				220051D6135EF13A00AE0A5F /* AccountListViewController.xib in Resources */,
+				220051DB136014E200AE0A5F /* AccountSimpleListController.xib in Resources */,
+				220051E3136032ED00AE0A5F /* CatalogListCell.xib in Resources */,
+				220051E81360345200AE0A5F /* CatalogSimpleListController.xib in Resources */,
+				22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +672,51 @@
 				2267F21A1340C22200693D61 /* main.m in Sources */,
 				2267F21D1340C22200693D61 /* JZBAppDelegate.m in Sources */,
 				2267F2231340C22200693D61 /* JZBViewController.m in Sources */,
+				2267F25113418A5800693D61 /* JJObjectManager.m in Sources */,
+				222219021342C7A3001D60F1 /* JZBDataModel.xcdatamodeld in Sources */,
+				2222190E13430FBB001D60F1 /* JZBDataAccessManager.m in Sources */,
+				224C058D13447D3800E01F55 /* JZBSynchronizer.m in Sources */,
+				224C05911345704500E01F55 /* JZBDataChangeUnit.m in Sources */,
+				224C05A01345743A00E01F55 /* NSObject+SBJSON.m in Sources */,
+				224C05A11345743A00E01F55 /* NSString+SBJSON.m in Sources */,
+				224C05A21345743A00E01F55 /* SBJSON.m in Sources */,
+				224C05A31345743A00E01F55 /* SBJsonBase.m in Sources */,
+				224C05A41345743A00E01F55 /* SBJsonParser.m in Sources */,
+				224C05A51345743A00E01F55 /* SBJsonWriter.m in Sources */,
+				224C05A91345750300E01F55 /* JZBDataChangeJSON.m in Sources */,
+				22090E7E13495DE300497BBE /* JZBSyncRequest.m in Sources */,
+				22090E8813496BEA00497BBE /* URLParameterSet.m in Sources */,
+				22DE878B1349CE2F0024EF6C /* LoginViewController.m in Sources */,
+				224FB113134AAE04006DD105 /* JZBBudgets.m in Sources */,
+				224FB116134AAE73006DD105 /* JZBAccounts.m in Sources */,
+				224FB119134AAE81006DD105 /* JZBBills.m in Sources */,
+				224FB11C134AAE8B006DD105 /* JZBBorrowers.m in Sources */,
+				224FB11F134AAE9A006DD105 /* JZBBudgetItems.m in Sources */,
+				224FB122134AAEA5006DD105 /* JZBCatalogs.m in Sources */,
+				224FB127134AC42E006DD105 /* JZBManagedObject.m in Sources */,
+				224FB154134F4C46006DD105 /* BillEditViewController.m in Sources */,
+				224FB16F1352D3B5006DD105 /* HomeViewController.m in Sources */,
+				224FB1731352D9CB006DD105 /* AccountListViewController.m in Sources */,
+				224FB17C1352E18F006DD105 /* AccountStatisticController.m in Sources */,
+				224FB186135331E9006DD105 /* BudgetViewController.m in Sources */,
+				2210EBA613544310007407DF /* TotalStatisticController.m in Sources */,
+				229B405D1357E331005E5DD9 /* NSDate+Helper.m in Sources */,
+				229B40661357FB5E005E5DD9 /* AccountListCell.m in Sources */,
+				229B407213584A03005E5DD9 /* AccountEditViewController.m in Sources */,
+				229B407713584C49005E5DD9 /* BillListViewController.m in Sources */,
+				220051D4135EE12D00AE0A5F /* AccountListDataSource.m in Sources */,
+				220051DA136014E200AE0A5F /* AccountSimpleListController.m in Sources */,
+				220051DE1360321B00AE0A5F /* CatalogListDataSource.m in Sources */,
+				220051E1136032D900AE0A5F /* CatalogListCell.m in Sources */,
+				220051E71360345200AE0A5F /* CatalogSimpleListController.m in Sources */,
+				220051EF136035C300AE0A5F /* JZBDataSource.m in Sources */,
+				220051F21360387B00AE0A5F /* JZBSimpleListController.m in Sources */,
+				22A0FEB0136571D100F2F1CE /* JZBErrorProcessor.m in Sources */,
+				22327CEC1366FD1D00FEA82D /* NSString+JZBHelper.m in Sources */,
+				22327DF01366FF9500FEA82D /* RegexKitLite.m in Sources */,
+				22E0B67C1367FCB8009403D0 /* CatalogEditViewController.m in Sources */,
+				22E0B68013680368009403D0 /* JZBEditViewController.m in Sources */,
+				2249A25C1372A5CF008BF3E0 /* BillListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +739,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		224FB16413503C40006DD105 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224FB16313503C40006DD105 /* en */,
+				224FB16513503C4F006DD105 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2267F2151340C22200693D61 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -333,6 +796,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-licucore";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -348,6 +812,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-licucore";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -360,8 +825,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JZB/JZB-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					DEBUG_MODE,
+				);
 				INFOPLIST_FILE = "JZB/JZB-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,6 +913,7 @@
 				2267F2411340C22300693D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2267F2421340C22300693D61 /* Build configuration list for PBXNativeTarget "JZBTests" */ = {
 			isa = XCConfigurationList;
@@ -451,8 +922,22 @@
 				2267F2441340C22300693D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				222219011342C7A3001D60F1 /* JZBDataModel.xcdatamodel */,
+			);
+			currentVersion = 222219011342C7A3001D60F1 /* JZBDataModel.xcdatamodel */;
+			path = JZBDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2267F1FF1340C22200693D61 /* Project object */;
 }

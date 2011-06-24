@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  JZB
+
+  Created by Jin Jin on 11-4-9.
+  Copyright 2011年 __MyCompanyName__. All rights reserved.
+*/
+
+"label_title" = "Title";
+"label_amount" = "Amount($)";
+"label_catalog" = "Catalog";
+"label_date" = "Date";
+"label_desc" = "Description";
+"label_account" = "Account";
+"label_to_account" = "To account";
+"label_no_account" = "(No account)";
+"label_no_catalog" = "(No catalog)";
+"label_kind" = "Kind";
+"label_name" = "Name";
+"label_initAmt" = "Init amount";
+"title" = "Title";
+"button_OK" = "OK";
+"button_cancel" = "Cancel";
+"Please input title" = "Please input title";
+"income" = "income";
+"expend" = "expend";
+"loan" = "loan";
+"transfer" = "transfer";
+"account" = "Account";
+"budget" = "Budget";
+"all_accounts" = "All accounts";
+"edit_accounts" = "Edit accounts";
+"accountList" = "Account list";
+"catalogList" = "Catalog list";
+"cash" = "Cash";
+"creditcard" = "Credit card";
+"bankcard" = "Bank card";
+"stock" = "Stock";
+"fund" = "Fund";
+"other" = "other";
+"title_new_account" = "New account";
+"title_edit_account" = "Edit account";
+"title_edit_catalog" = "Edit catalog";
+"title_new_catalog" = "New catalog"; 
+"seg_income" = "Income";
+"seg_expend" = "Expence";

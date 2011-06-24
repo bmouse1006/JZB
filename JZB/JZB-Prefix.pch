@@ -3,6 +3,8 @@
 //
 
 #import <Availability.h>
+#import "JZBPredefinedNotification.h"
+#import "JZBPredifinedErrorMessage.h"
 
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iPhone SDK 3.0 and later."
@@ -12,3 +14,18 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifdef DEBUG_MODE
+#define DebugLog( s, ... ) NSLog( @"<%p> %@", self, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DebugLog( s, ... ) 
+#endif
+
+#define DB_FILENAME @"datastore"
+#define DB_FILENAME_EXTENSION @".db"
+
+#define JZBLoalizeString(key, comment) \
+key = NSLocalizedString(key, comment)
+
+#define BUNDLENAME_PKFORTABLES          @"PKForTables"
+#define BUNDLENAME_MODELNAMEFORTABLES   @"ModelNameForTables"
