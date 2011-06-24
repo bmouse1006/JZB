@@ -11,6 +11,9 @@
 #import "JZBDataSource.h"
 
 @interface BillListDataSource : JZBDataSource {
+    
+    
+    
 }
 
 
