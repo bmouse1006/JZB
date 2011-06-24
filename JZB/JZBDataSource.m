@@ -16,15 +16,29 @@
 @synthesize predicate = _predicate;
 @synthesize managedObj = _managedObj;
 
+//subclass should be modify this method to provide its own model name
+-(NSString*)getModelName{
+    return nil;
+}
+
 //need to override below three methods in sub class
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    // Return the number of sections.
+    NSInteger number = [[self.fetchedController sections] count];
+    number = (!number)?1:number;
+    DebugLog(@"number of section is %d", number);
+    return number;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    // Return the number of rows in the section.
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
+    NSInteger number = [sectionInfo numberOfObjects];
+    number = (![[self.fetchedController fetchedObjects] count])?1:number;
+    DebugLog(@"number of rows in section %d is %d", section, number);
+    return number;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,7 +57,6 @@
 
 -(void)dealloc{
     self.fetchedController = nil;
-    self.modelName = nil;
     self.predicate = nil;
     [super dealloc];
 }

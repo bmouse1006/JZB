@@ -341,14 +341,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.datePicker.date = [NSDate date];
-    self.datePicker.locale = [NSLocale currentLocale];
-    self.datePicker.datePickerMode = UIDatePickerModeDate;
-    [self hideDatePicker];
-    CGRect rect = self.table.frame;
+    [self setupBillViewContent];
+    CGRect rect = self.table.frame; 
     rect.size.height += 200;
     [self.table setFrame:rect];
-//    [self showDatePicker];
 }
 
 - (void)viewDidUnload
@@ -617,6 +613,23 @@
     DebugLog(@"%@", [bill description]);
     [bill persistantChange];
 
+}
+
+-(void)setupBillViewContent{
+    if (self.bill){
+        //if self.bill is assigned
+        self.datePicker.date = self.bill.date;
+        self.descTextView.text = self.bill.desc;
+        self.titleText.text = self.bill.title;
+        self.amountText.text = [self.bill.amount stringValue];
+        
+    }else{
+        //if self.bill is not assigned
+        self.datePicker.date = [NSDate date];
+    }
+    self.datePicker.locale = [NSLocale currentLocale];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    [self hideDatePicker];
 }
 
 @end

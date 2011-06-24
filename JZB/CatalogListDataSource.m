@@ -14,6 +14,12 @@
 @synthesize tempCell = _tempCell;
 @synthesize catalogKind = _catalogKind;
 
+#pragma mark - overrided methods
+
+-(NSString*)getModelName{
+    return @"JZBCatalogs";
+}
+
 -(void)setManagedObj:(JZBManagedObject *)managedObj{
     if (_managedObj != managedObj){
         [_managedObj release];
@@ -37,25 +43,6 @@
             self.predicate = nil;
         }
     }
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    NSInteger number = [[self.fetchedController sections] count];
-    number = (!number)?1:number;
-    DebugLog(@"number of section is %d", number);
-    return number;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
-    NSInteger number = [sectionInfo numberOfObjects];
-    number = (![[self.fetchedController fetchedObjects] count])?1:number;
-    DebugLog(@"number of rows in section %d is %d", section, number);
-    return number;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +79,7 @@
 -(id)init{
     self = [super init];
     if (self){
-        self.modelName = @"JZBCatalogs";
+//        self.modelName = @"JZBCatalogs";
     }
     
     return self;

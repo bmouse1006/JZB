@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "AccountListDataSource.h"
+#import "JZBDataSource.h"
 
 @interface AccountListViewController : UITableViewController{
-    AccountListDataSource* _dataSource;
+    JZBDataSource* _dataSource;
     UITableView* _theTableView;
 }
 
-@property (nonatomic, retain) IBOutlet AccountListDataSource* dataSource;
+@property (nonatomic, retain, getter = getDataSource) JZBDataSource* dataSource;
 @property (nonatomic, retain) IBOutlet UITableView* theTableView;
 
 -(void)releaseOutlet;

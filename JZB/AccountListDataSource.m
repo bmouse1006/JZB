@@ -11,28 +11,14 @@
 @implementation AccountListDataSource
 
 @synthesize tempCell = _tempCell;
-@synthesize account = _account;
+
+#pragma mark - override methods
+
+-(NSString*)getModelName{
+    return @"JZBAccounts";
+}
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    NSInteger number = [[self.fetchedController sections] count];
-    number = (!number)?1:number;
-    DebugLog(@"number of section is %d", number);
-    return number;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
-    NSInteger number = [sectionInfo numberOfObjects];
-    number = (![[self.fetchedController fetchedObjects] count])?1:number;
-    DebugLog(@"number of rows in section %d is %d", section, number);
-    return number;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -68,14 +54,14 @@
 -(id)init{
     self = [super init];
     if (self){
-        self.modelName = @"JZBAccounts";
+//        self.modelName = @"JZBAccounts";
     }
     
     return self;
 }
 
 -(void)dealloc{
-    self.account = nil;
+    self.tempCell = nil;
     [super dealloc];
 }
 

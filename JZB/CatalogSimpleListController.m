@@ -31,7 +31,6 @@
         
         [self.dataSource setValue:_managedObj forKey:@"managedObj"];
         self.catalogsKind = [_managedObj valueForKey:@"kind"];
-//        ((CatalogListDataSource*)self.dataSource).managedObj = _managedObj;
     }
 }
 
@@ -43,7 +42,6 @@
         
         [self.dataSource setValue:_catalogsKind forKey:@"catalogKind"];
         
-//        ((CatalogListDataSource*)self.dataSource).catalogKind = _catalogsKind;
     }
 }
 

@@ -74,6 +74,8 @@
 		2267F23C1340C22300693D61 /* JZBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F23B1340C22300693D61 /* JZBTests.m */; };
 		2267F25113418A5800693D61 /* JJObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2267F25013418A5800693D61 /* JJObjectManager.m */; };
 		2267F25313418E8700693D61 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2267F25213418E8700693D61 /* CoreData.framework */; };
+		227388AA13B475B7006D3B8E /* BillListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 227388A913B475B6006D3B8E /* BillListCell.m */; };
+		227388AD13B475D7006D3B8E /* BillListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227388AC13B475D7006D3B8E /* BillListCell.xib */; };
 		229B405D1357E331005E5DD9 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B405C1357E331005E5DD9 /* NSDate+Helper.m */; };
 		229B40661357FB5E005E5DD9 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B40651357FB5E005E5DD9 /* AccountListCell.m */; };
 		229B40681357FBBA005E5DD9 /* AccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B40671357FBBA005E5DD9 /* AccountListCell.xib */; };
@@ -212,6 +214,9 @@
 		2267F24F13418A5800693D61 /* JJObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJObjectManager.h; sourceTree = "<group>"; };
 		2267F25013418A5800693D61 /* JJObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJObjectManager.m; sourceTree = "<group>"; };
 		2267F25213418E8700693D61 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		227388A813B475B6006D3B8E /* BillListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillListCell.h; sourceTree = "<group>"; };
+		227388A913B475B6006D3B8E /* BillListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillListCell.m; sourceTree = "<group>"; };
+		227388AC13B475D7006D3B8E /* BillListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillListCell.xib; sourceTree = "<group>"; };
 		229B405B1357E331005E5DD9 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		229B405C1357E331005E5DD9 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		229B40641357FB5D005E5DD9 /* AccountListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -286,6 +291,9 @@
 				220051DF136032D600AE0A5F /* CatalogListCell.h */,
 				220051E0136032D800AE0A5F /* CatalogListCell.m */,
 				220051E2136032EB00AE0A5F /* CatalogListCell.xib */,
+				227388A813B475B6006D3B8E /* BillListCell.h */,
+				227388A913B475B6006D3B8E /* BillListCell.m */,
+				227388AC13B475D7006D3B8E /* BillListCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -311,8 +319,6 @@
 		22221910134330F7001D60F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				229B407413584C46005E5DD9 /* BillListViewController.h */,
-				229B407513584C47005E5DD9 /* BillListViewController.m */,
 				22DE87881349CE2F0024EF6C /* LoginViewController.h */,
 				22DE87891349CE2F0024EF6C /* LoginViewController.m */,
 				224FB151134F4C44006DD105 /* BillEditViewController.h */,
@@ -325,6 +331,8 @@
 				22E0B67F13680364009403D0 /* JZBEditViewController.m */,
 				224FB16C1352D385006DD105 /* HomeViewController.h */,
 				224FB16D1352D38A006DD105 /* HomeViewController.m */,
+				229B407413584C46005E5DD9 /* BillListViewController.h */,
+				229B407513584C47005E5DD9 /* BillListViewController.m */,
 				224FB1711352D9C6006DD105 /* AccountListViewController.h */,
 				224FB1721352D9C8006DD105 /* AccountListViewController.m */,
 				224FB1791352E188006DD105 /* AccountStatisticController.h */,
@@ -634,6 +642,7 @@
 				220051E3136032ED00AE0A5F /* CatalogListCell.xib in Resources */,
 				220051E81360345200AE0A5F /* CatalogSimpleListController.xib in Resources */,
 				22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */,
+				227388AD13B475D7006D3B8E /* BillListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +726,7 @@
 				22E0B67C1367FCB8009403D0 /* CatalogEditViewController.m in Sources */,
 				22E0B68013680368009403D0 /* JZBEditViewController.m in Sources */,
 				2249A25C1372A5CF008BF3E0 /* BillListDataSource.m in Sources */,
+				227388AA13B475B7006D3B8E /* BillListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

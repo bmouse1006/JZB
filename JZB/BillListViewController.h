@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "JZBDataSource.h"
+#import "JZBAccounts.h"
 
-@interface BillListViewController : UIViewController {
+@interface BillListViewController : UITableViewController {
+    JZBDataSource* _dataSource;
+    JZBAccounts* _account;
     UISegmentedControl* _filterSeg;
     UITableView* _theTableView;
     
@@ -22,9 +25,11 @@
 @property (nonatomic, retain) IBOutlet UITableView* theTableView;
 @property (nonatomic, retain) IBOutlet UISearchBar* mySearchBar;
 @property (nonatomic, retain) IBOutlet UISearchDisplayController* mySearchDisplayController;
+@property (nonatomic, retain, getter = getDataSource) JZBDataSource* dataSource;
+@property (nonatomic, retain, setter = setAccount:) JZBAccounts* account;
 
 -(IBAction)filterSegIsClicked:(id)sender;
-
--(void)releaseOutlet;
+-(void)releaseRetainedObjects;
+-(void)refreshList;
 
 @end

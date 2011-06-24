@@ -118,6 +118,8 @@
 
 @interface BillEditViewController (private)
 
+//initialize view content
+-(void)setupBillViewContent;
 //to fix a strange bug for cell height changing
 -(void)resetHeightOfCells;
 //show/hide date picker

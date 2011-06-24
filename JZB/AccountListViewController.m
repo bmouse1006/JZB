@@ -7,13 +7,23 @@
 //
 
 #import "AccountListViewController.h"
+#import "BillListViewController.h"
 #import "JZBDataAccessManager.h"
 #import "JJObjectManager.h"
+#import "AccountListDataSource.h"
 
 @implementation AccountListViewController
 
 @synthesize dataSource = _dataSource;
 @synthesize theTableView = _theTableView;
+
+-(JZBDataSource*)getDataSource{
+    if (!_dataSource){
+        _dataSource = [[AccountListDataSource alloc] init];
+    }
+    
+    return _dataSource;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -59,11 +69,6 @@
     [super viewDidLoad];
     
     DebugLog(@"view did load in account list view controller", nil);
-
-    AccountListDataSource* ds = [[AccountListDataSource alloc] init];
-    self.dataSource = ds;
-    [ds release];
-    
     self.theTableView.dataSource = self.dataSource;
     [self refreshList];
 
@@ -84,26 +89,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -114,15 +99,22 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+{ 
+    
+    BillListViewController* billListViewController = [[BillListViewController alloc] initWithNibName:@"BillListViewController" bundle:nil];
+    //get related account id
+    
+    JZBAccounts* account = (JZBAccounts*)[self.dataSource objAtIndexPath:indexPath];
+    billListViewController.account = account;
+    //get the root navigation controller
+    UIWindow* keyWindow = [[UIApplication sharedApplication] keyWindow];
+    [(UINavigationController*)keyWindow.rootViewController pushViewController:billListViewController 
+                                                                animated:YES];
+    
+    [billListViewController release];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 -(void)refreshList{

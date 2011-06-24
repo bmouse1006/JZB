@@ -7,7 +7,8 @@
 //
 
 #import "BillListViewController.h"
-
+#import "BillListDataSource.h"
+#import "BillEditViewController.h"
 
 @implementation BillListViewController
 
@@ -15,21 +16,47 @@
 @synthesize theTableView = _theTableView;
 @synthesize mySearchBar = _mySearchBar;
 @synthesize mySearchDisplayController = _mySearchDisplayController;
+@synthesize dataSource = _dataSource;
+@synthesize account = _account;
+
+#pragma mark - getter and setter
+-(JZBDataSource*)getDataSource{
+    if (!_dataSource){
+        _dataSource = [[BillListDataSource alloc] init];
+    }
+    
+    return _dataSource;
+}
+
+-(void)setAccount:(JZBAccounts *)account{
+    if (_account != account){
+        [_account release];
+        _account = account;
+        [_account retain];
+        self.dataSource.managedObj = _account;
+    }
+}
 
 -(IBAction)filterSegIsClicked:(id)sender{
     DebugLog(@"filter seg is clicked", nil);
 }
 
--(void)releaseOutlet{
+-(void)refreshList{
+    [self.dataSource refresh];
+    [self.theTableView reloadData];
+}
+
+-(void)releaseRetainedObjects{
     self.filterSeg = nil;
     self.theTableView = nil;
     self.mySearchBar = nil;
     self.mySearchDisplayController = nil;
+    self.dataSource = nil;
 }
 
 - (void)dealloc
 {
-    [self releaseOutlet];
+    [self releaseRetainedObjects];
     [super dealloc];
 }
 
@@ -46,9 +73,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.filterSeg];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    [rightItem release];
+//    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.filterSeg];
+//    self.navigationItem.rightBarButtonItem = rightItem;
+    self.theTableView.dataSource = self.dataSource;
+    [self refreshList];
+    self.title = self.account.name;
+//    [rightItem release];
 
 }
 
@@ -64,6 +94,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //show bill edit view with detail of bill
+    BillEditViewController* billEditor = [[BillEditViewController alloc] init];
+    billEditor.bill = [self.dataSource objAtIndexPath:indexPath];
+    [self.navigationController pushViewController:billEditor animated:YES];
+    [billEditor release];
+    //
     [tableView deselectRowAtIndexPath:indexPath 
                              animated:YES];
 }

@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "JZBDataSource.h"
+#import "BillListCell.h"
 
 @interface BillListDataSource : JZBDataSource {
+    BillListCell* _tempCell;
     
-    
-    
+    NSString* _accountID;
 }
 
+@property (nonatomic, retain) IBOutlet BillListCell* tempCell;
+@property (nonatomic, retain, setter = setAccountID:) NSString* accountID;
 
 @end

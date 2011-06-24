@@ -18,11 +18,17 @@
 }
 
 @property (nonatomic, retain, getter = getFetchedController) NSFetchedResultsController* fetchedController;
-@property (nonatomic, retain) NSString* modelName;
+//this property should be readonly and subclass should provide get method of this 
+@property (nonatomic, readonly, getter = getModelName) NSString* modelName;
 @property (nonatomic, retain) NSPredicate* predicate;
 @property (nonatomic, retain) JZBManagedObject* managedObj;
 
 -(void)refresh;
 -(id)objAtIndexPath:(NSIndexPath*)indexPath;
+
+//subclass should implement following methods
+//-(NSString*)getModelName;
+
+//setup predicate to filt the result
 
 @end
