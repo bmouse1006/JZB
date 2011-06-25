@@ -72,6 +72,14 @@ static NSMutableDictionary* cachedObjects = nil;
 													  predicate:(NSPredicate*)predicate
 												sortDescriptors:(NSArray*)descriptors
                                                         context:(NSManagedObjectContext*)mContext{
+    return [self fetchedResultsControllerFromModel:objectModel predicate:predicate sortDescriptors:descriptors sectionNameKeyPath:nil context:mContext];
+}
+
++(NSFetchedResultsController*)fetchedResultsControllerFromModel:(NSString*)objectModel 
+													  predicate:(NSPredicate*)predicate
+												sortDescriptors:(NSArray*)descriptors
+                                             sectionNameKeyPath:(NSString*)keyPath
+                                                        context:(NSManagedObjectContext*)mContext{
     NSManagedObjectContext* context = nil;
     if (!mContext){
         context = [self context];
@@ -92,13 +100,14 @@ static NSMutableDictionary* cachedObjects = nil;
 	
 	NSFetchedResultsController* controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request
 																				 managedObjectContext:context
-                                                                                   sectionNameKeyPath:nil 
+                                                                                   sectionNameKeyPath:keyPath
                                                                                             cacheName:nil];
 	
 	[request release];
 	
 	return [controller autorelease];
 }
+
 
 +(NSArray*)objectsByModelName:(NSString*)modelName withKey:(NSString*)key andValue:(NSString*)value{
     return [self objectsByModelName:modelName 

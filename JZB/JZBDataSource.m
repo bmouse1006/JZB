@@ -12,12 +12,21 @@
 @implementation JZBDataSource
 
 @synthesize fetchedController = _fetchedController;
-@synthesize modelName = _modelName;
 @synthesize predicate = _predicate;
 @synthesize managedObj = _managedObj;
+@synthesize sortDescriptors = _sortDescriptors;
+@synthesize sectionNameKeyPath = _sectionNameKeyPath;
 
 //subclass should be modify this method to provide its own model name
 -(NSString*)getModelName{
+    return nil;
+}
+
+-(NSArray*)getSortDescriptors{
+    return nil;
+}
+
+-(NSString*)getSectionNameKeyPath{
     return nil;
 }
 
@@ -58,6 +67,8 @@
 -(void)dealloc{
     self.fetchedController = nil;
     self.predicate = nil;
+    self.sortDescriptors = nil;
+    self.sectionNameKeyPath = nil;
     [super dealloc];
 }
 
@@ -85,7 +96,8 @@
     if (!_fetchedController && self.modelName){
         _fetchedController = [JJObjectManager fetchedResultsControllerFromModel:self.modelName
                                                                       predicate:self.predicate
-                                                                sortDescriptors:nil
+                                                                sortDescriptors:self.sortDescriptors
+                                                             sectionNameKeyPath:self.sectionNameKeyPath
                                                                         context:nil];
         [_fetchedController retain];
     }

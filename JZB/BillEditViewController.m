@@ -60,6 +60,12 @@
     return NOTIFICATION_NEW_BILL_CREATED;
 }
 
+#pragma mark - methods for IBAction
+-(IBAction)doneItemIsClicked:(id)sender{
+    [super doneItemIsClicked:sender];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(IBAction)billTypeSegClicked{
     //hide date picker is it's shown
     [self hideDatePicker];
@@ -341,7 +347,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupBillViewContent];
     CGRect rect = self.table.frame; 
     rect.size.height += 200;
     [self.table setFrame:rect];
@@ -350,6 +355,11 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -365,18 +375,64 @@
 
 -(void)setupInitialValuesForViews{
     if (!self.bill){
-        self.dateText.text = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                            dateStyle:NSDateFormatterMediumStyle
-                                                            timeStyle:NSDateFormatterNoStyle];
+        //if self.bill is empty
+        //setup date of date picker to the current date
+        //and other value as default
+        self.datePicker.date = [NSDate date];
+    }else{//if self.bill is not nil, it means that catalog, account and to account are already setup
+        self.datePicker.date = self.bill.date;
+        self.descTextView.text = self.bill.desc;
+        self.titleText.text = self.bill.title;
+        self.amountText.text = [self.bill.amount stringValue];
     }
     
-    self.catalog = [self.catalogList objectAtIndex:0];
-    self.account = [self.accountList objectAtIndex:0];
-    self.toAccount = [self.accountList objectAtIndex:0];
-    
+    self.dateText.text = [NSDateFormatter localizedStringFromDate:self.datePicker.date
+                                                        dateStyle:NSDateFormatterMediumStyle
+                                                        timeStyle:NSDateFormatterNoStyle];
+    self.datePicker.locale = [NSLocale currentLocale];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    [self hideDatePicker];
+    [self setupValueForLabels];
 }
 
-//self defined setters
+//self defined setters and getters
+-(void)setBill:(JZBBills *)bill{
+    if (_bill != bill){
+        [_bill release];
+        _bill = bill;
+        [_bill retain];
+        
+        for (JZBCatalogs* catalog in self.catalogList){
+            if ([_bill.catalog_id isEqualToString:catalog.catalog_id]){
+                self.catalog = catalog;
+                break;
+            }
+        }
+        
+        for (JZBAccounts* account in self.accountList){
+            if ([_bill.account_id isEqualToString:account.account_id] && !self.account){
+                self.account = account;
+            }
+            
+            if ([_bill.to_account_id isEqualToString:account.account_id] && !self.toAccount){
+                self.toAccount = account;
+            }
+            
+            if (self.account && self.toAccount){
+                break;
+            }
+        }
+    }
+}
+
+-(JZBAccounts*)getAccount{
+    if (!_account){
+        self.account = [self.accountList objectAtIndex:0];
+    }
+    
+    return _account;
+}
+
 -(void)setAccount:(JZBAccounts *)account{
     if (_account != account){
         [_account release];
@@ -393,11 +449,15 @@
         [_account retain];
     }
     //setup label for cell
-    if (_account){
-        self.accountLabel.text = _account.name;
-    }else{
-        self.accountLabel.text = NSLocalizedString(@"label_no_account", nil);
+    self.accountLabel.text = (_account)?_account.name:NSLocalizedString(@"label_no_account", nil);
+}
+
+-(JZBAccounts*)getToAccount{
+    if (!_toAccount){
+        self.toAccount = [self.accountList objectAtIndex:0];
     }
+    
+    return _toAccount;
 }
 
 -(void)setToAccount:(JZBAccounts *)toAccount{
@@ -415,12 +475,15 @@
         }
         [_toAccount retain];
     }
-    //setup label for cell    
-    if (_toAccount){
-        self.toAccountLabel.text = _toAccount.name;
-    }else{
-        self.toAccountLabel.text = NSLocalizedString(@"label_no_account", nil);
+    self.toAccountLabel.text = (_toAccount)?_toAccount.name:NSLocalizedString(@"label_no_account", nil);
+}
+
+-(JZBCatalogs*)getCatalog{
+    if (!_catalog){
+        self.catalog = [self.catalogList objectAtIndex:0];
     }
+    
+    return _catalog;
 }
 
 -(void)setCatalog:(JZBCatalogs *)catalog{
@@ -438,12 +501,7 @@
         }
         [_catalog retain];
     }
-    //renew catalog label
-    if (_catalog){
-        self.catalogLabel.text = _catalog.name;
-    }else{
-        self.catalogLabel.text = NSLocalizedString(@"label_no_catalog", nil);
-    }
+    self.catalogLabel.text = (_catalog)?_catalog.name:NSLocalizedString(@"label_no_catalog", nil);
 }
 
 @end
@@ -469,17 +527,7 @@
         self.picker = (UIPickerView*)self.datePicker;
     }
     [super showPicker];
-//    //setup the date in date picker to show the date in date text field
-//    NSDate* date = [NSDate dateFromString:self.dateText.text withFormat:[NSDate dateFormatString]];
-//    self.datePicker.date = date;
-//    
-//    //move up date picker animated
-//    CGRect parentRect = self.view.frame;
-//    CGRect pickerRect = self.datePicker.frame;
-//    pickerRect.origin.y = parentRect.size.height - pickerRect.size.height;
-//    [UIView beginAnimations:@"showPicker" context:nil];
-//    [self.datePicker setFrame:pickerRect];
-//    [UIView commitAnimations];
+
 }
 
 -(void)hideDatePicker{
@@ -487,13 +535,7 @@
         self.picker = (UIPickerView*)self.datePicker;
     }
     [super hidePicker];
-//    //move down date picker animated
-//    CGRect parentRect = self.view.frame;
-//    CGRect pickerRect = self.datePicker.frame;
-//    pickerRect.origin.y = parentRect.size.height;
-//    [UIView beginAnimations:@"hidePicker" context:nil];
-//    [self.datePicker setFrame:pickerRect];
-//    [UIView commitAnimations];
+
 }
 
 -(void)releaseOutlet{
@@ -578,8 +620,13 @@
 -(void)saveJZBObj{
     //save bill
     //create a new model object for bill and setup properties
-    JZBBills* bill = (JZBBills*)[JZBBills insertNewManagedObject];
-    bill.bill_id = [bill stringForObjectID];
+    JZBBills* bill = nil;
+    if (self.bill == nil){//if self.bill is empty, create a new insert object
+        bill = (JZBBills*)[JZBBills insertNewManagedObject];
+        bill.bill_id = [bill stringForObjectID];//generate a new ID
+    }else{
+        bill = self.bill;
+    }
     bill.amount = [NSNumber numberWithDouble:[self.amountText.text doubleValue]];
     bill.title = self.titleText.text;
     bill.version = [NSDate date];
@@ -615,21 +662,10 @@
 
 }
 
--(void)setupBillViewContent{
-    if (self.bill){
-        //if self.bill is assigned
-        self.datePicker.date = self.bill.date;
-        self.descTextView.text = self.bill.desc;
-        self.titleText.text = self.bill.title;
-        self.amountText.text = [self.bill.amount stringValue];
-        
-    }else{
-        //if self.bill is not assigned
-        self.datePicker.date = [NSDate date];
-    }
-    self.datePicker.locale = [NSLocale currentLocale];
-    self.datePicker.datePickerMode = UIDatePickerModeDate;
-    [self hideDatePicker];
+-(void)setupValueForLabels{
+    self.accountLabel.text = (self.account)?self.account.name:NSLocalizedString(@"label_no_account", nil);
+    self.toAccountLabel.text = (self.toAccount)?self.toAccount.name:NSLocalizedString(@"label_no_account", nil);
+    self.catalogLabel.text = (self.catalog)?self.catalog.name:NSLocalizedString(@"label_no_catalog", nil);
 }
 
 @end

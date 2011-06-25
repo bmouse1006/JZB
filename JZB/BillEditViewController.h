@@ -88,10 +88,10 @@
 
 //@property (nonatomic, retain, getter = getCellArray) NSArray* cellArray;
 @property (nonatomic, readonly, getter = getManagedObjectContext) NSManagedObjectContext* context;
-@property (nonatomic, retain) JZBBills* bill;
-@property (nonatomic, retain, setter = setAccount:) JZBAccounts* account;
-@property (nonatomic, retain, setter = setToAccount:) JZBAccounts* toAccount;
-@property (nonatomic, retain, setter = setCatalog:) JZBCatalogs* catalog;
+@property (nonatomic, retain, setter = setBill:) JZBBills* bill;
+@property (nonatomic, retain, getter = getAccount, setter = setAccount:) JZBAccounts* account;
+@property (nonatomic, retain, getter = getToAccount, setter = setToAccount:) JZBAccounts* toAccount;
+@property (nonatomic, retain, getter = getCatalog, setter = setCatalog:) JZBCatalogs* catalog;
 
 @property (nonatomic, assign) JZBBillsType billType;
 
@@ -118,8 +118,8 @@
 
 @interface BillEditViewController (private)
 
-//initialize view content
--(void)setupBillViewContent;
+//setup value for label of account, to account and catalog
+-(void)setupValueForLabels;
 //to fix a strange bug for cell height changing
 -(void)resetHeightOfCells;
 //show/hide date picker

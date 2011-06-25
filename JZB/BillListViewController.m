@@ -16,6 +16,7 @@
 @synthesize theTableView = _theTableView;
 @synthesize mySearchBar = _mySearchBar;
 @synthesize mySearchDisplayController = _mySearchDisplayController;
+@synthesize addItem = _addItem;
 @synthesize dataSource = _dataSource;
 @synthesize account = _account;
 
@@ -39,6 +40,18 @@
 
 -(IBAction)filterSegIsClicked:(id)sender{
     DebugLog(@"filter seg is clicked", nil);
+}
+
+-(IBAction)addItemIsClicked:(id)sender{
+     BillListViewController* controller= [[BillEditViewController alloc] initWithNibName:@"BillEditViewController" bundle:nil];
+
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:controller];
+
+//    [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:nav animated:YES];
+    [self presentModalViewController:nav animated:YES];
+
+    [nav release];
+    [controller release];
 }
 
 -(void)refreshList{
@@ -75,20 +88,23 @@
     [super viewDidLoad];
 //    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.filterSeg];
 //    self.navigationItem.rightBarButtonItem = rightItem;
-    self.theTableView.dataSource = self.dataSource;
-    [self refreshList];
-    self.title = self.account.name;
 //    [rightItem release];
-
+    self.theTableView.dataSource = self.dataSource;
+    self.title = self.account.name;
+    [self setToolbarItems:[NSArray arrayWithObject:self.addItem]];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self refreshList];
+    //show tool bar
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
 
 #pragma mark - Table view delegate
 
@@ -99,7 +115,7 @@
     billEditor.bill = [self.dataSource objAtIndexPath:indexPath];
     [self.navigationController pushViewController:billEditor animated:YES];
     [billEditor release];
-    //
+
     [tableView deselectRowAtIndexPath:indexPath 
                              animated:YES];
 }

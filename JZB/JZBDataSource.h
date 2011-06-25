@@ -12,8 +12,9 @@
 
 @interface JZBDataSource : NSObject<UITableViewDataSource> {
     NSFetchedResultsController* _fetchedController;
-    NSString* _modelName;
     NSPredicate* _predicate;
+    NSArray* _sortDescriptors;
+    NSString* _sectionNameKeyPath;
     JZBManagedObject* _managedObj;
 }
 
@@ -21,6 +22,8 @@
 //this property should be readonly and subclass should provide get method of this 
 @property (nonatomic, readonly, getter = getModelName) NSString* modelName;
 @property (nonatomic, retain) NSPredicate* predicate;
+@property (nonatomic, retain, getter = getSortDescriptors) NSArray* sortDescriptors;
+@property (nonatomic, retain, getter = getSectionNameKeyPath) NSString* sectionNameKeyPath;
 @property (nonatomic, retain) JZBManagedObject* managedObj;
 
 -(void)refresh;

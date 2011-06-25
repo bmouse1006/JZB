@@ -21,8 +21,6 @@
 @synthesize notificationName = _notificationName;
 
 #pragma mark - methods for IBAction
-
-#pragma mark - methods for IBAction
 -(IBAction)doneItemIsClicked:(id)sender{
     if ([self validateInput]){
         BOOL failed = NO;
@@ -58,6 +56,7 @@
 
 -(IBAction)cancelItemIsClicked:(id)sender{
     [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(NSArray*)getCellArray{

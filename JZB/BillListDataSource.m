@@ -47,6 +47,24 @@
     return @"JZBBills";
 }
 
+-(NSArray*)getSortDescriptors{
+    //sorted by date, descending
+    if (!_sortDescriptors){
+        NSSortDescriptor* sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+        _sortDescriptors = [NSArray arrayWithObject:sortDesc];
+        [_sortDescriptors retain];
+    }
+    
+    return _sortDescriptors;
+}
+
+-(NSString*)getSectionNameKeyPath{
+    if (!_sectionNameKeyPath){
+        _sectionNameKeyPath = @"date";
+    }
+    return _sectionNameKeyPath;
+}
+
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
