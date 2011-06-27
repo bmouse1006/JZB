@@ -133,8 +133,14 @@ static NSMutableDictionary* cachedObjects = nil;
 }
 
 +(NSManagedObject*)newManagedObjectWithModelName:(NSString*)modelName context:(NSManagedObjectContext*)context{
-    NSManagedObject* obj = (NSManagedObject*)[NSEntityDescription insertNewObjectForEntityForName:modelName 
-                                                                           inManagedObjectContext:context];
+    
+    NSManagedObject* obj = nil;
+    
+    if (modelName){
+        obj = (NSManagedObject*)[NSEntityDescription insertNewObjectForEntityForName:modelName 
+                                                              inManagedObjectContext:context];
+    }
+    
     return obj;
 }
 

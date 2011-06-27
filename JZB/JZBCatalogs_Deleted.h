@@ -1,24 +1,21 @@
 //
-//  JZBCatalogs.h
+//  JZBCatalogs_Deleted.h
 //  JZB
 //
-//  Created by Jin Jin on 11-4-5.
+//  Created by Jin Jin on 11-6-27.
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "JZBManagedObject.h"
 
-@interface JZBCatalogs : JZBManagedObject {
+@interface JZBCatalogs_Deleted : JZBManagedObject {
 @private
 }
+@property (nonatomic, retain) NSNumber * sort;
 @property (nonatomic, retain) NSString * catalog_id;
 @property (nonatomic, retain) NSString * kind;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * sort;
 @property (nonatomic, retain) NSDate * version;
-
-+(NSArray*)objectsForName:(NSString*)name context:(NSManagedObjectContext*)context;
-+(NSArray*)catalogsForKind:(NSString*)kind context:(NSManagedObjectContext*)context;
 
 @end

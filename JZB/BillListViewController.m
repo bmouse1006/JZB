@@ -126,8 +126,10 @@
     //show bill edit view with detail of bill
     BillEditViewController* billEditor = [[BillEditViewController alloc] init];
     billEditor.bill = [self.dataSource objAtIndexPath:indexPath];
-    [self.navigationController pushViewController:billEditor animated:YES];
-    [billEditor release];
+    if (billEditor.bill){
+        [self.navigationController pushViewController:billEditor animated:YES];
+        [billEditor release];
+    }
 
     [tableView deselectRowAtIndexPath:indexPath 
                              animated:YES];

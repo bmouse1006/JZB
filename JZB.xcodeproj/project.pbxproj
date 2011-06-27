@@ -84,11 +84,20 @@
 		229B407713584C49005E5DD9 /* BillListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B407513584C47005E5DD9 /* BillListViewController.m */; };
 		229B407813584C49005E5DD9 /* BillListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B407613584C48005E5DD9 /* BillListViewController.xib */; };
 		22A0FEB0136571D100F2F1CE /* JZBErrorProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A0FEAF136571D000F2F1CE /* JZBErrorProcessor.m */; };
+		22D9AC0113B8617E003E8297 /* JZBSubCatalogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC0013B8617B003E8297 /* JZBSubCatalogs.m */; };
+		22D9AC0513B86C9A003E8297 /* JZBBills_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC0413B86C96003E8297 /* JZBBills_Deleted.m */; };
+		22D9AC0813B86CA0003E8297 /* JZBBudgetItems_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC0713B86C9D003E8297 /* JZBBudgetItems_Deleted.m */; };
+		22D9AC0B13B86CA5003E8297 /* JZBBudgets_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC0A13B86CA3003E8297 /* JZBBudgets_Deleted.m */; };
+		22D9AC0E13B86CAA003E8297 /* JZBBorrowers_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC0D13B86CA7003E8297 /* JZBBorrowers_Deleted.m */; };
+		22D9AC1113B86CAD003E8297 /* JZBAccounts_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC1013B86CAC003E8297 /* JZBAccounts_Deleted.m */; };
+		22D9AC1413B86CAF003E8297 /* JZBCatalogs_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC1313B86CAE003E8297 /* JZBCatalogs_Deleted.m */; };
+		22D9AC1713B86CB3003E8297 /* JZBSubCatalogs_Deleted.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9AC1613B86CB1003E8297 /* JZBSubCatalogs_Deleted.m */; };
 		22DE878B1349CE2F0024EF6C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE87891349CE2F0024EF6C /* LoginViewController.m */; };
 		22DE878C1349CE2F0024EF6C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22DE878A1349CE2F0024EF6C /* LoginViewController.xib */; };
 		22E0B67C1367FCB8009403D0 /* CatalogEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0B67A1367FCB7009403D0 /* CatalogEditViewController.m */; };
 		22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */; };
 		22E0B68013680368009403D0 /* JZBEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0B67F13680364009403D0 /* JZBEditViewController.m */; };
+		22F1091B13B87DCC0044877B /* TableNameForModels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22F1091A13B87DC70044877B /* TableNameForModels.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +240,22 @@
 		22A0FEAC13656D8B00F2F1CE /* JZBPredifinedErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBPredifinedErrorMessage.h; sourceTree = "<group>"; };
 		22A0FEAE136571D000F2F1CE /* JZBErrorProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBErrorProcessor.h; sourceTree = "<group>"; };
 		22A0FEAF136571D000F2F1CE /* JZBErrorProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBErrorProcessor.m; sourceTree = "<group>"; };
+		22D9ABFF13B86179003E8297 /* JZBSubCatalogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSubCatalogs.h; sourceTree = "<group>"; };
+		22D9AC0013B8617B003E8297 /* JZBSubCatalogs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSubCatalogs.m; sourceTree = "<group>"; };
+		22D9AC0313B86C93003E8297 /* JZBBills_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBills_Deleted.h; sourceTree = "<group>"; };
+		22D9AC0413B86C96003E8297 /* JZBBills_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBills_Deleted.m; sourceTree = "<group>"; };
+		22D9AC0613B86C9B003E8297 /* JZBBudgetItems_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBudgetItems_Deleted.h; sourceTree = "<group>"; };
+		22D9AC0713B86C9D003E8297 /* JZBBudgetItems_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBudgetItems_Deleted.m; sourceTree = "<group>"; };
+		22D9AC0913B86CA0003E8297 /* JZBBudgets_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBudgets_Deleted.h; sourceTree = "<group>"; };
+		22D9AC0A13B86CA3003E8297 /* JZBBudgets_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBudgets_Deleted.m; sourceTree = "<group>"; };
+		22D9AC0C13B86CA5003E8297 /* JZBBorrowers_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBorrowers_Deleted.h; sourceTree = "<group>"; };
+		22D9AC0D13B86CA7003E8297 /* JZBBorrowers_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBorrowers_Deleted.m; sourceTree = "<group>"; };
+		22D9AC0F13B86CAA003E8297 /* JZBAccounts_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBAccounts_Deleted.h; sourceTree = "<group>"; };
+		22D9AC1013B86CAC003E8297 /* JZBAccounts_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBAccounts_Deleted.m; sourceTree = "<group>"; };
+		22D9AC1213B86CAD003E8297 /* JZBCatalogs_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBCatalogs_Deleted.h; sourceTree = "<group>"; };
+		22D9AC1313B86CAE003E8297 /* JZBCatalogs_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBCatalogs_Deleted.m; sourceTree = "<group>"; };
+		22D9AC1513B86CAF003E8297 /* JZBSubCatalogs_Deleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSubCatalogs_Deleted.h; sourceTree = "<group>"; };
+		22D9AC1613B86CB1003E8297 /* JZBSubCatalogs_Deleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSubCatalogs_Deleted.m; sourceTree = "<group>"; };
 		22DE87881349CE2F0024EF6C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		22DE87891349CE2F0024EF6C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		22DE878A1349CE2F0024EF6C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -239,6 +264,7 @@
 		22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogEditViewController.xib; sourceTree = "<group>"; };
 		22E0B67E13680363009403D0 /* JZBEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBEditViewController.h; sourceTree = "<group>"; };
 		22E0B67F13680364009403D0 /* JZBEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBEditViewController.m; sourceTree = "<group>"; };
+		22F1091A13B87DC70044877B /* TableNameForModels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableNameForModels.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,7 +444,24 @@
 			children = (
 				224FB10C134AA571006DD105 /* PKForTables.plist */,
 				224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */,
+				22F1091A13B87DC70044877B /* TableNameForModels.plist */,
 				222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */,
+				22D9AC1513B86CAF003E8297 /* JZBSubCatalogs_Deleted.h */,
+				22D9AC1613B86CB1003E8297 /* JZBSubCatalogs_Deleted.m */,
+				22D9AC1213B86CAD003E8297 /* JZBCatalogs_Deleted.h */,
+				22D9AC1313B86CAE003E8297 /* JZBCatalogs_Deleted.m */,
+				22D9AC0F13B86CAA003E8297 /* JZBAccounts_Deleted.h */,
+				22D9AC1013B86CAC003E8297 /* JZBAccounts_Deleted.m */,
+				22D9AC0C13B86CA5003E8297 /* JZBBorrowers_Deleted.h */,
+				22D9AC0D13B86CA7003E8297 /* JZBBorrowers_Deleted.m */,
+				22D9AC0913B86CA0003E8297 /* JZBBudgets_Deleted.h */,
+				22D9AC0A13B86CA3003E8297 /* JZBBudgets_Deleted.m */,
+				22D9AC0613B86C9B003E8297 /* JZBBudgetItems_Deleted.h */,
+				22D9AC0713B86C9D003E8297 /* JZBBudgetItems_Deleted.m */,
+				22D9AC0313B86C93003E8297 /* JZBBills_Deleted.h */,
+				22D9AC0413B86C96003E8297 /* JZBBills_Deleted.m */,
+				22D9ABFF13B86179003E8297 /* JZBSubCatalogs.h */,
+				22D9AC0013B8617B003E8297 /* JZBSubCatalogs.m */,
 				224FB120134AAEA3006DD105 /* JZBCatalogs.h */,
 				224FB121134AAEA4006DD105 /* JZBCatalogs.m */,
 				224FB11D134AAE98006DD105 /* JZBBudgetItems.h */,
@@ -643,6 +686,7 @@
 				220051E81360345200AE0A5F /* CatalogSimpleListController.xib in Resources */,
 				22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */,
 				227388AD13B475D7006D3B8E /* BillListCell.xib in Resources */,
+				22F1091B13B87DCC0044877B /* TableNameForModels.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +771,14 @@
 				22E0B68013680368009403D0 /* JZBEditViewController.m in Sources */,
 				2249A25C1372A5CF008BF3E0 /* BillListDataSource.m in Sources */,
 				227388AA13B475B7006D3B8E /* BillListCell.m in Sources */,
+				22D9AC0113B8617E003E8297 /* JZBSubCatalogs.m in Sources */,
+				22D9AC0513B86C9A003E8297 /* JZBBills_Deleted.m in Sources */,
+				22D9AC0813B86CA0003E8297 /* JZBBudgetItems_Deleted.m in Sources */,
+				22D9AC0B13B86CA5003E8297 /* JZBBudgets_Deleted.m in Sources */,
+				22D9AC0E13B86CAA003E8297 /* JZBBorrowers_Deleted.m in Sources */,
+				22D9AC1113B86CAD003E8297 /* JZBAccounts_Deleted.m in Sources */,
+				22D9AC1413B86CAF003E8297 /* JZBCatalogs_Deleted.m in Sources */,
+				22D9AC1713B86CB3003E8297 /* JZBSubCatalogs_Deleted.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

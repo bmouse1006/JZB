@@ -7,6 +7,8 @@
 //
 
 #import "CatalogEditViewController.h"
+#import "JJObjectManager.h"
+#import "JZBDataAccessManager.h"
 #import "JZBCatalogs.h"
 
 @implementation CatalogEditViewController
@@ -24,11 +26,11 @@
 -(void)saveJZBObj{
     [super saveJZBObj];
     //save the catalog to the DB
-    JZBCatalogs* catalog = [JZBCatalogs insertNewManagedObject];
+    JZBCatalogs* catalog = (JZBCatalogs*)[JJObjectManager newManagedObjectWithModelName:[JZBCatalogs modelName]];
     [catalog setupDefaultValues];
     catalog.name = self.nameText.text;
     catalog.kind = self.catalogKind;
-    [catalog persistantChange];
+    [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:catalog]];
 }
 
 -(NSString*)getNotificationName{

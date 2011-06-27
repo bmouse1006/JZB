@@ -27,8 +27,6 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * desc;
 
--(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns;
-
 +(NSArray*)objectsForName:(NSString*)name;
 
 @end

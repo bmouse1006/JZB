@@ -27,11 +27,12 @@
 													  predicate:(NSPredicate*)predicate
 												sortDescriptors:(NSArray*)descriptors
                                                         context:(NSManagedObjectContext*)context; 
+
 +(NSFetchedResultsController*)fetchedResultsControllerFromModel:(NSString*)objectModel 
 													  predicate:(NSPredicate*)predicate
 												sortDescriptors:(NSArray*)descriptors
                                              sectionNameKeyPath:(NSString*)keyPath
-                                                        context:(NSManagedObjectContext*)mContex;
+                                                        context:(NSManagedObjectContext*)contex;
 //get all objects with given name and key and vlaue
 +(NSArray*)objectsByModelName:(NSString*)modelName withKey:(NSString*)key andValue:(NSString*)value;
 +(NSArray*)objectsByModelName:(NSString*)modelName withKey:(NSString*)key andValue:(NSString*)value context:(NSManagedObjectContext*)context;

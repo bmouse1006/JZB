@@ -10,6 +10,7 @@
 #import "JZBDataChangeJSON.h"
 #import "JZBDataChangeUnit.h"
 #import "JZBManagedObject.h"
+#import "JZBDataAccessManager.h"
 
 @implementation JZBSynchronizer
 
@@ -45,7 +46,7 @@ static NSLock* remoteDeleteLock = nil;
     return YES;
 }
 
-+(BOOL)addLocalDelete:(NSString *)tableName key:(NSString *)key{
++(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key{
     [localDeleteLock lock];
     NSArray* deleteUnit = [NSArray arrayWithObjects:tableName, key, nil];
     [localDelete addObject:deleteUnit];
@@ -71,7 +72,7 @@ static NSLock* remoteDeleteLock = nil;
     return YES;
 }
 
-+(BOOL)addRemoteDelete:(NSString *)tableName key:(NSString *)key{
++(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key{
     [remoteDeleteLock lock];
     NSArray* deleteUnit = [NSArray arrayWithObjects:tableName, key, nil];
     [remoteDelete addObject:deleteUnit];
@@ -119,7 +120,8 @@ static NSLock* remoteDeleteLock = nil;
 }
 
 -(id)init{
-    if (self = [super init]){
+    self = [super init];
+    if (self){
         //init static object if it's nil
         if (!localChangeLock){
             localChangeLock = [[NSLock alloc] init];
@@ -242,13 +244,12 @@ static NSLock* remoteDeleteLock = nil;
             NSString* primaryKey = [self.primaryKeysForTables objectForKey:tableName];
             NSArray* fetchResult = [JJObjectManager objectsByModelName:modelName 
                                                                withKey:primaryKey
-                                                              andValue:ID];
-            for (NSManagedObject* obj in fetchResult){
-                [JJObjectManager deleteObject:obj];
+                                                              andValue:ID 
+                                                               context:deleteContext];
+            for (JZBManagedObject* obj in fetchResult){
+                [JZBDataAccessManager deleteSingleObject:obj];
             }
-
         }
-        
     }
     
     //There will be one change unit for one table. All changes are included
@@ -269,9 +270,17 @@ static NSLock* remoteDeleteLock = nil;
             NSString* keyValue = [dataUnit objectAtIndex:keyValueTag];
             NSArray* fetchResult = [JJObjectManager objectsByModelName:modelName 
                                                                withKey:changeUnit.primaryKey 
-                                                              andValue:keyValue];
-            for (NSManagedObject* obj in fetchResult){
-                //save the change
+                                                              andValue:keyValue 
+                                                               context:changeContext];
+            if ([fetchResult count]){//find a record, that means modify
+                for (NSManagedObject* obj in fetchResult){
+                    //save the change
+                    [(JZBManagedObject*)obj setValues:dataUnit
+                                           forColumns:changeUnit.columns];
+                }
+            }else{//not find, means add new object
+                NSManagedObject* obj = [JJObjectManager newManagedObjectWithModelName:modelName 
+                                                                              context:changeContext];
                 [(JZBManagedObject*)obj setValues:dataUnit
                                        forColumns:changeUnit.columns];
             }

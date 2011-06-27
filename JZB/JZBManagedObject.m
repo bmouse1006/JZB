@@ -51,16 +51,6 @@
                        context:nil];
 }
 
-+(id)insertNewManagedObject{
-    NSString* modelName = [self modelName];
-    id newObj = nil;
-    if (modelName){
-        newObj = [JJObjectManager newManagedObjectWithModelName:modelName];
-    }
-    
-    return newObj;
-}
-
 +(NSString*)modelName{
     //get model name for current class
     //class name is the model name
@@ -71,6 +61,15 @@
 }
 
 #pragma mark - instance methods
+
+-(NSArray*)allKeys{
+    return [NSArray arrayWithObject:[NSNull null]];
+}
+
+-(id)getKeyValue{
+    return nil;
+}
+
 -(BOOL)isEqualToManagedObject:(JZBManagedObject*)obj{
     return YES;
 }
@@ -116,11 +115,20 @@
     return YES;
 }
 
--(void)persistantChange{
-    [JJObjectManager commitChangeForContext:[self managedObjectContext]];
-    //if no exception is thrown
-    //put this change to locale change queue
-    [JZBSynchronizer addLocalChange:[JZBDataChangeUnit dataChangeUnitWithJZBManagedObject:self]];
+-(JZBManagedObject*)newObjectForDeletedTable{
+    NSString* deletedModelName = [[[self class] modelName] stringByAppendingFormat:@"_Deleted"];
+    NSManagedObject* newObj = [JJObjectManager newManagedObjectWithModelName:deletedModelName];
+    //copy all values to the deleted obj
+    NSDictionary* valuesDic = [self dictionaryWithValuesForKeys:[self allKeys]];
+    for (id key in [self allKeys]){
+        if ([key isKindOfClass:[NSNull class]]){
+        //if it's a nil value
+            [self setNilValueForKey:key];
+        }else{
+            [self setValue:[valuesDic valueForKey:key] forKey:key];
+        }
+    }
+    return (JZBManagedObject*)newObj;
 }
 
 -(void)dealloc{
@@ -139,7 +147,7 @@
 }
 //get table name for this model
 -(NSString*)tableName{
-    NSString* pathModelName = [[NSBundle mainBundle] pathForResource:BUNDLENAME_MODELNAMEFORTABLES 
+    NSString* pathModelName = [[NSBundle mainBundle] pathForResource:BUNDLENAME_TALBENAMEFORMODELS
                                                               ofType:@"plist"];
     NSDictionary* modelNameBundle = [NSDictionary dictionaryWithContentsOfFile:pathModelName];
 

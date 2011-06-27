@@ -8,16 +8,13 @@
 
 #import "BillEditViewController.h"
 #import "JJObjectManager.h"
+#import "JZBDataAccessManager.h"
 #import "JZBBills.h"
 #import "NSDate+Helper.h"
 #import "AccountSimpleListController.h"
 #import "CatalogSimpleListController.h"
 #import "NSString+JZBHelper.h"
 #import "NSDate+Helper.h"
-
-#define BILLMODELNAME @"JZBBills"
-#define ACCOUNTMODLELNAME @"JZBAccounts"
-#define CATALOGMODELNAME @"JZBCatalogs"
 
 @implementation BillEditViewController
 
@@ -317,6 +314,9 @@
         //default bill type is expend
         DebugLog(@"setup default bill type", nil);
         self.billType = JZBBillsTypeExpend;
+        self.account = [self.accountList objectAtIndex:0];
+        self.toAccount = [self.accountList objectAtIndex:0];
+        self.catalog = [self.catalogList objectAtIndex:0];
     }
     return self;
 }
@@ -405,19 +405,26 @@
             }
         }
         
+        BOOL accountFind = NO, toAccountFind = NO;
         for (JZBAccounts* account in self.accountList){
             if ([_bill.account_id isEqualToString:account.account_id]){
                 self.account = account;
+                accountFind = YES;
             }
             
             if ([_bill.to_account_id isEqualToString:account.account_id]){
                 self.toAccount = account;
+                toAccountFind = YES;
             }
             
-            if (self.account && self.toAccount){
+            if (accountFind && toAccountFind){
                 break;
             }
         }
+//        
+//        DebugLog(@"name of self.account is %@", self.account.name);
+//        DebugLog(@"account_id of self.account is %@", self.account.account_id);
+//        DebugLog(@"account_id in bill is %@", self.bill.account_id);
     }
 
 }
@@ -595,9 +602,12 @@
     //create a new model object for bill and setup properties
     JZBBills* bill = nil;
     if (self.bill == nil){//if self.bill is empty, create a new insert object
-        bill = (JZBBills*)[JZBBills insertNewManagedObject];
+        //start add
+        //[JZBDataAccessManager beginAddAction];
+        bill = (JZBBills*)[JJObjectManager newManagedObjectWithModelName:[JZBBills modelName]];
         bill.bill_id = [bill stringForObjectID];//generate a new ID
     }else{
+        //start modify
         bill = self.bill;
     }
     bill.amount = [NSNumber numberWithDouble:[self.amountText.text doubleValue]];
@@ -631,7 +641,9 @@
     }
     //save the change
     DebugLog(@"%@", [bill description]);
-    [bill persistantChange];
+    [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:bill]];
+    //commit save action
+    //[JZBDataAccessManager commitActions];
 
 }
 

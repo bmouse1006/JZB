@@ -22,6 +22,10 @@
     return [self objectsForKey:@"name" andValue:name];
 }
 
+-(id)getKeyValue{
+    return self.account_id;
+}
+
 //check if two accounts are the same
 -(BOOL)isEqualToManagedObject:(JZBManagedObject*)object{
     JZBAccounts* target = (JZBAccounts*)object;
@@ -86,7 +90,6 @@
     for (int i = 0; i < count; i++){
         NSString* column = [columns objectAtIndex:i];
         NSString* value = [values objectAtIndex:i];
-        //catelog_id is an exception. It's a typo in remote DB
         JZBDataType type = JZBDataTypeString;
         if ([column isEqualToString:@"amount"]){
             type = JZBDataTypeDouble;

@@ -23,6 +23,10 @@
 @dynamic account_id;
 @dynamic desc;
 
+-(id)getKeyValue{
+    return self.bill_id;
+}
+
 -(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns{
     //if the two arrays contains different count of items, return false
     if ([values count] != [columns count]){
@@ -38,6 +42,8 @@
         JZBDataType type = JZBDataTypeString;
         if ([column isEqualToString:@"catelog_id"]){
             column = @"catalog_id";
+        }else if ([column isEqualToString:@"sub_catelog_id"]){
+            column = @"sub_catalog_id";
         }else if ([column isEqualToString:@"amount"]){
             type = JZBDataTypeDouble;
         }else if ([column isEqualToString:@"month"]){

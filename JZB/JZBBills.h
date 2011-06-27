@@ -43,6 +43,4 @@ typedef enum{
 @property (nonatomic, retain) NSString * account_id;
 @property (nonatomic, retain) NSString* desc;
 
--(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns;
-
 @end

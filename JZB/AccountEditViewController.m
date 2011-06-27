@@ -8,6 +8,7 @@
 
 #import "AccountEditViewController.h"
 #import "JJObjectManager.h"
+#import "JZBDataAccessManager.h"
 #import "NSString+JZBHelper.h"
 
 @implementation AccountEditViewController
@@ -171,14 +172,14 @@
 
 -(void)saveJZBObj{
     //valide input for account value
-    JZBAccounts* account = (JZBAccounts*)[JZBAccounts insertNewManagedObject];
+    JZBAccounts* account = (JZBAccounts*)[JJObjectManager newManagedObjectWithModelName:[JZBAccounts modelName]];
     [account setupDefaultValues];
     account.name = self.nameText.text;
     account.kind = self.kindString;
     NSNumber* amt = [NSNumber numberWithDouble:[self.initAmtText.text doubleValue]]; 
     account.amount = amt;
     
-    [account persistantChange];
+    [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:account]];
 }
 
 @end

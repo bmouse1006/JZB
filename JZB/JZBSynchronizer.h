@@ -32,11 +32,11 @@ typedef enum {
 //add local change to the pool
 +(BOOL)addLocalChange:(JZBDataChangeUnit*)change;
 //add local delete to the pool
-+(BOOL)addLocalDelete:(NSString*)tableName key:(NSString*)key;
++(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key;
 //add remote change to the pool
 +(BOOL)addRemoteChange:(JZBDataChangeUnit*)change;
 //add remote delete to the pool
-+(BOOL)addRemoteDelete:(NSString*)tableName key:(NSString*)key;
++(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key;
 //method to sync change
 -(BOOL)syncChangeTryToLock:(BOOL)tryLock;
 

@@ -3,16 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>jzb_accounts</key>
-	<string>ZJZBAccounts</string>
+	<string>JZBAccounts</string>
 	<key>jzb_bills</key>
-	<string>ZJZBBills</string>
+	<string>JZBBills</string>
 	<key>jzb_borrowers</key>
-	<string>ZJZBBorrowers</string>
+	<string>JZBBorrowers</string>
 	<key>jzb_budget_items</key>
-	<string>ZJZBBudgetItems</string>
+	<string>JZBBudgetItems</string>
 	<key>jzb_budgets</key>
-	<string>ZJZBBudgets</string>
+	<string>JZBBudgets</string>
 	<key>jzb_catelogs</key>
-	<string>ZJZBCatalogs</string>
+	<string>JZBCatalogs</string>
+	<key>jzb_sub_catelogs</key>
+	<string>JZBSubCatalogs</string>
 </dict>
 </plist>

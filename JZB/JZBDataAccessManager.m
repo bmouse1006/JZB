@@ -8,167 +8,71 @@
 
 #import "JZBDataAccessManager.h"
 #import "JJObjectManager.h"
-#import "JZBBills.h"
-#import "JZBAccounts.h"
-#import "JZBCatalogs.h"
-#import "JZBBorrowers.h"
-#import "JZBBudgets.h"
-#import "JZBBudgetItems.h"
 #import "JZBSynchronizer.h"
 
 @implementation JZBDataAccessManager
 
-//flag for updating
-static NSLock* updating = nil;
+static NSLock* dbLocker = nil;
 
-static NSMutableArray* deletedObjects = nil;
-static NSMutableArray* addedObjects = nil;
-static NSMutableArray* modifiedObjects = nil;
-
-//multi thread mutex should be considered for all data change message
-+(NSArray*)getAllBills{
-    return [self getInstancesWithModelName:BILLMODELNAME predicate:nil];
++(NSArray*)getObjectsForModel:(NSString*)modelName key:(NSString*)key value:(NSString*)value{
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K like %@", key, value];
+    return [self getInstancesWithModelName:modelName predicate:predicate context:nil];
 }
 
-+(NSArray*)getBillsByAccount:(NSString*)accountID{
-
-    return [JJObjectManager objectsByModelName:BILLMODELNAME withKey:@"account_id" andValue:accountID];
++(NSArray*)getAllObjectsForModel:(NSString*)modelName{
+    return [self getAllObjectsForModel:modelName context:nil];
 }
 
-+(NSArray*)getBillsByCatalog:(NSString*)catalogID{
-
-    return [JJObjectManager objectsByModelName:BILLMODELNAME withKey:@"catalog_id" andValue:catalogID];
++(NSArray*)getAllObjectsForModel:(NSString*)modelName context:(NSManagedObjectContext*)context{
+    return [self getInstancesWithModelName:modelName predicate:nil context:context];
 }
 
-+(NSArray*)getBillsByPredicate:(NSPredicate*)predicate{
-
-    return [self getInstancesWithModelName:BILLMODELNAME predicate:predicate];
-    
-}
-
-+(NSArray*)getBillsBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate byAccountID:(NSString*)accountID{
-    //if account ID is null, return all items fits the caretaria
-//    NSPredicate* predicate = nil;
-//    if ([accountID length] > 0){
-//        NSPredicate* predicate1 = [NSPredicate predicateWithFormat:@"date BETWEEN %@", [NSArray arrayWithObject:startDate, endDate, nil]];
-//        NSPredicate* predicate2 = [NSPredicate predicateWithFormat:@"account_id like %@", accountID];
-//    }else{
-//        
-//    }
-    
-}
-
-+(BOOL)saveBills:(NSArray*)bills{
-    
-    for (JZBBills* bill in bills){
-        [JJObjectManager commitChangeForContext:[bill managedObjectContext]];
++(BOOL)saveManagedObjects:(NSArray*)objList{
+    BOOL result = NO;
+    [self dbLock];
+    @try {
+        for (JZBManagedObject* obj in objList){
+            //commitchange to local database
+            [JJObjectManager commitChangeForContext:[obj managedObjectContext]];
+            //add to change queue in synchronizer
+            [JZBSynchronizer addLocalChange:[JZBDataChangeUnit dataChangeUnitWithJZBManagedObject:obj]];
+        }
     }
-    
-    return YES;
-}
-
-+(BOOL)deleteBills:(NSArray*)bills{
-    for (JZBBills* bill in bills){
-        [JJObjectManager deleteObject:bill];
+    @catch (NSException *exception) {
+        DebugLog(@"error happened while saving changes. Reason is %@", exception.reason);
+    }@finally {
+        [self dbUnlock];
     }
-    return YES;    
+    return result;
 }
 
-+(NSArray*)getAllCatalogs{
-    
-    return [self getInstancesWithModelName:CATALOGSMODELNAME predicate:nil];
-}
-+(BOOL)saveCatalogs:(NSArray*)catalogs{
-    
-    for (JZBCatalogs* catalog in catalogs){
-        [JJObjectManager commitChangeForContext:[catalog managedObjectContext]];
++(BOOL)deleteManagedObjects:(NSArray*)objList{
+    BOOL result = NO;
+    @try {    
+        for (JZBManagedObject* obj in objList){
+            //commit change to local database
+            [self deleteSingleObject:obj];
+            //add this action to local change queue of synchronizer
+            [JZBSynchronizer addLocalDeleteForTable:[obj tableName] 
+                                           keyValue:obj.keyValue];
+        }
+        result = YES;
+    }@catch (NSException* e) {
+        result = NO;
+        DebugLog(@"error happened while deleting objects. Reason is %@", e.reason);
+    }@finally {
+
     }
-    
-    return YES;
+    return result;
 }
 
-+(BOOL)deleteCatalogs:(NSArray*)catalogs{
-    for (JZBCatalogs* catalog in catalogs){
-        [JJObjectManager deleteObject:catalog];
-    }
-    return YES;
-}
-
-+(NSArray*)getAllAccounts{
-    return [self getInstancesWithModelName:ACCOUNTMODELNAME predicate:nil];
-}
-
-+(BOOL)saveAccounts:(NSArray*)accounts{
-    for (JZBAccounts* account in accounts){
-        [JJObjectManager commitChangeForContext:[account managedObjectContext]];
-    }
-    return YES;
-}
-
-+(BOOL)deleteAccounts:(NSArray*)accounts{
-    for (JZBAccounts* account in accounts){
-        [JJObjectManager deleteObject:account];
-    }
-    return YES;
-}
-
-+(NSArray*)getAllBorrowers{
-    return [self getInstancesWithModelName:BORROWERSMODELNAME predicate:nil];
-}
-
-+(BOOL)saveBorrowers:(NSArray*)borrowers{
-    for (JZBBorrowers* borrower in borrowers){
-        [JJObjectManager commitChangeForContext:[borrower managedObjectContext]];
-    }
-    return YES;    
-}
-
-+(BOOL)deleteBorrowers:(NSArray*)borrowers{
-    for (JZBBorrowers* borrower in borrowers){
-        [JJObjectManager deleteObject:borrower];
-    }
-    return YES;
-}
-
-+(NSArray*)getAllBudgets{
-    NSArray* fetched = [self getInstancesWithModelName:BUDGETMODELNAME predicate:nil];
-    
-    return fetched;
-}
-
-+(BOOL)saveBudgets:(NSArray*)budgets{
-    for (JZBBudgets* budget in budgets){
-        [JJObjectManager commitChangeForContext:[budget managedObjectContext]];
-    }
-    return YES;
-}
-
-+(BOOL)deleteBudgets:(NSArray*)budgets{
-    for (JZBBudgets* budget in budgets){
-        [JJObjectManager deleteObject:budget];
-    }
-    return YES;
-}
-
-+(NSArray*)getBudgetItemsByBudgetID:(NSString*)budgetID{
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K like %@", @"budget_id", budgetID];
-    return [self getInstancesWithModelName:BUDGETITEMMODELNAME predicate:predicate];
-}
-
-+(BOOL)saveBudgetItems:(NSArray*)budgetItems{
-    for (JZBBudgetItems* item in budgetItems){
-        [JJObjectManager commitChangeForContext:[item managedObjectContext]];
-    }
-    
-    return YES;
-}
-
-+(BOOL)deleteBudgetItems:(NSArray*)budgetItems{
-    for (JZBBudgetItems* item in budgetItems){
-        [JJObjectManager deleteObject:item];
-    }
-    
-    return YES;
++(void)deleteSingleObject:(JZBManagedObject*)obj{
+    [self dbLock];
+    JZBManagedObject* deletedObj = [obj newObjectForDeletedTable];
+    [JJObjectManager deleteObject:obj];
+    [JJObjectManager commitChangeForContext:[obj managedObjectContext]];
+    [JJObjectManager commitChangeForContext:[deletedObj managedObjectContext]];
+    [self dbUnlock];
 }
 
 //fetch result by SQL leaguage
@@ -176,7 +80,7 @@ static NSMutableArray* modifiedObjects = nil;
     DebugLog(@"SQL is %@", sqlquery);
     sqlite3* _database;
     //lock DB
-    [self startUpdating];
+    [self dbLock];
     NSMutableArray* result = [NSMutableArray arrayWithCapacity:0];
     //open DB
     NSArray *documentsPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
@@ -232,48 +136,19 @@ static NSMutableArray* modifiedObjects = nil;
     
     sqlite3_close(_database);
     //unlock DB
-    [self endUpdating];
+    [self dbUnlock];
     return result;
 }
 
-//let sync modal know that there is something changed, content of changing is included
-//+(void)sendChangedNotification:(NSNotification*)notification{
-//    NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.tagName.text, NOTIFICATION_ADDNEWTAG_LABELNAME, nil];
-//	
-//	NSNotification* notification = [NSNotification notificationWithName:NOTIFICATION_JZBDATACHANGED 
-//																 object:self 
-//															   userInfo:userInfo];
-//	
-//	[[NSNotificationCenter defaultCenter] postNotification:notification];
-//	
-//}
-
 //start an update thread. If there is another updating thread, current thread should be waiting
-+(void)startUpdating{
++(void)dbLock{
     [[self locker] lock];
 }
 
 //declare that current thread is finished updating
-+(void)endUpdating{
++(void)dbUnlock{
     [[self locker] unlock];
 }
-
-//-(id)init{
-//    if (self = [super init]){
-//        if (!updating){
-//             updating = [[NSLock alloc] init];
-//        }
-//    }
-//    
-//    return self;
-//}
-
-//-(void)dealloc{
-////    [self.addedObjects release];
-////    [self.modifiedObjects release];
-////    [self.deletedObjects release];
-//    [super dealloc];
-//}
 
 @end
 
@@ -281,47 +156,25 @@ static NSMutableArray* modifiedObjects = nil;
 
 //fetch all instances using given model name, with it’s property name and value
 +(NSArray*)getInstancesWithModelName:(NSString*)modelName 
-                           predicate:(NSPredicate*)predicate{
-    NSFetchedResultsController* fetchedResults = [JJObjectManager fetchedResultsControllerFromModel:modelName predicate:predicate sortDescriptors:[NSArray arrayWithObjects:nil] context:nil];
+                           predicate:(NSPredicate*)predicate context:(NSManagedObjectContext *)context{
+    NSFetchedResultsController* fetchedResults = [JJObjectManager fetchedResultsControllerFromModel:modelName predicate:predicate sortDescriptors:[NSArray arrayWithObjects:nil] context:context];
     NSError* error = nil;
-    [fetchedResults performFetch:&error];
     NSArray* result = nil;
+    [self dbLock];
+    [fetchedResults performFetch:&error];
+    [self dbUnlock];
     if (!error){
         result = [fetchedResults fetchedObjects];
     }
     return result;
 }
 
-+(NSMutableArray*)deletedObjects{
-    if (!deletedObjects){
-        deletedObjects = [NSMutableArray arrayWithCapacity:0];
-    }
-    
-    return deletedObjects;
-}
-
-+(NSMutableArray*)addedObjects{
-    if (!addedObjects){
-        addedObjects = [NSMutableArray arrayWithCapacity:0];
-    }
-    
-    return addedObjects;
-}
-
-+(NSMutableArray*)modifiedObjects{
-    if (!modifiedObjects){
-        modifiedObjects = [NSMutableArray arrayWithCapacity:0];
-    }
-    
-    return modifiedObjects;
-}
-
 +(NSLock*)locker{
-    if (!updating){
-        updating = [[NSLock alloc] init];
+    if (!dbLocker){
+        dbLocker = [[NSLock alloc] init];
     }
     
-    return updating;
+    return dbLocker;
 }
 
 @end

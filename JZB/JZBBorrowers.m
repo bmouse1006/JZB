@@ -15,6 +15,10 @@
 @dynamic sort;
 @dynamic version;
 
+-(id)getKeyValue{
+    return self.borrower_id;
+}
+
 -(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns{
     //if the two arrays contains different count of items, return false
     if ([values count] != [columns count]){

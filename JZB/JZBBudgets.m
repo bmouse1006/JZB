@@ -14,6 +14,10 @@
 @dynamic end_date;
 @dynamic desc;
 
+-(id)getKeyValue{
+    return self.budget_id;
+}
+
 -(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns{
     //if the two arrays contains different count of items, return false
     if ([values count] != [columns count]){

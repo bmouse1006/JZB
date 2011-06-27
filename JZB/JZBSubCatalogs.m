@@ -1,40 +1,34 @@
 //
-//  JZBCatalogs.m
+//  JZBSubCatalogs.m
 //  JZB
 //
-//  Created by Jin Jin on 11-4-5.
+//  Created by Jin Jin on 11-6-27.
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "JZBCatalogs.h"
-#import "JJObjectManager.h"
+#import "JZBSubCatalogs.h"
 
-@implementation JZBCatalogs
+
+@implementation JZBSubCatalogs
+@dynamic sort;
 @dynamic catalog_id;
 @dynamic kind;
 @dynamic name;
-@dynamic sort;
 @dynamic version;
-
-+(NSArray*)objectsForName:(NSString*)name context:(NSManagedObjectContext*)context{
-    return [self objectsForKey:@"name" andValue:name context:context];
-}
-
-+(NSArray*)catalogsForKind:(NSString*)kind context:(NSManagedObjectContext*)context{
-    return [self objectsForKey:@"kind" andValue:kind context:context];
-}
+@dynamic parent_id;
 
 -(id)getKeyValue{
     return self.catalog_id;
 }
 
-//check if two catalog are the same
 -(BOOL)isEqualToManagedObject:(JZBManagedObject*)object{
-    JZBCatalogs* target = (JZBCatalogs*)object;
     BOOL result = NO;
-    if (target != nil){
-        if (self.catalog_id != nil && target.catalog_id != nil){
-            result = [self.catalog_id isEqualToString:target.catalog_id];
+    if ([object isKindOfClass:[JZBSubCatalogs class]]){
+        JZBSubCatalogs* target = (JZBSubCatalogs*)object;
+        if (target != nil){
+            if (self.catalog_id != nil && target.catalog_id != nil){
+                result = [self.catalog_id isEqualToString:target.catalog_id];
+            }
         }
     }
     
@@ -63,8 +57,6 @@
         //catelog_id is an exception. It's a typo in remote DB
         if ([column isEqualToString:@"catelog_id"]){
             column = @"catalog_id";
-        }else if ([column isEqualToString:@"sub_catelog_id"]){
-            column = @"sub_catalog_id";
         }else if ([column isEqualToString:@"sort"]){
             type = JZBDataTypeInt;
         }else if ([column isEqualToString:@"version"]){
@@ -79,7 +71,8 @@
 }
 
 -(id)init{
-    if (self = [super init]){
+    self = [super init];
+    if (self){
         if (!self.catalog_id){
             self.catalog_id = [self stringForObjectID];
         }

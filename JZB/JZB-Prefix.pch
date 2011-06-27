@@ -29,3 +29,4 @@ key = NSLocalizedString(key, comment)
 
 #define BUNDLENAME_PKFORTABLES          @"PKForTables"
 #define BUNDLENAME_MODELNAMEFORTABLES   @"ModelNameForTables"
+#define BUNDLENAME_TALBENAMEFORMODELS   @"TableNameForModels"
