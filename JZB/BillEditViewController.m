@@ -61,10 +61,6 @@
 }
 
 #pragma mark - methods for IBAction
--(IBAction)doneItemIsClicked:(id)sender{
-    [super doneItemIsClicked:sender];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 -(IBAction)billTypeSegClicked{
     //hide date picker is it's shown
@@ -410,11 +406,11 @@
         }
         
         for (JZBAccounts* account in self.accountList){
-            if ([_bill.account_id isEqualToString:account.account_id] && !self.account){
+            if ([_bill.account_id isEqualToString:account.account_id]){
                 self.account = account;
             }
             
-            if ([_bill.to_account_id isEqualToString:account.account_id] && !self.toAccount){
+            if ([_bill.to_account_id isEqualToString:account.account_id]){
                 self.toAccount = account;
             }
             
@@ -423,14 +419,7 @@
             }
         }
     }
-}
 
--(JZBAccounts*)getAccount{
-    if (!_account){
-        self.account = [self.accountList objectAtIndex:0];
-    }
-    
-    return _account;
 }
 
 -(void)setAccount:(JZBAccounts *)account{
@@ -452,14 +441,6 @@
     self.accountLabel.text = (_account)?_account.name:NSLocalizedString(@"label_no_account", nil);
 }
 
--(JZBAccounts*)getToAccount{
-    if (!_toAccount){
-        self.toAccount = [self.accountList objectAtIndex:0];
-    }
-    
-    return _toAccount;
-}
-
 -(void)setToAccount:(JZBAccounts *)toAccount{
     if (_toAccount != toAccount){
         [_toAccount release];
@@ -476,14 +457,6 @@
         [_toAccount retain];
     }
     self.toAccountLabel.text = (_toAccount)?_toAccount.name:NSLocalizedString(@"label_no_account", nil);
-}
-
--(JZBCatalogs*)getCatalog{
-    if (!_catalog){
-        self.catalog = [self.catalogList objectAtIndex:0];
-    }
-    
-    return _catalog;
 }
 
 -(void)setCatalog:(JZBCatalogs *)catalog{

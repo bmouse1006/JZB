@@ -42,10 +42,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger number;
+    if ([[self.fetchedController fetchedObjects] count]){
     // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
-    NSInteger number = [sectionInfo numberOfObjects];
-    number = (![[self.fetchedController fetchedObjects] count])?1:number;
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
+        number = [sectionInfo numberOfObjects];
+    }else{
+        number = 1;
+    }
     DebugLog(@"number of rows in section %d is %d", section, number);
     return number;
 }
@@ -53,6 +57,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+//enable swipe to delete
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete:
+            DebugLog(@"commit delete", nil);
+            break;
+        case UITableViewCellEditingStyleInsert:
+            DebugLog(@"commit insert", nil);
+            break;
+        default:
+            break;
+    }
 }
 
 -(id)init{

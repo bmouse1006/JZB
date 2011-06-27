@@ -38,8 +38,9 @@
                 DebugLog(@"send notification with name %@", self.notificationName);
                 [[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName
                                                                     object:self];
-                //dismiss this modal view
+                //dismiss or pop this modal view
                 [self.parentViewController dismissModalViewControllerAnimated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             }else{
                 //pop up an alert view saying that saving account is failed
                 UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error"

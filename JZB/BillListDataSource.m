@@ -7,6 +7,7 @@
 //
 
 #import "BillListDataSource.h"
+#import "NSDate+Helper.h"
 
 
 @implementation BillListDataSource
@@ -60,8 +61,8 @@
 
 -(NSString*)getSectionNameKeyPath{
     if (!_sectionNameKeyPath){
-        _sectionNameKeyPath = @"date";
-    }
+        _sectionNameKeyPath = @"date";    }
+
     return _sectionNameKeyPath;
 }
 
@@ -90,6 +91,22 @@
     }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    NSString* sectionTitle = nil;
+    @try{
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
+        JZBManagedObject* obj = [[sectionInfo objects] objectAtIndex:0];
+        sectionTitle = [NSDateFormatter localizedStringFromDate:[obj valueForKey:@"date"]
+                                                      dateStyle:NSDateFormatterMediumStyle
+                                                      timeStyle:NSDateFormatterNoStyle];
+        
+    }@catch (NSException* e) {
+        DebugLog(@"exception happened. reason: %@", e.reason);
+    }
+    
+    return sectionTitle;
 }
 
 #pragma mark - init and dealloc

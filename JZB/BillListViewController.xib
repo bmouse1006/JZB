@@ -144,10 +144,20 @@
 			<object class="IBUISearchDisplayController" id="772737336">
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIBarButtonItem" id="20388338">
+			<object class="IBUIBarButtonItem" id="179542575">
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUIStyle">1</int>
 				<int key="IBUISystemItemIdentifier">4</int>
+			</object>
+			<object class="IBUIBarButtonItem" id="320592893">
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIStyle">1</int>
+				<int key="IBUISystemItemIdentifier">2</int>
+			</object>
+			<object class="IBUIBarButtonItem" id="114565921">
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIStyle">1</int>
+				<int key="IBUISystemItemIdentifier">0</int>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -269,7 +279,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">addItemIsClicked:</string>
-						<reference key="source" ref="20388338"/>
+						<reference key="source" ref="179542575"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">29</int>
@@ -278,9 +288,41 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">addItem</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="20388338"/>
+						<reference key="destination" ref="179542575"/>
 					</object>
 					<int key="connectionID">30</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">editItem</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="320592893"/>
+					</object>
+					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">doneItem</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="114565921"/>
+					</object>
+					<int key="connectionID">34</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">editItemIsClicked:</string>
+						<reference key="source" ref="320592893"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">35</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">doneItemIsClicked:</string>
+						<reference key="source" ref="114565921"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">36</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -334,7 +376,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="20388338"/>
+						<reference key="object" ref="179542575"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">31</int>
+						<reference key="object" ref="320592893"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">33</int>
+						<reference key="object" ref="114565921"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -348,6 +400,8 @@
 					<string>11.IBPluginDependency</string>
 					<string>15.IBPluginDependency</string>
 					<string>28.IBPluginDependency</string>
+					<string>31.IBPluginDependency</string>
+					<string>33.IBPluginDependency</string>
 					<string>4.IBEditorWindowLastContentRect</string>
 					<string>4.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -357,6 +411,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>BillListViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -378,7 +434,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">36</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -391,10 +447,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addItemIsClicked:</string>
+							<string>editItemIsClicked:</string>
 							<string>filterSegIsClicked:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -404,12 +462,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addItemIsClicked:</string>
+							<string>editItemIsClicked:</string>
 							<string>filterSegIsClicked:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">addItemIsClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">editItemIsClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -423,6 +486,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addItem</string>
+							<string>doneItem</string>
+							<string>editItem</string>
 							<string>filterSeg</string>
 							<string>mySearchBar</string>
 							<string>mySearchDisplayController</string>
@@ -430,6 +495,8 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIBarButtonItem</string>
+							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
 							<string>UISegmentedControl</string>
 							<string>UISearchBar</string>
@@ -442,6 +509,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addItem</string>
+							<string>doneItem</string>
+							<string>editItem</string>
 							<string>filterSeg</string>
 							<string>mySearchBar</string>
 							<string>mySearchDisplayController</string>
@@ -451,6 +520,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">addItem</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">doneItem</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">editItem</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">

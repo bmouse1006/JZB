@@ -17,6 +17,8 @@
 @synthesize mySearchBar = _mySearchBar;
 @synthesize mySearchDisplayController = _mySearchDisplayController;
 @synthesize addItem = _addItem;
+@synthesize editItem = _editItem;
+@synthesize doneItem = _doneItem;
 @synthesize dataSource = _dataSource;
 @synthesize account = _account;
 
@@ -40,6 +42,16 @@
 
 -(IBAction)filterSegIsClicked:(id)sender{
     DebugLog(@"filter seg is clicked", nil);
+}
+
+-(IBAction)editItemIsClicked:(id)sender{
+    self.navigationItem.rightBarButtonItem = self.doneItem;
+    [self.theTableView setEditing:YES animated:YES];
+}
+
+-(IBAction)doneItemIsClicked:(id)sender{
+    self.navigationItem.rightBarButtonItem = self.editItem;
+    [self.theTableView setEditing:NO animated:YES];
 }
 
 -(IBAction)addItemIsClicked:(id)sender{
@@ -91,6 +103,7 @@
 //    [rightItem release];
     self.theTableView.dataSource = self.dataSource;
     self.title = self.account.name;
+    self.navigationItem.rightBarButtonItem = self.editItem;
     [self setToolbarItems:[NSArray arrayWithObject:self.addItem]];
 }
 
