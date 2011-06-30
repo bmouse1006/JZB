@@ -14,6 +14,13 @@
 @dynamic end_date;
 @dynamic desc;
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"budget_id", @"start_date", @"end_date", @"desc", nil];
+    
+    return keys;
+}
+
 -(id)getKeyValue{
     return self.budget_id;
 }

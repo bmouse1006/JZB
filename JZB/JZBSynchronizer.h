@@ -28,15 +28,23 @@ typedef enum {
 @property (nonatomic, retain) JZBSyncRequest* syncRequest;
 @property (nonatomic, retain) NSDictionary* modelNamesForTables;
 @property (nonatomic, retain) NSDictionary* primaryKeysForTables;
+@property (nonatomic, readonly, getter = getLocalLock) NSLock* localLock;
+@property (nonatomic, readonly, getter = getRemoteLock) NSLock* remoteLock;
+@property (nonatomic, readonly, getter = getLocalChange) NSMutableDictionary* localChange;
+@property (nonatomic, readonly, getter = getLocalDelete) NSMutableArray* localDelete;
+@property (nonatomic, readonly, getter = getRemoteChange) NSMutableDictionary* remoteChange;
+@property (nonatomic, readonly, getter = getRemoteDelete) NSMutableArray* remoteDelete;
 
+//return the default synchronizer
++(JZBSynchronizer*)defaultSynchronizer;
 //add local change to the pool
-+(BOOL)addLocalChange:(JZBDataChangeUnit*)change;
+-(BOOL)addLocalChange:(JZBDataChangeUnit*)change;
 //add local delete to the pool
-+(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key;
+-(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key;
 //add remote change to the pool
-+(BOOL)addRemoteChange:(JZBDataChangeUnit*)change;
+-(BOOL)addRemoteChange:(JZBDataChangeUnit*)change;
 //add remote delete to the pool
-+(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key;
+-(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key;
 //method to sync change
 -(BOOL)syncChangeTryToLock:(BOOL)tryLock;
 

@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JZBSimpleListController.h"
 #import "JZBDataSource.h"
 #import "JZBAccounts.h"
 
-@interface BillListViewController : UITableViewController {
-    JZBDataSource* _dataSource;
+@interface BillListViewController : JZBSimpleListController {
+//    JZBDataSource* _dataSource;
     JZBAccounts* _account;
     UISegmentedControl* _filterSeg;
-    UITableView* _theTableView;
+//    UITableView* _theTableView;
     
     
     UISearchBar* _mySearchBar;
@@ -25,13 +26,13 @@
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl* filterSeg;
-@property (nonatomic, retain) IBOutlet UITableView* theTableView;
+//@property (nonatomic, retain) IBOutlet UITableView* theTableView;
 @property (nonatomic, retain) IBOutlet UISearchBar* mySearchBar;
 @property (nonatomic, retain) IBOutlet UISearchDisplayController* mySearchDisplayController;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* addItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* editItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* doneItem;
-@property (nonatomic, retain, getter = getDataSource) JZBDataSource* dataSource;
+//@property (nonatomic, retain, getter = getDataSource) JZBDataSource* dataSource;
 @property (nonatomic, retain, setter = setAccount:) JZBAccounts* account;
 
 -(IBAction)filterSegIsClicked:(id)sender;

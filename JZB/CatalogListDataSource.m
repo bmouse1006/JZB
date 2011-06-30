@@ -8,6 +8,7 @@
 
 #import "CatalogListDataSource.h"
 #import "JJObjectManager.h"
+#import "JZBDataAccessManager.h"
 
 @implementation CatalogListDataSource
 
@@ -63,6 +64,7 @@
         //if the obj is the selected one, check mark the cell
         if ([self.managedObj isEqualToManagedObject:cell.catalog]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.checkedCell = cell;
         }else{
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
@@ -74,6 +76,21 @@
     }
     
     return cell;
+}
+//enable swipe to delete
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    id obj = [self objAtIndexPath:indexPath];
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete:
+            DebugLog(@"commit delete", nil);
+            [JZBDataAccessManager deleteCatalog:obj];
+            break;
+        case UITableViewCellEditingStyleInsert:
+            DebugLog(@"commit insert", nil);
+            break;
+        default:
+            break;
+    }
 }
 
 -(id)init{

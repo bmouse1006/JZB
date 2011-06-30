@@ -12,7 +12,6 @@
 @interface AccountSimpleListController : JZBSimpleListController {
     
     UIBarButtonItem* _addItem;
-    
 }
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* addItem;

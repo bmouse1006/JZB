@@ -17,6 +17,8 @@
 @synthesize sortDescriptors = _sortDescriptors;
 @synthesize sectionNameKeyPath = _sectionNameKeyPath;
 
+@synthesize checkedCell = _checkedCell;
+
 //subclass should be modify this method to provide its own model name
 -(NSString*)getModelName{
     return nil;
@@ -57,20 +59,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
-}
-
-//enable swipe to delete
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (editingStyle) {
-        case UITableViewCellEditingStyleDelete:
-            DebugLog(@"commit delete", nil);
-            break;
-        case UITableViewCellEditingStyleInsert:
-            DebugLog(@"commit insert", nil);
-            break;
-        default:
-            break;
-    }
 }
 
 -(id)init{

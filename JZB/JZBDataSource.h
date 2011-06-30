@@ -16,6 +16,8 @@
     NSArray* _sortDescriptors;
     NSString* _sectionNameKeyPath;
     JZBManagedObject* _managedObj;
+    
+    UITableViewCell* _checkedCell;
 }
 
 @property (nonatomic, retain, getter = getFetchedController) NSFetchedResultsController* fetchedController;
@@ -25,6 +27,8 @@
 @property (nonatomic, retain, getter = getSortDescriptors) NSArray* sortDescriptors;
 @property (nonatomic, retain, getter = getSectionNameKeyPath) NSString* sectionNameKeyPath;
 @property (nonatomic, retain) JZBManagedObject* managedObj;
+
+@property (nonatomic, retain) UITableViewCell* checkedCell;//cell that has been checked mark
 
 -(void)refresh;
 -(id)objAtIndexPath:(NSIndexPath*)indexPath;

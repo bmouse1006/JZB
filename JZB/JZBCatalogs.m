@@ -24,6 +24,12 @@
     return [self objectsForKey:@"kind" andValue:kind context:context];
 }
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"catalog_id", @"kind", @"name", @"sort", @"version", nil];
+    return keys;
+}
+
 -(id)getKeyValue{
     return self.catalog_id;
 }

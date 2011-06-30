@@ -27,7 +27,7 @@ typedef enum{
 @property (nonatomic, readonly, getter = getKeyValue) id keyValue;
 
 //return all keys for KVC
--(NSArray*)allKeys;
+-(NSArray*)allKeysForValues;
 //get ID string for the object ID
 -(NSString*)stringForObjectID;
 -(BOOL)setValues:(NSArray*)values forColumns:(NSArray*)columns;

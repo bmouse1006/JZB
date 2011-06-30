@@ -8,7 +8,7 @@
 
 #import "BillListDataSource.h"
 #import "NSDate+Helper.h"
-
+#import "JZBDataAccessManager.h"
 
 @implementation BillListDataSource
 
@@ -61,7 +61,8 @@
 
 -(NSString*)getSectionNameKeyPath{
     if (!_sectionNameKeyPath){
-        _sectionNameKeyPath = @"date";    }
+        _sectionNameKeyPath = @"date";   
+    }
 
     return _sectionNameKeyPath;
 }
@@ -107,6 +108,22 @@
     }
     
     return sectionTitle;
+}
+
+//enable swipe to delete
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    id obj = [self objAtIndexPath:indexPath];
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete:
+            DebugLog(@"commit delete", nil);
+            [JZBDataAccessManager deleteBill:obj];
+            break;
+        case UITableViewCellEditingStyleInsert:
+            DebugLog(@"commit insert", nil);
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - init and dealloc

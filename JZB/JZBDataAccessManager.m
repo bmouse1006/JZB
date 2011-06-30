@@ -14,6 +14,22 @@
 
 static NSLock* dbLocker = nil;
 
++(void)deleteAccount:(JZBAccounts*)account{
+    [self deleteManagedObjects:[NSArray arrayWithObject:account]];
+    //remove all bills belone to this account
+    //how about to-account?
+    //update all to account id to nil for bills that transfer into this account
+}
+     
++(void)deleteCatalog:(JZBCatalogs*)catalog{
+    [self deleteManagedObjects:[NSArray arrayWithObject:catalog]];
+    //update all catalog id in bills to nil
+}
+
++(void)deleteBill:(JZBBills*)bill{
+    [self deleteManagedObjects:[NSArray arrayWithObject:bill]];
+}
+
 +(NSArray*)getObjectsForModel:(NSString*)modelName key:(NSString*)key value:(NSString*)value{
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K like %@", key, value];
     return [self getInstancesWithModelName:modelName predicate:predicate context:nil];
@@ -35,7 +51,7 @@ static NSLock* dbLocker = nil;
             //commitchange to local database
             [JJObjectManager commitChangeForContext:[obj managedObjectContext]];
             //add to change queue in synchronizer
-            [JZBSynchronizer addLocalChange:[JZBDataChangeUnit dataChangeUnitWithJZBManagedObject:obj]];
+            [[JZBSynchronizer defaultSynchronizer] addLocalChange:[JZBDataChangeUnit dataChangeUnitWithJZBManagedObject:obj]];
         }
     }
     @catch (NSException *exception) {
@@ -48,31 +64,42 @@ static NSLock* dbLocker = nil;
 
 +(BOOL)deleteManagedObjects:(NSArray*)objList{
     BOOL result = NO;
-    @try {    
-        for (JZBManagedObject* obj in objList){
-            //commit change to local database
-            [self deleteSingleObject:obj];
-            //add this action to local change queue of synchronizer
-            [JZBSynchronizer addLocalDeleteForTable:[obj tableName] 
-                                           keyValue:obj.keyValue];
+
+    for (JZBManagedObject* obj in objList){
+        //commit change to local database
+        result = [self deleteSingleObject:obj];
+        //add this action to local change queue of synchronizer
+        if (result == YES){
+            [[JZBSynchronizer defaultSynchronizer] addLocalDeleteForTable:[obj tableName]                            
+                                                                 keyValue:obj.keyValue];
+        }else{
+            break;
         }
-        result = YES;
+    }
+
+    return result;
+}
+
++(BOOL)deleteSingleObject:(JZBManagedObject*)obj{
+    BOOL result = NO;
+    [self dbLock];
+    @try {    
+        //move the record to deleted table
+        //step 1: create a new record in the cooresponding deleted table
+        //step 2: remove original record
+        JZBManagedObject* deletedObj = [obj newObjectForDeletedTable];
+        [JJObjectManager deleteObject:obj];
+        [JJObjectManager commitChangeForContext:[obj managedObjectContext]];
+        [JJObjectManager commitChangeForContext:[deletedObj managedObjectContext]];
     }@catch (NSException* e) {
         result = NO;
         DebugLog(@"error happened while deleting objects. Reason is %@", e.reason);
     }@finally {
-
+        result = YES;
+        [self dbUnlock];
     }
+    
     return result;
-}
-
-+(void)deleteSingleObject:(JZBManagedObject*)obj{
-    [self dbLock];
-    JZBManagedObject* deletedObj = [obj newObjectForDeletedTable];
-    [JJObjectManager deleteObject:obj];
-    [JJObjectManager commitChangeForContext:[obj managedObjectContext]];
-    [JJObjectManager commitChangeForContext:[deletedObj managedObjectContext]];
-    [self dbUnlock];
 }
 
 //fetch result by SQL leaguage
@@ -129,9 +156,6 @@ static NSLock* dbLocker = nil;
         [result addObject:row];
     }
     
-//    [SQLITE_INTEGER],
-//    ** [SQLITE_FLOAT], [SQLITE_TEXT], [SQLITE_BLOB], or [SQLITE_NULL].
-
     //close DB
     
     sqlite3_close(_database);

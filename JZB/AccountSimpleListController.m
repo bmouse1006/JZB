@@ -12,10 +12,6 @@
 
 @implementation AccountSimpleListController
 
-//@synthesize dataSource = _dataSource;
-//@synthesize theTableView = _theTableView;
-//@synthesize delegate = _delegate;
-//@synthesize delegateSelector = _delegateSelector;
 @synthesize addItem = _addItem;
 
 -(JZBDataSource*)getDataSource{
@@ -70,7 +66,7 @@
     self.title = NSLocalizedString(@"accountList", nil);
     self.navigationItem.rightBarButtonItem = self.addItem;
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(refreshList)
+                                             selector:@selector(newAddNotificationReceived:)
                                                  name:NOTIFICATOIN_NEW_ACCOUNT_CREATED 
                                                object:nil];
 }

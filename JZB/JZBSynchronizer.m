@@ -19,64 +19,108 @@
 @synthesize primaryKeysForTables = _primaryKeysForTables;
 
 //stores all local change/delete that happens in iPhone
-static NSMutableDictionary* localChange = nil;
-static NSMutableArray* localDelete = nil;
+static NSMutableDictionary* _localChange = nil;
+static NSMutableArray* _localDelete = nil;
 //stores all remote cahnge/delete that downloaded from remote server
-static NSMutableDictionary* remoteChange = nil;
-static NSMutableArray* remoteDelete = nil;
+static NSMutableDictionary* _remoteChange = nil;
+static NSMutableArray* _remoteDelete = nil;
 
 //locks for all changes
-static NSLock* localChangeLock = nil;
-static NSLock* remoteChangeLock = nil;
-static NSLock* localDeleteLock = nil;
-static NSLock* remoteDeleteLock = nil;
+static NSLock* _localLock = nil;
+static NSLock* _remoteLock = nil;
 
-+(BOOL)addLocalChange:(JZBDataChangeUnit*)changeUnit{
-    [localChangeLock lock];
+static JZBSynchronizer* _defaultSynchronizer = nil;
+
+-(NSLock*)getLocalLock{
+    if (!_localLock){
+        _localLock = [[NSLock alloc] init];
+    }
+    
+    return _localLock;
+}
+
+-(NSLock*)getRemoteLock{
+    if (!_remoteLock){
+        _remoteLock = [[NSLock alloc] init];
+    }
+    
+    return _remoteLock;
+}
+
+-(NSMutableDictionary*)getLocalChange{
+    if (!_localChange){
+        _localChange = [[NSMutableDictionary alloc] initWithCapacity:0];
+    }
+    return _localChange;
+}
+
+-(NSMutableArray*)getLocalDelete{
+    if (!_localDelete){
+        _localDelete = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _localDelete;
+}
+
+-(NSMutableDictionary*)getRemoteChange{
+    if (!_remoteChange){
+        _remoteChange = [[NSMutableDictionary alloc] initWithCapacity:0];
+    }
+    return _remoteChange;
+}
+
+-(NSMutableArray*)getRemoteDelete{
+    if (!_remoteDelete){
+        _remoteDelete = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _remoteDelete;
+}
+
+-(BOOL)addLocalChange:(JZBDataChangeUnit*)changeUnit{
+    [self.localLock lock];
     //talbe name is the key for change pool
-    JZBDataChangeUnit* tableChange = [localChange valueForKey:changeUnit.tableName];
+    JZBDataChangeUnit* tableChange = [self.localChange valueForKey:changeUnit.tableName];
     //if no change for this table was added before, create a new empty list and add to the pool
     if (!tableChange){
-        [localChange setValue:changeUnit forKey:changeUnit.tableName];
+        [self.localChange setValue:changeUnit forKey:changeUnit.tableName];
     }else{
         [tableChange mergeChangeData:changeUnit];
     }
     
-    [localChangeLock unlock];
+    [self.localLock unlock];
     return YES;
 }
 
-+(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key{
-    [localDeleteLock lock];
+-(BOOL)addLocalDeleteForTable:(NSString *)tableName keyValue:(NSString *)key{
+    [self.localLock lock];
     NSArray* deleteUnit = [NSArray arrayWithObjects:tableName, key, nil];
-    [localDelete addObject:deleteUnit];
-    [localDeleteLock unlock];
+    [self.localDelete addObject:deleteUnit];
+    [self.localLock unlock];
     return YES;
 }
 
-+(BOOL)addRemoteChange:(JZBDataChangeUnit*)changeUnit{
-    [remoteChangeLock lock];
+-(BOOL)addRemoteChange:(JZBDataChangeUnit*)changeUnit{
+    [self.remoteLock lock];
     //talbe name is the key for change pool
-    NSMutableArray* changeList = [remoteChange valueForKey:changeUnit.tableName];
+    NSMutableArray* changeList = [self.remoteChange valueForKey:changeUnit.tableName];
     //if no change for this table was added before, create a new empty list and add to the pool
     if (!changeList){
         NSMutableArray* tempList = [[NSMutableArray alloc] initWithCapacity:0];
-        [remoteChange setObject:changeUnit forKey:tempList];
+        [self.remoteChange setObject:changeUnit forKey:tempList];
         changeList = tempList;
         [tempList release];
     }
     
     //add the change unit to list
     [changeList addObject:changeUnit];
-    [remoteChangeLock unlock];
+    [self.remoteLock unlock];
     return YES;
 }
 
-+(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key{
-    [remoteDeleteLock lock];
+-(BOOL)addRemoteDeleteForTable:(NSString*)tableName keyValue:(NSString*)key{
+    [self.remoteLock lock];
     NSArray* deleteUnit = [NSArray arrayWithObjects:tableName, key, nil];
-    [remoteDelete addObject:deleteUnit];
-    [remoteDeleteLock unlock];
+    [self.remoteDelete addObject:deleteUnit];
+    [self.remoteLock unlock];
     return YES;
 }
 
@@ -88,8 +132,8 @@ static NSLock* remoteDeleteLock = nil;
     [self sendNotification:JZBSyncStart error:nil];
     //do uploading
     
-    JZBDataChangeJSON* wholeChange = [[JZBDataChangeJSON alloc] initWithChange:localChange
-                                                                     andDelete:localDelete];
+    JZBDataChangeJSON* wholeChange = [[JZBDataChangeJSON alloc] initWithChange:self.localChange
+                                                                     andDelete:self.localDelete];
     
     NSString* JSONString = [wholeChange JSON];
     [wholeChange release];
@@ -98,7 +142,6 @@ static NSLock* remoteDeleteLock = nil;
     
     self.syncRequest.syncTables = JSONString;
     [self.syncRequest start];
-//    [self commitSync];
     return YES;
 }
 
@@ -119,40 +162,33 @@ static NSLock* remoteDeleteLock = nil;
     [self commitSync];
 }
 
++(JZBSynchronizer*)defaultSynchronizer{
+    if (!_defaultSynchronizer){
+        _defaultSynchronizer = [[JZBSynchronizer alloc] init];
+    }
+    
+    return _defaultSynchronizer;
+}
+
 -(id)init{
     self = [super init];
     if (self){
         //init static object if it's nil
-        if (!localChangeLock){
-            localChangeLock = [[NSLock alloc] init];
+        
+        if (!_localChange){
+            _localChange = [[NSMutableDictionary alloc] initWithCapacity:0];
         }
         
-        if (!localDeleteLock){
-            localDeleteLock = [[NSLock alloc] init];
+        if (!_localDelete){
+            _localDelete = [[NSMutableArray alloc] initWithCapacity:0];
         }
         
-        if (!remoteChangeLock){
-            remoteChangeLock = [[NSLock alloc] init];
+        if (!_remoteChange){
+            _remoteChange = [[NSMutableDictionary alloc] initWithCapacity:0];
         }
         
-        if (!remoteDeleteLock){
-            remoteDeleteLock = [[NSLock alloc] init];
-        }
-        
-        if (!localChange){
-            localChange = [[NSMutableDictionary alloc] initWithCapacity:0];
-        }
-        
-        if (!localDelete){
-            localDelete = [[NSMutableDictionary alloc] initWithCapacity:0];
-        }
-        
-        if (!remoteChange){
-            remoteChange = [[NSMutableDictionary alloc] initWithCapacity:0];
-        }
-        
-        if (!remoteDelete){
-            remoteDelete = [[NSMutableDictionary alloc] initWithCapacity:0];
+        if (!_remoteDelete){
+            _remoteDelete = [[NSMutableArray alloc] initWithCapacity:0];
         }
         
         JZBSyncRequest* req = [[JZBSyncRequest alloc] init];
@@ -186,11 +222,11 @@ static NSLock* remoteDeleteLock = nil;
 //begin uploading operation
 -(BOOL)beginUploadingWithTry:(BOOL)tryLock{
     if (tryLock){
-        if (![localChangeLock tryLock]){//if it's been locked
+        if (![self.localLock tryLock]){//if it's been locked
             return NO;
         }
     }else{
-        [localChangeLock lock];
+        [self.localLock lock];
     }
     
     return YES;
@@ -199,10 +235,9 @@ static NSLock* remoteDeleteLock = nil;
 -(void)commitUploading{
     //commit uploaded change
     //remove all local change after finishing uploading
-    [localChange removeAllObjects];
-    [localDelete removeAllObjects];
-    [localChangeLock unlock];
-    
+    [self.localChange removeAllObjects];
+    [self.localDelete removeAllObjects];
+    [self.localLock unlock];
 }
 
 //begin sync operation

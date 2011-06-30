@@ -31,10 +31,20 @@
     catalog.name = self.nameText.text;
     catalog.kind = self.catalogKind;
     [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:catalog]];
+    self.editObject = catalog;
 }
 
 -(NSString*)getNotificationName{
     return NOTIFICATION_NEW_CATALOG_CREATED;
+}
+
+-(NSString*)getCatalogKind{
+    if (!_catalogKind){
+        //default value for catalog kind is CATALOG_KIND_EXPEND
+        self.catalogKind = CATALOG_KIND_EXPEND;
+    }
+    
+    return _catalogKind;
 }
 
 -(NSArray*)getCellArray{
@@ -94,15 +104,6 @@
     self.responderArray = [NSArray arrayWithObjects:self.nameText, nil];
 }
 
--(void)setCatalogKind:(NSString*)catalogKind{
-    if (_catalogKind != catalogKind){
-        [_catalogKind release];
-        _catalogKind = catalogKind;
-        [_catalogKind retain];
-        self.kindLabel.text = NSLocalizedString(_catalogKind, nil);
-    }
-}
-
 -(BOOL)validateInput{
     BOOL valid = YES;
     NSString* reason = nil;
@@ -131,16 +132,13 @@
 }
 
 -(void)setupInitialValuesForViews{
-    if (self.catalog){
+    if (self.isNew){//if it's for a new catalog
+        self.title = NSLocalizedString(@"title_new_catalog", nil);
+        self.kindLabel.text = NSLocalizedString(self.catalogKind, nil);
+    }else{//if it's for an existing catalog
         self.title = NSLocalizedString(@"title_edit_catalog", nil);
         self.nameText.text = self.catalog.name;
-        self.catalogKind = self.catalog.kind;
-    }else{
-        self.title = NSLocalizedString(@"title_new_catalog", nil);
-        //if catalog kind is nil
-        if (!self.catalogKind){
-            self.catalogKind = CATALOG_KIND_EXPEND;   
-        }
+        self.kindLabel.text = self.catalog.kind;
     }
 }
 

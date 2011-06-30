@@ -15,6 +15,13 @@
 @dynamic sort;
 @dynamic version;
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"borrower_id", @"kind", @"name", @"sort", @"version" , nil];
+    
+    return keys;
+}
+
 -(id)getKeyValue{
     return self.borrower_id;
 }

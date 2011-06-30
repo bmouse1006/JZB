@@ -23,6 +23,13 @@
 @dynamic account_id;
 @dynamic desc;
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"amount", @"bill_id", @"to_account_id", @"catalog_id", @"title", @"month", @"date", @"borrower_id", @"kind", @"version", @"account_id", @"desc", nil];
+    
+    return keys;
+}
+
 -(id)getKeyValue{
     return self.bill_id;
 }

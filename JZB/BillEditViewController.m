@@ -380,6 +380,19 @@
         self.descTextView.text = self.bill.desc;
         self.titleText.text = self.bill.title;
         self.amountText.text = [self.bill.amount stringValue];
+        if ([self.bill.kind isEqualToString:BILL_TYPE_EXPEND]){
+            self.billTypeSeg.selectedSegmentIndex = 0;
+            [self changeBillType:JZBBillsTypeExpend];
+        }else if ([self.bill.kind isEqualToString:BILL_TYPE_INCOME]){
+            self.billTypeSeg.selectedSegmentIndex = 1;
+            [self changeBillType:JZBBillsTypeIncome];
+        }else if ([self.bill.kind isEqualToString:BILL_TYPE_TRANSFER]){
+            self.billTypeSeg.selectedSegmentIndex = 2;
+            [self changeBillType:JZBBillsTypeTransfer];
+        }else if ([self.bill.kind isEqualToString:BILL_TYPE_LEND]){
+            self.billTypeSeg.selectedSegmentIndex = 3;
+            [self changeBillType:JZBBillsTypeLend];
+        }
     }
     
     self.dateText.text = [NSDateFormatter localizedStringFromDate:self.datePicker.date
@@ -397,6 +410,10 @@
         [_bill release];
         _bill = bill;
         [_bill retain];
+        
+        self.account = nil;
+        self.toAccount = nil;
+        self.catalog = nil;
         
         for (JZBCatalogs* catalog in self.catalogList){
             if ([_bill.catalog_id isEqualToString:catalog.catalog_id]){
@@ -614,11 +631,15 @@
     bill.title = self.titleText.text;
     bill.version = [NSDate date];
     bill.account_id = self.account.account_id;
-    bill.date = [NSDate dateFromString:self.dateText.text withFormat:[NSDate dateFormatString]];
+//    bill.date = [NSDate dateFromString:self.dateText.text withFormat:[NSDate dateFormatString]];
+    bill.date = self.datePicker.date;
     DebugLog(@"date for bill is %@", [bill.date description]);
     bill.desc = self.descTextView.text;
     bill.month = [NSNumber numberWithInt:4];
-    //        bill.month = nil;
+    bill.account_id = self.account.account_id;
+    bill.to_account_id = nil;
+    bill.catalog_id = nil;
+    bill.borrower_id = nil;
     switch (self.billType) {
         case JZBBillsTypeIncome:
             bill.kind = BILL_TYPE_INCOME;
@@ -634,17 +655,16 @@
             break;
         case JZBBillsTypeLend:
             bill.kind = BILL_TYPE_LEND;
-            bill.borrower_id = nil;
             break;
         default:
             break;
     }
     //save the change
     DebugLog(@"%@", [bill description]);
-    [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:bill]];
     //commit save action
-    //[JZBDataAccessManager commitActions];
-
+    [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:bill]];
+    
+    self.editObject = bill;
 }
 
 -(void)setupValueForLabels{

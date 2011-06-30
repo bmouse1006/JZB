@@ -30,6 +30,12 @@
 }
 
 -(void)setCatalog:(JZBCatalogs *)catalog{
+    if (_catalog != catalog){
+        [_catalog release];
+        _catalog = catalog;
+        [_catalog retain];
+    }
+    
     self.textLabel.text = catalog.name;
 }
 

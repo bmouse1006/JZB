@@ -13,13 +13,13 @@
 @implementation BillListViewController
 
 @synthesize filterSeg = _filterSeg;
-@synthesize theTableView = _theTableView;
+//@synthesize theTableView = _theTableView;
 @synthesize mySearchBar = _mySearchBar;
 @synthesize mySearchDisplayController = _mySearchDisplayController;
 @synthesize addItem = _addItem;
 @synthesize editItem = _editItem;
 @synthesize doneItem = _doneItem;
-@synthesize dataSource = _dataSource;
+//@synthesize dataSource = _dataSource;
 @synthesize account = _account;
 
 #pragma mark - getter and setter
@@ -55,11 +55,12 @@
 }
 
 -(IBAction)addItemIsClicked:(id)sender{
-     BillListViewController* controller= [[BillEditViewController alloc] initWithNibName:@"BillEditViewController" bundle:nil];
+     BillEditViewController* controller = [[BillEditViewController alloc] initWithNibName:@"BillEditViewController" bundle:nil];
 
+    controller.account = self.account;
+    
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:controller];
 
-//    [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:nav animated:YES];
     [self presentModalViewController:nav animated:YES];
 
     [nav release];
@@ -98,9 +99,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.filterSeg];
-//    self.navigationItem.rightBarButtonItem = rightItem;
-//    [rightItem release];
     self.theTableView.dataSource = self.dataSource;
     self.title = self.account.name;
     self.navigationItem.rightBarButtonItem = self.editItem;

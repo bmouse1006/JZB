@@ -180,6 +180,7 @@
     account.amount = amt;
     
     [JZBDataAccessManager saveManagedObjects:[NSArray arrayWithObject:account]];
+    self.editObject = account;
 }
 
 @end

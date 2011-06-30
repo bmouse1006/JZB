@@ -17,6 +17,13 @@
 @dynamic version;
 @dynamic parent_id;
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"sort", @"catalog_id", @"kind", @"name", @"version", @"parent_id", nil];
+    
+    return keys;
+}
+    
 -(id)getKeyValue{
     return self.catalog_id;
 }

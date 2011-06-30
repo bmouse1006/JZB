@@ -17,6 +17,31 @@
 @synthesize delegateSelector = _delegateSelector;
 @synthesize managedObj = _managedObj;
 
+#pragma mark - delegate methods for fetched result controller
+//begin change
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.theTableView beginUpdates];
+}
+
+//end change
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.theTableView endUpdates];
+}
+
+//change happens
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeDelete:
+            [self.theTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                     withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        default:
+            break;
+    }
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -47,6 +72,7 @@
 {
     [super viewDidLoad];
     self.theTableView.dataSource = self.dataSource;
+    self.dataSource.fetchedController.delegate = self;
     [self refreshList];
     
 }
@@ -60,13 +86,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate performSelector:self.delegateSelector
-                        withObject:[self.dataSource objAtIndexPath:indexPath]];
+    self.dataSource.checkedCell.accessoryType = UITableViewCellAccessoryNone;
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //return to the previous view
+    self.dataSource.checkedCell = cell;
+    [self finishedSelect:[self.dataSource objAtIndexPath:indexPath]];
+
+}
+
+-(void)finishedSelect:(id)obj{
+    [self.delegate performSelector:self.delegateSelector
+                        withObject:obj];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)newAddNotificationReceived:(NSNotification*)notification{
+    NSDictionary* userInfo = notification.userInfo;
+    self.dataSource.managedObj = [userInfo objectForKey:@"editObject"];
+    [self finishedSelect:self.dataSource.managedObj];
 }
 
 -(void)refreshList{

@@ -8,6 +8,9 @@
 
 #import <CoreData/CoreData.h>
 #import "JZBManagedObject.h"
+#import "JZBAccounts.h"
+#import "JZBCatalogs.h"
+#import "JZBBills.h"
 #import "/usr/include/sqlite3.h"
 
 ////define a notification for data changing
@@ -17,13 +20,16 @@
 
 }
 
-
+//delete all related bills while deleting an account
++(void)deleteAccount:(JZBAccounts*)account;
++(void)deleteCatalog:(JZBCatalogs*)catalog;
++(void)deleteBill:(JZBBills*)bill;
 +(NSArray*)getObjectsForModel:(NSString*)modelName key:(NSString*)key value:(NSString*)value;
 +(NSArray*)getAllObjectsForModel:(NSString*)modelName;
 +(NSArray*)getAllObjectsForModel:(NSString*)modelName context:(NSManagedObjectContext*)context;
 +(BOOL)saveManagedObjects:(NSArray*)objList;
 +(BOOL)deleteManagedObjects:(NSArray*)objList;
-+(void)deleteSingleObject:(JZBManagedObject*)obj;
++(BOOL)deleteSingleObject:(JZBManagedObject*)obj;
 //fetch result by SQL leaguage
 +(NSArray*)fetchResultBySQL:(NSString*)sqlquery;
 

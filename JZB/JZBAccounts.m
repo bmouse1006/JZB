@@ -22,6 +22,13 @@
     return [self objectsForKey:@"name" andValue:name];
 }
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"amount", @"sort", @"account_id", @"version", @"kind", @"name", @"desc", nil];
+    
+    return keys;
+}
+    
 -(id)getKeyValue{
     return self.account_id;
 }

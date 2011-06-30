@@ -19,6 +19,8 @@
 @synthesize responderArray = _responderArray;
 @synthesize pickerItemsArray = _pickerItemsArray;
 @synthesize notificationName = _notificationName;
+@synthesize isNew = _isNew;
+@synthesize editObject = _editObject;
 
 #pragma mark - methods for IBAction
 -(IBAction)doneItemIsClicked:(id)sender{
@@ -31,13 +33,17 @@
             DebugLog(@"Saving failed", nil);
             DebugLog(@"reason is %@", exception.reason);
             failed = YES;
+            self.editObject = nil;
         }
         @finally {
             if (!failed){
                 //post a notification saying that new accout has been creatd
                 DebugLog(@"send notification with name %@", self.notificationName);
+                //need to send new created object also
+                NSDictionary* userInfo = [NSDictionary dictionaryWithObject:self.editObject forKey:@"editObject"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName
-                                                                    object:self];
+                                                                    object:self 
+                                                                  userInfo:userInfo];
                 //dismiss or pop this modal view
                 [self.parentViewController dismissModalViewControllerAnimated:YES];
                 [self.navigationController popViewControllerAnimated:YES];

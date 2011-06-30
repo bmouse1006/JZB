@@ -92,7 +92,7 @@
     self.navigationItem.rightBarButtonItem = self.addItem;
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(refreshList)
+                                             selector:@selector(newAddNotificationReceived:)
                                                  name:NOTIFICATION_NEW_CATALOG_CREATED 
                                                object:nil];
 }
@@ -117,6 +117,8 @@
     DebugLog(@"add item in catalog list is clicked", nil);
     //pop up a view to add a new catalog
     CatalogEditViewController* catalogEdit = [[CatalogEditViewController alloc] initWithNibName:@"CatalogEditViewController" bundle:nil];
+    catalogEdit.isNew = YES;
+    catalogEdit.catalogKind = self.catalogsKind;
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:catalogEdit];
     [self presentModalViewController:nav animated:YES];
     [catalogEdit release];

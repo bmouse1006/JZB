@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "JZBManagedObject.h"
 
 @interface JZBEditViewController : UIViewController {
     UIBarButtonItem* _cancelItem;
@@ -22,6 +22,10 @@
     
     NSString* _notificationName;
     
+    JZBManagedObject* _editObject;
+    
+    BOOL _isNew;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* cancelItem;
@@ -32,6 +36,8 @@
 @property (nonatomic, retain) NSArray* responderArray;
 @property (nonatomic, retain, getter = getPickerItemsArray) NSArray* pickerItemsArray;
 @property (nonatomic, retain, readonly, getter = getNotificationName) NSString* notificationName;
+@property (nonatomic, assign) BOOL isNew;//indicate that it's for a new obj or an existing one
+@property (nonatomic, retain) JZBManagedObject* editObject;
 
 -(UITableViewCell*)cellObjAtIndex:(NSIndexPath*)indexPath;
 //validate input value for accout

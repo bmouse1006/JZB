@@ -15,6 +15,13 @@
 @dynamic amount;
 @dynamic desc;
 
+//provide all keys for properties
+-(NSArray*)allKeysForValues{
+    NSArray* keys = [NSArray arrayWithObjects:@"budget_item_id", @"budget_id", @"catalog_id", @"amount", @"desc", nil];
+    
+    return keys;
+}
+
 -(id)getKeyValue{
     return self.budget_id;
 }

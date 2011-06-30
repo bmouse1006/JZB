@@ -62,7 +62,7 @@
 
 #pragma mark - instance methods
 
--(NSArray*)allKeys{
+-(NSArray*)allKeysForValues{
     return [NSArray arrayWithObject:[NSNull null]];
 }
 
@@ -117,18 +117,20 @@
 
 -(JZBManagedObject*)newObjectForDeletedTable{
     NSString* deletedModelName = [[[self class] modelName] stringByAppendingFormat:@"_Deleted"];
-    NSManagedObject* newObj = [JJObjectManager newManagedObjectWithModelName:deletedModelName];
+    NSManagedObject* deletedObj = [JJObjectManager newManagedObjectWithModelName:deletedModelName];
     //copy all values to the deleted obj
-    NSDictionary* valuesDic = [self dictionaryWithValuesForKeys:[self allKeys]];
-    for (id key in [self allKeys]){
-        if ([key isKindOfClass:[NSNull class]]){
+    NSDictionary* valuesDic = [self dictionaryWithValuesForKeys:[self allKeysForValues]];
+    for (id key in [self allKeysForValues]){
+        id value = [valuesDic valueForKey:key];
+        if ([value isKindOfClass:[NSNull class]]){
         //if it's a nil value
-            [self setNilValueForKey:key];
+//            [deletedObj setNilValueForKey:key];
+        //do nothing
         }else{
-            [self setValue:[valuesDic valueForKey:key] forKey:key];
+            [deletedObj setValue:value forKey:key];
         }
     }
-    return (JZBManagedObject*)newObj;
+    return (JZBManagedObject*)deletedObj;
 }
 
 -(void)dealloc{

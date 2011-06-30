@@ -23,6 +23,7 @@
     NSString* _catalogKind;
     
     JZBCatalogs* _catalog;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* nameCell;
@@ -32,7 +33,7 @@
 @property (nonatomic, retain) IBOutlet UITextField* nameText;
 @property (nonatomic, retain) IBOutlet UILabel* kindLabel;
 @property (nonatomic, retain) IBOutlet UIButton* kindButton;
-@property (nonatomic, retain, setter = setCatalogKind:) NSString* catalogKind;
+@property (nonatomic, retain, getter = getCatalogKind) NSString* catalogKind;
 @property (nonatomic, retain) JZBCatalogs* catalog;
 
 //-(IBAction)kindSegIsClicked:(id)sender;
