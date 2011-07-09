@@ -40,8 +40,12 @@
         self.tableName = [JSONObj valueForKey:JSONPROPERTYNAME_TABLENAME];
         self.primaryKey = [JSONObj valueForKey:JSONPROPERTYNAME_PRIMARYKEY];
         NSArray* mColumns = [JSONObj valueForKey:JSONPROPERTYNAME_COLUMNS];
+//        self.columns = [NSMutableArray arrayWithCapacity:0];
+//        [self.columns addObjectsFromArray:mColumns];
         self.columns = [NSMutableArray arrayWithArray:mColumns];
         NSArray* mData = [JSONObj valueForKey:JSONPROPERTYNAME_DATA];
+//        self.data = [NSMutableArray arrayWithCapacity:0];
+//        [self.data addObjectsFromArray:mData];
         self.data = [NSMutableArray arrayWithArray:mData];
         self.type = type;
     }
@@ -52,10 +56,10 @@
 -(id)initWithJZBManagedObject:(JZBManagedObject*)jzbObj{
     self = [super init];
     if (self){
-        self.tableName = [jzbObj tableName];
-        self.primaryKey = [jzbObj primaryKey];
-        self.columns = [NSArray arrayWithArray:[jzbObj columns]];
-        self.data = [NSArray arrayWithArray:[jzbObj data]];
+        self.tableName = [[jzbObj class] tableName];
+        self.primaryKey = [[jzbObj class] primaryKey];
+        self.columns = [NSMutableArray arrayWithArray:[jzbObj columns]];
+        self.data = [NSMutableArray arrayWithArray:[jzbObj data]];
         
         self.type = JZBDataChangeTypeLocalSync;
     }
@@ -108,6 +112,25 @@
     [self.columns release];
     [self.data release];
     [super dealloc];
+}
+
+-(NSDictionary*)propertyList{
+    NSMutableDictionary* propertyList = [NSMutableDictionary dictionaryWithCapacity:0];
+    [propertyList setObject:self.tableName forKey:JSONPROPERTYNAME_TABLENAME];
+    [propertyList setObject:self.primaryKey forKey:JSONPROPERTYNAME_PRIMARYKEY];
+    [propertyList setObject:self.columns forKey:JSONPROPERTYNAME_COLUMNS];
+    [propertyList setObject:self.data forKey:JSONPROPERTYNAME_DATA];
+    return propertyList;
+}
+
++(JZBDataChangeUnit*)unitFromPropertyList:(NSDictionary*)propertyList{
+    JZBDataChangeUnit* unit = [[JZBDataChangeUnit alloc] init];
+    unit.tableName = [propertyList valueForKey:JSONPROPERTYNAME_TABLENAME];
+    unit.primaryKey = [propertyList valueForKey:JSONPROPERTYNAME_PRIMARYKEY];
+    unit.columns = [propertyList valueForKey:JSONPROPERTYNAME_COLUMNS];
+    unit.data = [propertyList valueForKey:JSONPROPERTYNAME_DATA];
+    
+    return [unit autorelease];
 }
 
 @end

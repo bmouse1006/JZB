@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BudgetViewController.h"
 
 @interface BudgetViewController : UIViewController {
+
+    BudgetViewController* _budgetViewController;
     
 }
+
+@property (nonatomic, retain) IBOutlet BudgetViewController* budgetViewController;
 
 @end

@@ -374,7 +374,10 @@
         //if self.bill is empty
         //setup date of date picker to the current date
         //and other value as default
-        self.datePicker.date = [NSDate date];
+        unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents *comps = [calendar components:unitFlags fromDate:[NSDate date]];
+        self.datePicker.date = [calendar dateFromComponents:comps];
     }else{//if self.bill is not nil, it means that catalog, account and to account are already setup
         self.datePicker.date = self.bill.date;
         self.descTextView.text = self.bill.desc;

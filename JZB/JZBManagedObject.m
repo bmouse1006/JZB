@@ -15,6 +15,12 @@
 
 #pragma mark - Class methods
 
++(id)objectForID:(NSString*)ID{
+    NSArray* objects = [self objectsForKey:[self primaryKey] andValue:ID];
+    id obj = ([objects count] >=1)?[objects objectAtIndex:0]:nil;
+    return obj;
+}
+
 +(NSArray*)allManagedObjectsWithcontext:(NSManagedObjectContext*)context{
     NSString* modelName = [self modelName];
     NSArray* objs = nil;
@@ -58,6 +64,22 @@
                                              encoding:NSUTF8StringEncoding];
     
     return modelName;
+}
+
+//get primary key for the table
++(NSString*)primaryKey{
+    
+    NSString* pathPK = [[NSBundle mainBundle] pathForResource:BUNDLENAME_PKFORTABLES ofType:@"plist"];
+    NSDictionary* pkBundle = [NSDictionary dictionaryWithContentsOfFile:pathPK];
+    return [pkBundle valueForKey:[self tableName]];
+}
+//get table name for this model
++(NSString*)tableName{
+    NSString* pathModelName = [[NSBundle mainBundle] pathForResource:BUNDLENAME_TALBENAMEFORMODELS
+                                                              ofType:@"plist"];
+    NSDictionary* modelNameBundle = [NSDictionary dictionaryWithContentsOfFile:pathModelName];
+    
+    return [modelNameBundle valueForKey:[[self class] modelName]];
 }
 
 #pragma mark - instance methods
@@ -140,21 +162,7 @@
 -(void)setupDefaultValues{
     //do nothing
 }
-//get primary key for the table
--(NSString*)primaryKey{
-    
-    NSString* pathPK = [[NSBundle mainBundle] pathForResource:BUNDLENAME_PKFORTABLES ofType:@"plist"];
-    NSDictionary* pkBundle = [NSDictionary dictionaryWithContentsOfFile:pathPK];
-    return [pkBundle valueForKey:[self tableName]];
-}
-//get table name for this model
--(NSString*)tableName{
-    NSString* pathModelName = [[NSBundle mainBundle] pathForResource:BUNDLENAME_TALBENAMEFORMODELS
-                                                              ofType:@"plist"];
-    NSDictionary* modelNameBundle = [NSDictionary dictionaryWithContentsOfFile:pathModelName];
 
-    return [modelNameBundle valueForKey:[[self class] modelName]];
-}
 //get names for columns
 -(NSArray*)columns{
     //nothing here

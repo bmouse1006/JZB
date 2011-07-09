@@ -37,7 +37,7 @@
 {
     // Return the number of sections.
     NSInteger number = [[self.fetchedController sections] count];
-    number = (!number)?1:number;
+//    number = (!number)?1:number;
     DebugLog(@"number of section is %d", number);
     return number;
 }
@@ -45,13 +45,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger number;
-    if ([[self.fetchedController fetchedObjects] count]){
+//    if ([[self.fetchedController fetchedObjects] count]){
     // Return the number of rows in the section.
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
         number = [sectionInfo numberOfObjects];
-    }else{
-        number = 1;
-    }
+//    }else{
+//        number = 1;
+//    }
     DebugLog(@"number of rows in section %d is %d", section, number);
     return number;
 }
@@ -59,15 +59,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
-}
-
--(id)init{
-    self = [super init];
-    if (self){
-        
-    }
-    
-    return self;
 }
 
 -(void)dealloc{
@@ -80,7 +71,8 @@
 
 -(void)refresh{
     NSError* error = nil;
-    self.fetchedController = nil;
+//    id delegate = self.fetchedController.delegate;
+//    self.fetchedController = nil;
     [self.fetchedController performFetch:&error];
 }
 

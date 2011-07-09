@@ -12,11 +12,18 @@
 #import "JZBManagedObject.h"
 #import "JZBDataAccessManager.h"
 
+#define LOCALCHANGE_FILENAME        @"localchange"
+#define LOCALCHANGE_FILENAME_EXTENSION @".plist"
+#define LOCALCHANGE_ISSYNCKEY       @"isSync"
+#define LOCALCHANGE_CHANGEQUEUEKEY  @"changeKey"
+#define LOCALCHANGE_DELETEQUEUEKEY  @"deleteKey"
+
 @implementation JZBSynchronizer
 
 @synthesize syncRequest = _syncRequest;
 @synthesize modelNamesForTables = _modelNamesForTables;
 @synthesize primaryKeysForTables = _primaryKeysForTables;
+@synthesize isSyncing = _isSyncing;
 
 //stores all local change/delete that happens in iPhone
 static NSMutableDictionary* _localChange = nil;
@@ -25,14 +32,35 @@ static NSMutableArray* _localDelete = nil;
 static NSMutableDictionary* _remoteChange = nil;
 static NSMutableArray* _remoteDelete = nil;
 
+//staging area for uploading data
+static NSMutableDictionary* _stagingChange = nil;
+static NSMutableArray* _stagingDelete = nil;
+
 //locks for all changes
 static NSLock* _localLock = nil;
 static NSLock* _remoteLock = nil;
+static NSLock* _uploadingLock = nil;
 
 static JZBSynchronizer* _defaultSynchronizer = nil;
 
+-(NSMutableDictionary*)getStagingChange{
+    if (!_stagingChange){
+        _stagingChange = [[NSMutableDictionary alloc] initWithCapacity:0];
+    }
+    
+    return _stagingChange;
+}
+
+-(NSMutableArray*)getStagingDelete{
+    if (!_stagingDelete){
+        _stagingDelete = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    
+    return _stagingDelete;
+}
+
 -(NSLock*)getLocalLock{
-    if (!_localLock){
+    if (_localLock == nil){
         _localLock = [[NSLock alloc] init];
     }
     
@@ -40,36 +68,43 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
 }
 
 -(NSLock*)getRemoteLock{
-    if (!_remoteLock){
+    if (_remoteLock == nil){
         _remoteLock = [[NSLock alloc] init];
     }
     
     return _remoteLock;
 }
 
+-(NSLock*)getUploadingLock{
+    if (_uploadingLock == nil){
+        _uploadingLock = [[NSLock alloc] init];
+    }
+    return _uploadingLock;
+}
+
 -(NSMutableDictionary*)getLocalChange{
-    if (!_localChange){
+    if (_localChange == nil){
         _localChange = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     return _localChange;
 }
 
 -(NSMutableArray*)getLocalDelete{
-    if (!_localDelete){
+    if (_localDelete == nil){
         _localDelete = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return _localDelete;
 }
 
 -(NSMutableDictionary*)getRemoteChange{
-    if (!_remoteChange){
+    if (_remoteChange == nil){
         _remoteChange = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     return _remoteChange;
 }
 
 -(NSMutableArray*)getRemoteDelete{
-    if (!_remoteDelete){
+    if (_remoteDelete == nil){
         _remoteDelete = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return _remoteDelete;
@@ -128,21 +163,87 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
     if (![self beginSyncWithTry:tryLock]){//if failed try lock
         return NO;
     }
-    //send notification for sync start
-    [self sendNotification:JZBSyncStart error:nil];
-    //do uploading
+    //lock locak change and delete queue
+    [self.localLock lock];
+    //add all entries in local queue to staging area and remove all entries from local
+    [self.stagingChange removeAllObjects];
+    [self.stagingChange addEntriesFromDictionary:self.localChange];
+    [self.localChange removeAllObjects];
+    [self.stagingDelete removeAllObjects];
+    [self.stagingDelete addObjectsFromArray:self.localDelete];
+    [self.localDelete removeAllObjects];
+    //unlock local lock
+    [self.localLock unlock];
     
-    JZBDataChangeJSON* wholeChange = [[JZBDataChangeJSON alloc] initWithChange:self.localChange
-                                                                     andDelete:self.localDelete];
+    JZBDataChangeJSON* wholeChange = [[JZBDataChangeJSON alloc] initWithChange:self.stagingChange
+                                                                     andDelete:self.stagingDelete];
     
     NSString* JSONString = [wholeChange JSON];
     [wholeChange release];
     DebugLog(@"JSON string to be uploaded is %@", JSONString);
     //upload JSONString asynchronized
-    
+    //send notification for sync start
+    [self sendNotification:JZBSyncStart error:nil];
+    //do uploading
     self.syncRequest.syncTables = JSONString;
     [self.syncRequest start];
     return YES;
+}
+
+//store the current local change queue to plist files
+-(void)saveCurrentLocalChange{
+    DebugLog(@"stop syncing", nil);
+    if (self.isSyncing){
+        //yes
+        //step 1: stop syncing
+        [self.syncRequest stop];
+        [self.uploadingLock unlock];
+        //step 2: save all staging data to local change queue
+        [self rollbackSync];
+    }
+    NSMutableDictionary* changeDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    for (NSString* key in [self.localChange allKeys]){
+        [changeDic setObject:[(JZBDataChangeUnit*)[self.localChange valueForKey:key] propertyList] forKey:key];
+    }
+    //save local change queue to plist files
+    NSMutableDictionary* storeDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    [self.localLock lock];
+    //add flag of isSyncing
+    [storeDic setObject:[NSNumber numberWithBool:self.isSyncing]
+                  forKey:LOCALCHANGE_ISSYNCKEY];
+    [storeDic setObject:changeDic forKey:LOCALCHANGE_CHANGEQUEUEKEY];
+    [storeDic setObject:self.localDelete forKey:LOCALCHANGE_DELETEQUEUEKEY];
+    [storeDic writeToFile:[self storePath] 
+                atomically:NO];
+    DebugLog(@"save all change to files", nil);
+    [self.localLock unlock];
+}
+//restore current local change queue from plist files and resume sync process if any
+-(void)loadCurrntLocalChange{
+    [self.localLock lock];
+    DebugLog(@"load change", nil);
+    NSDictionary* loadDic = [NSDictionary dictionaryWithContentsOfFile:[self storePath]];
+    NSDictionary* changeDic = [loadDic objectForKey:LOCALCHANGE_CHANGEQUEUEKEY];
+    //clear all values in self.localChange
+    [self.localChange removeAllObjects];
+    for (NSString* key in [changeDic allKeys]){
+        JZBDataChangeUnit* unit = [JZBDataChangeUnit unitFromPropertyList:[changeDic valueForKey:key]];
+        [self.localChange setValue:unit forKey:key];
+    }
+    self.isSyncing = [(NSNumber*)[loadDic objectForKey:LOCALCHANGE_ISSYNCKEY] boolValue];
+    [self.localDelete removeAllObjects];
+    [self.localDelete addObjectsFromArray:[loadDic objectForKey:LOCALCHANGE_DELETEQUEUEKEY]];
+    //remove all data in stored file and store it back
+    DebugLog(@"remove change file", nil);
+    loadDic = [NSDictionary dictionary];
+    [loadDic writeToFile:[self storePath] 
+                atomically:NO];
+    [self.localLock unlock];
+    
+    //if it was syncing while stored status last time
+    if (self.isSyncing){
+        [self syncChangeTryToLock:YES];
+    }
 }
 
 //delegate method
@@ -158,38 +259,53 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
 -(void)didFailedWithError:(NSError*)error{
     //send out sync error notification
     [self sendNotification:JZBSyncError error:error];
-    //finished sync with error, unlock lock and commit change
-    [self commitSync];
+    //finished sync with error, unlock lock and rollback change
+    [self rollbackSync];
 }
 
 +(JZBSynchronizer*)defaultSynchronizer{
-    if (!_defaultSynchronizer){
-        _defaultSynchronizer = [[JZBSynchronizer alloc] init];
+    if (_defaultSynchronizer == nil){
+        _defaultSynchronizer = [[super allocWithZone:NULL] init];
     }
     
     return _defaultSynchronizer;
 }
 
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [[self defaultSynchronizer] retain];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
+- (NSUInteger)retainCount
+{
+    return NSUIntegerMax;  //denotes an object that cannot be released
+}
+
+- (oneway void)release
+{
+    //do nothing
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+
 -(id)init{
     self = [super init];
     if (self){
         //init static object if it's nil
-        
-        if (!_localChange){
-            _localChange = [[NSMutableDictionary alloc] initWithCapacity:0];
-        }
-        
-        if (!_localDelete){
-            _localDelete = [[NSMutableArray alloc] initWithCapacity:0];
-        }
-        
-        if (!_remoteChange){
-            _remoteChange = [[NSMutableDictionary alloc] initWithCapacity:0];
-        }
-        
-        if (!_remoteDelete){
-            _remoteDelete = [[NSMutableArray alloc] initWithCapacity:0];
-        }
         
         JZBSyncRequest* req = [[JZBSyncRequest alloc] init];
         req.delegate = self;
@@ -222,11 +338,12 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
 //begin uploading operation
 -(BOOL)beginUploadingWithTry:(BOOL)tryLock{
     if (tryLock){
-        if (![self.localLock tryLock]){//if it's been locked
+        if (![self.uploadingLock tryLock]){//if it's been locked
             return NO;
         }
     }else{
-        [self.localLock lock];
+        [self.uploadingLock lock];
+        self.isSyncing = YES;
     }
     
     return YES;
@@ -235,9 +352,11 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
 -(void)commitUploading{
     //commit uploaded change
     //remove all local change after finishing uploading
+    [self.localLock lock];
     [self.localChange removeAllObjects];
     [self.localDelete removeAllObjects];
     [self.localLock unlock];
+    [self.uploadingLock unlock];
 }
 
 //begin sync operation
@@ -247,14 +366,35 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
     }
     //send out notificaion for sync start
     return YES;
-//    [self beginDownloading];
     
 }
 //end sync operation
 -(void)commitSync{
-//    [self commitDownloading];
     [self commitUploading];
+}
+
+-(void)rollbackSync{
+    //step 1: add all object in self.staginChange and self.staginDelete back to self.localChange and self.localDelete, empy staing area
+    [self.localLock lock];
+    //add all change back to local change queue
+    for (id key in [self.stagingChange allKeys]){
+        JZBDataChangeUnit* unit = [self.localChange valueForKey:key];
+        if (!unit){
+            [self.localChange setValue:unit forKey:key];
+        }else{
+            [unit mergeChangeData:unit];
+        }
+    }
+    //add all delete back to local delete queue
+    [self.localDelete addObjectsFromArray:self.stagingDelete];
+    [self.stagingChange removeAllObjects];
+    [self.stagingDelete removeAllObjects];
     
+    //unlock local  lock
+    [self.localLock unlock];
+    //unlock uploading lock
+    [self.uploadingLock unlock];
+    self.isSyncing = NO;
 }
 
 //commint the downloaded JSON string to DB
@@ -352,4 +492,17 @@ static JZBSynchronizer* _defaultSynchronizer = nil;
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
+-(NSString*)storePath{
+ 
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* basePath = ([paths count] > 0)?[paths objectAtIndex:0]:nil;
+
+    basePath = [basePath stringByAppendingPathComponent:[LOCALCHANGE_FILENAME stringByAppendingString:LOCALCHANGE_FILENAME_EXTENSION]];
+    
+    DebugLog(@"file path is %@", basePath);
+    
+    return basePath;
+ 
+}
+     
 @end

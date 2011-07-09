@@ -2,26 +2,31 @@
 //  JZBBills.m
 //  JZB
 //
-//  Created by Jin Jin on 11-4-5.
+//  Created by Jin Jin on 11-7-9.
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
 #import "JZBBills.h"
+#import "JZBAccounts.h"
+#import "JZBBorrowers.h"
+#import "JZBCatalogs.h"
+#import "JZBSubCatalogs.h"
 #import "JJObjectManager.h"
 
 @implementation JZBBills
+@dynamic to_account_id;
+@dynamic version;
 @dynamic amount;
 @dynamic bill_id;
-@dynamic to_account_id;
-@dynamic catalog_id;
-@dynamic title;
-@dynamic month;
-@dynamic date;
+@dynamic sub_catalog_id;
 @dynamic borrower_id;
-@dynamic kind;
-@dynamic version;
-@dynamic account_id;
+@dynamic title;
 @dynamic desc;
+@dynamic date;
+@dynamic catalog_id;
+@dynamic month;
+@dynamic kind;
+@dynamic account_id;
 
 //provide all keys for properties
 -(NSArray*)allKeysForValues{

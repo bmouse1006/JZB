@@ -37,7 +37,10 @@
 
 -(void)setSyncTablesToRequest:(NSString*)syncTables;
 
+//start sync
 -(void)start;
+//stop sync
+-(void)stop;
 -(void)done;
 
 @end

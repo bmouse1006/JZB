@@ -40,10 +40,6 @@ typedef enum{
 -(void)setupDefaultValues;
 //check if two managed objects are the same one
 -(BOOL)isEqualToManagedObject:(JZBManagedObject*)obj;
-//get primary key for the table
--(NSString*)primaryKey;
-//get table name for this model
--(NSString*)tableName;
 //get names for columns
 -(NSArray*)columns;
 //get data for columns
@@ -57,5 +53,10 @@ typedef enum{
 +(NSArray*)objectsForKey:(NSString*)key andValue:(NSString*)value context:(NSManagedObjectContext*)context;
 //return model name for current model
 +(NSString*)modelName;
+//get primary key for the table
++(NSString*)primaryKey;
+//get table name for this model
++(NSString*)tableName;
++(id)objectForID:(NSString*)ID;
 
 @end

@@ -100,6 +100,7 @@
 {
     [super viewDidLoad];
     self.theTableView.dataSource = self.dataSource;
+    self.dataSource.fetchedController.delegate = self;
     self.title = self.account.name;
     self.navigationItem.rightBarButtonItem = self.editItem;
     [self setToolbarItems:[NSArray arrayWithObject:self.addItem]];

@@ -43,9 +43,14 @@
 
 //start sync
 -(void)start{
-    NSURLConnection* connection = [NSURLConnection connectionWithRequest:self.request 
+    self.connection = [NSURLConnection connectionWithRequest:self.request 
                                                                 delegate:self];
-    [connection start];
+    [self.connection start];
+}
+
+//stop syncing
+-(void)stop{
+    [self.connection cancel];
 }
 
 -(void)done{
@@ -68,10 +73,14 @@
 }
 
 -(NSURLRequest*)getRequest{
-    NSDate* client_time = [NSDate date];
-    [self.parameters setParameterForKey:FIELD_CLIENT_TIME
-                              withValue:[client_time description]];
-    [_request setHTTPBody:[[self.parameters parameterString] dataUsingEncoding:NSUTF8StringEncoding]];
+    if (!_request){
+        NSDate* client_time = [NSDate date];
+        [self.parameters setParameterForKey:FIELD_CLIENT_TIME
+                                  withValue:[client_time description]];
+        _request = [[NSURLRequest requestWithURL:[NSURL URLWithString:URLSTRING_SYNC]] retain];
+        [_request setHTTPMethod:REQUEST_METHOD_POST];
+        [_request setHTTPBody:[[self.parameters parameterString] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     return _request;
 }
@@ -102,8 +111,6 @@
 -(id)init{
     if (self = [super init]){
         
-        self.request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLSTRING_SYNC]];
-        [self.request setHTTPMethod:REQUEST_METHOD_POST];
         URLParameterSet* param = [[URLParameterSet alloc] init];
         self.parameters = param;
         [param release];

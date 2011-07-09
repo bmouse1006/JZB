@@ -36,7 +36,7 @@
         
         //generate a new predicate for fetcher
         if (_accountID != nil){
-            self.predicate = [NSPredicate predicateWithFormat:@"%K like %@", @"account_id",_accountID];
+            self.predicate = [NSPredicate predicateWithFormat:@"%K like %@ or %K like %@", @"account_id",_accountID,@"to_account_id", _accountID];
         }else{
             self.predicate = nil;
         }
@@ -51,7 +51,7 @@
 -(NSArray*)getSortDescriptors{
     //sorted by date, descending
     if (!_sortDescriptors){
-        NSSortDescriptor* sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+        NSSortDescriptor* sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"version" ascending:NO];
         _sortDescriptors = [NSArray arrayWithObject:sortDesc];
         [_sortDescriptors retain];
     }
@@ -117,6 +117,13 @@
         case UITableViewCellEditingStyleDelete:
             DebugLog(@"commit delete", nil);
             [JZBDataAccessManager deleteBill:obj];
+            //if this row is the last row in a section, this section should also be removed
+//            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedController sections] objectAtIndex:section];
+//            NSInteger number = [sectionInfo numberOfObjects];
+//            if (number == 0){
+//                
+//            }
+//            [self refresh];
             break;
         case UITableViewCellEditingStyleInsert:
             DebugLog(@"commit insert", nil);

@@ -58,6 +58,9 @@
 }
 
 -(void)setParameterForKey:(NSString*)key withValue:(NSObject*)value{
+    if (value == nil){
+        value = [NSNull null];
+    }
 	[self.parameters setObject:value forKey:key];
 }
 

@@ -21,11 +21,13 @@
 //begin change
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.theTableView beginUpdates];
+    DebugLog(@"fetched results controller will change content", nil);
 }
 
 //end change
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.theTableView endUpdates];
+    DebugLog(@"fetched results controller did change content", nil);
 }
 
 //change happens
@@ -36,7 +38,24 @@
         case NSFetchedResultsChangeDelete:
             [self.theTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                      withRowAnimation:UITableViewRowAnimationLeft];
+            //if this row is the last row to be deleted, also need to delete the section
+            if ([self.theTableView numberOfRowsInSection:[indexPath section]] == 1){
+                [self.theTableView deleteSections:[NSIndexSet indexSetWithIndex:[indexPath section]]
+                                 withRowAnimation:UITableViewRowAnimationLeft];
+            }
             break;
+        default:
+            break;
+    }
+}
+
+//change happens in section
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type{
+    switch(type){
+        case NSFetchedResultsChangeDelete:
+            break;
+            [self.theTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                             withRowAnimation:UITableViewRowAnimationLeft];
         default:
             break;
     }

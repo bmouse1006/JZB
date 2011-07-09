@@ -21,9 +21,9 @@
 }
 
 //delete all related bills while deleting an account
-+(void)deleteAccount:(JZBAccounts*)account;
-+(void)deleteCatalog:(JZBCatalogs*)catalog;
-+(void)deleteBill:(JZBBills*)bill;
++(BOOL)deleteAccount:(JZBAccounts*)account;
++(BOOL)deleteCatalog:(JZBCatalogs*)catalog;
++(BOOL)deleteBill:(JZBBills*)bill;
 +(NSArray*)getObjectsForModel:(NSString*)modelName key:(NSString*)key value:(NSString*)value;
 +(NSArray*)getAllObjectsForModel:(NSString*)modelName;
 +(NSArray*)getAllObjectsForModel:(NSString*)modelName context:(NSManagedObjectContext*)context;

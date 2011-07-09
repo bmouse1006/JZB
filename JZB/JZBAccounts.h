@@ -27,6 +27,4 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * desc;
 
-+(NSArray*)objectsForName:(NSString*)name;
-
 @end

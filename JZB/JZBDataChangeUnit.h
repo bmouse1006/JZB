@@ -22,7 +22,6 @@ typedef enum{
     NSString* _primaryKey;
     NSMutableArray* _columns;
     NSMutableArray* _data;
-    
 }
 
 @property (nonatomic, assign) JZBDataChangeType type;
@@ -34,6 +33,10 @@ typedef enum{
 -(id)initWithJSONMessage:(NSString*)msg type:(JZBDataChangeType)type;
 -(id)initWithJSONObj:(NSObject*)JSONObj type:(JZBDataChangeType)type;
 -(id)initWithJZBManagedObject:(JZBManagedObject*)jzbObj;
+//return a NSDictionary that contains all properties in the object
+-(NSDictionary*)propertyList;
+//generate a new unit from a given property list
++(JZBDataChangeUnit*)unitFromPropertyList:(NSDictionary*)propertyList;
 +(id)dataChangeUnitWithJZBManagedObject:(JZBManagedObject*)jzbObj;
 -(NSString*)JSON;
 

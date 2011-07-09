@@ -14,20 +14,20 @@
 
 static NSLock* dbLocker = nil;
 
-+(void)deleteAccount:(JZBAccounts*)account{
-    [self deleteManagedObjects:[NSArray arrayWithObject:account]];
++(BOOL)deleteAccount:(JZBAccounts*)account{
+    return [self deleteManagedObjects:[NSArray arrayWithObject:account]];
     //remove all bills belone to this account
     //how about to-account?
     //update all to account id to nil for bills that transfer into this account
 }
      
-+(void)deleteCatalog:(JZBCatalogs*)catalog{
-    [self deleteManagedObjects:[NSArray arrayWithObject:catalog]];
++(BOOL)deleteCatalog:(JZBCatalogs*)catalog{
+    return [self deleteManagedObjects:[NSArray arrayWithObject:catalog]];
     //update all catalog id in bills to nil
 }
 
-+(void)deleteBill:(JZBBills*)bill{
-    [self deleteManagedObjects:[NSArray arrayWithObject:bill]];
++(BOOL)deleteBill:(JZBBills*)bill{
+    return [self deleteManagedObjects:[NSArray arrayWithObject:bill]];
 }
 
 +(NSArray*)getObjectsForModel:(NSString*)modelName key:(NSString*)key value:(NSString*)value{
@@ -66,12 +66,14 @@ static NSLock* dbLocker = nil;
     BOOL result = NO;
 
     for (JZBManagedObject* obj in objList){
+        NSString* tableName = [[obj class] tableName];
+        NSString* keyValue = obj.keyValue;
         //commit change to local database
         result = [self deleteSingleObject:obj];
         //add this action to local change queue of synchronizer
         if (result == YES){
-            [[JZBSynchronizer defaultSynchronizer] addLocalDeleteForTable:[obj tableName]                            
-                                                                 keyValue:obj.keyValue];
+            [[JZBSynchronizer defaultSynchronizer] addLocalDeleteForTable:tableName                          
+                                                                 keyValue:keyValue];
         }else{
             break;
         }

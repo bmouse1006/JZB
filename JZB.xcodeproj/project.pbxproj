@@ -25,10 +25,18 @@
 		2210EBA713544310007407DF /* TotalStatisticController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2210EBA51354430F007407DF /* TotalStatisticController.xib */; };
 		222219021342C7A3001D60F1 /* JZBDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */; };
 		2222190E13430FBB001D60F1 /* JZBDataAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2222190D13430FBB001D60F1 /* JZBDataAccessManager.m */; };
+		222DCC6013C850B300B87F46 /* JZBBills.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DCC5F13C850B300B87F46 /* JZBBills.m */; };
 		222E9E101354904900EFB613 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 222E9E0F1354904900EFB613 /* libsqlite3.0.dylib */; };
 		22327CEC1366FD1D00FEA82D /* NSString+JZBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22327CEB1366FD1D00FEA82D /* NSString+JZBHelper.m */; };
 		22327DF01366FF9500FEA82D /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 22327DEF1366FF9500FEA82D /* RegexKitLite.m */; };
 		2249A25C1372A5CF008BF3E0 /* BillListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */; };
+		224BB61213C86A2900D26FDF /* BudgetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BB61013C86A2800D26FDF /* BudgetListViewController.m */; };
+		224BB61313C86A2900D26FDF /* BudgetListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224BB61113C86A2900D26FDF /* BudgetListViewController.xib */; };
+		224BB61713C88A5500D26FDF /* BudgetListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BB61613C88A5500D26FDF /* BudgetListDataSource.m */; };
+		224BB61A13C8976D00D26FDF /* BudgetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BB61913C8976D00D26FDF /* BudgetListCell.m */; };
+		224BB61C13C898F300D26FDF /* BudgetListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224BB61B13C898F100D26FDF /* BudgetListCell.xib */; };
+		224BB62413C8B48F00D26FDF /* BudgetEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BB62213C8B48D00D26FDF /* BudgetEditViewController.m */; };
+		224BB62513C8B48F00D26FDF /* BudgetEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224BB62313C8B48E00D26FDF /* BudgetEditViewController.xib */; };
 		224C058D13447D3800E01F55 /* JZBSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C058C13447D3800E01F55 /* JZBSynchronizer.m */; };
 		224C05911345704500E01F55 /* JZBDataChangeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05901345704500E01F55 /* JZBDataChangeUnit.m */; };
 		224C05A01345743A00E01F55 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 224C05951345743A00E01F55 /* NSObject+SBJSON.m */; };
@@ -42,7 +50,6 @@
 		224FB110134AA5F5006DD105 /* ModelNameForTables.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */; };
 		224FB113134AAE04006DD105 /* JZBBudgets.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB112134AAE03006DD105 /* JZBBudgets.m */; };
 		224FB116134AAE73006DD105 /* JZBAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB115134AAE72006DD105 /* JZBAccounts.m */; };
-		224FB119134AAE81006DD105 /* JZBBills.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB118134AAE80006DD105 /* JZBBills.m */; };
 		224FB11C134AAE8B006DD105 /* JZBBorrowers.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB11B134AAE8A006DD105 /* JZBBorrowers.m */; };
 		224FB11F134AAE9A006DD105 /* JZBBudgetItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB11E134AAE99006DD105 /* JZBBudgetItems.m */; };
 		224FB122134AAEA5006DD105 /* JZBCatalogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FB121134AAEA4006DD105 /* JZBCatalogs.m */; };
@@ -140,6 +147,8 @@
 		222219011342C7A3001D60F1 /* JZBDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JZBDataModel.xcdatamodel; sourceTree = "<group>"; };
 		2222190C13430FBB001D60F1 /* JZBDataAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataAccessManager.h; sourceTree = "<group>"; };
 		2222190D13430FBB001D60F1 /* JZBDataAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBDataAccessManager.m; sourceTree = "<group>"; };
+		222DCC5E13C850B300B87F46 /* JZBBills.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBills.h; sourceTree = "<group>"; };
+		222DCC5F13C850B300B87F46 /* JZBBills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBills.m; sourceTree = "<group>"; };
 		222E9E0F1354904900EFB613 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		222E9E121355873300EFB613 /* JZBSQLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSQLConstants.h; sourceTree = "<group>"; };
 		22327CEA1366FD1D00FEA82D /* NSString+JZBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JZBHelper.h"; sourceTree = "<group>"; };
@@ -148,6 +157,17 @@
 		22327DEF1366FF9500FEA82D /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		2249A25A1372A5CF008BF3E0 /* BillListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillListDataSource.h; sourceTree = "<group>"; };
 		2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillListDataSource.m; sourceTree = "<group>"; };
+		224BB60F13C86A2800D26FDF /* BudgetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BudgetListViewController.h; sourceTree = "<group>"; };
+		224BB61013C86A2800D26FDF /* BudgetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BudgetListViewController.m; sourceTree = "<group>"; };
+		224BB61113C86A2900D26FDF /* BudgetListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BudgetListViewController.xib; sourceTree = "<group>"; };
+		224BB61513C88A5500D26FDF /* BudgetListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BudgetListDataSource.h; sourceTree = "<group>"; };
+		224BB61613C88A5500D26FDF /* BudgetListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BudgetListDataSource.m; sourceTree = "<group>"; };
+		224BB61813C8976C00D26FDF /* BudgetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BudgetListCell.h; sourceTree = "<group>"; };
+		224BB61913C8976D00D26FDF /* BudgetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BudgetListCell.m; sourceTree = "<group>"; };
+		224BB61B13C898F100D26FDF /* BudgetListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BudgetListCell.xib; sourceTree = "<group>"; };
+		224BB62113C8B48C00D26FDF /* BudgetEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BudgetEditViewController.h; sourceTree = "<group>"; };
+		224BB62213C8B48D00D26FDF /* BudgetEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BudgetEditViewController.m; sourceTree = "<group>"; };
+		224BB62313C8B48E00D26FDF /* BudgetEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BudgetEditViewController.xib; sourceTree = "<group>"; };
 		224C058B13447D3800E01F55 /* JZBSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBSynchronizer.h; sourceTree = "<group>"; };
 		224C058C13447D3800E01F55 /* JZBSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBSynchronizer.m; sourceTree = "<group>"; };
 		224C058F1345704500E01F55 /* JZBDataChangeUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBDataChangeUnit.h; sourceTree = "<group>"; };
@@ -173,8 +193,6 @@
 		224FB112134AAE03006DD105 /* JZBBudgets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBudgets.m; sourceTree = "<group>"; };
 		224FB114134AAE72006DD105 /* JZBAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBAccounts.h; sourceTree = "<group>"; };
 		224FB115134AAE72006DD105 /* JZBAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBAccounts.m; sourceTree = "<group>"; };
-		224FB117134AAE7F006DD105 /* JZBBills.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBills.h; sourceTree = "<group>"; };
-		224FB118134AAE80006DD105 /* JZBBills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBills.m; sourceTree = "<group>"; };
 		224FB11A134AAE89006DD105 /* JZBBorrowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBorrowers.h; sourceTree = "<group>"; };
 		224FB11B134AAE8A006DD105 /* JZBBorrowers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZBBorrowers.m; sourceTree = "<group>"; };
 		224FB11D134AAE98006DD105 /* JZBBudgetItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZBBudgetItems.h; sourceTree = "<group>"; };
@@ -302,6 +320,8 @@
 				220051DD1360321B00AE0A5F /* CatalogListDataSource.m */,
 				2249A25A1372A5CF008BF3E0 /* BillListDataSource.h */,
 				2249A25B1372A5CF008BF3E0 /* BillListDataSource.m */,
+				224BB61513C88A5500D26FDF /* BudgetListDataSource.h */,
+				224BB61613C88A5500D26FDF /* BudgetListDataSource.m */,
 				220051ED136035C100AE0A5F /* JZBDataSource.h */,
 				220051EE136035C200AE0A5F /* JZBDataSource.m */,
 			);
@@ -320,6 +340,9 @@
 				227388A813B475B6006D3B8E /* BillListCell.h */,
 				227388A913B475B6006D3B8E /* BillListCell.m */,
 				227388AC13B475D7006D3B8E /* BillListCell.xib */,
+				224BB61813C8976C00D26FDF /* BudgetListCell.h */,
+				224BB61913C8976D00D26FDF /* BudgetListCell.m */,
+				224BB61B13C898F100D26FDF /* BudgetListCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -365,6 +388,8 @@
 				224FB17A1352E18B006DD105 /* AccountStatisticController.m */,
 				224FB183135331C7006DD105 /* BudgetViewController.h */,
 				224FB184135331D6006DD105 /* BudgetViewController.m */,
+				224BB60F13C86A2800D26FDF /* BudgetListViewController.h */,
+				224BB61013C86A2800D26FDF /* BudgetListViewController.m */,
 				2210EBA31354430F007407DF /* TotalStatisticController.h */,
 				2210EBA41354430F007407DF /* TotalStatisticController.m */,
 				220051D7136014DA00AE0A5F /* AccountSimpleListController.h */,
@@ -373,6 +398,8 @@
 				220051E51360343700AE0A5F /* CatalogSimpleListController.m */,
 				220051F01360386F00AE0A5F /* JZBSimpleListController.h */,
 				220051F11360387500AE0A5F /* JZBSimpleListController.m */,
+				224BB62113C8B48C00D26FDF /* BudgetEditViewController.h */,
+				224BB62213C8B48D00D26FDF /* BudgetEditViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -387,12 +414,14 @@
 				224FB17B1352E18D006DD105 /* AccountStatisticController.xib */,
 				2210EBA51354430F007407DF /* TotalStatisticController.xib */,
 				224FB185135331DF006DD105 /* BudgetViewController.xib */,
+				224BB61113C86A2900D26FDF /* BudgetListViewController.xib */,
 				229B4071135849FE005E5DD9 /* AccountEditViewController.xib */,
 				229B407613584C48005E5DD9 /* BillListViewController.xib */,
 				220051D5135EF13900AE0A5F /* AccountListViewController.xib */,
 				220051D9136014DF00AE0A5F /* AccountSimpleListController.xib */,
 				220051E61360343E00AE0A5F /* CatalogSimpleListController.xib */,
 				22E0B67B1367FCB8009403D0 /* CatalogEditViewController.xib */,
+				224BB62313C8B48E00D26FDF /* BudgetEditViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -446,6 +475,8 @@
 				224FB10F134AA5F5006DD105 /* ModelNameForTables.plist */,
 				22F1091A13B87DC70044877B /* TableNameForModels.plist */,
 				222219001342C7A3001D60F1 /* JZBDataModel.xcdatamodeld */,
+				222DCC5E13C850B300B87F46 /* JZBBills.h */,
+				222DCC5F13C850B300B87F46 /* JZBBills.m */,
 				22D9AC1513B86CAF003E8297 /* JZBSubCatalogs_Deleted.h */,
 				22D9AC1613B86CB1003E8297 /* JZBSubCatalogs_Deleted.m */,
 				22D9AC1213B86CAD003E8297 /* JZBCatalogs_Deleted.h */,
@@ -468,8 +499,6 @@
 				224FB11E134AAE99006DD105 /* JZBBudgetItems.m */,
 				224FB11A134AAE89006DD105 /* JZBBorrowers.h */,
 				224FB11B134AAE8A006DD105 /* JZBBorrowers.m */,
-				224FB117134AAE7F006DD105 /* JZBBills.h */,
-				224FB118134AAE80006DD105 /* JZBBills.m */,
 				224FB114134AAE72006DD105 /* JZBAccounts.h */,
 				224FB115134AAE72006DD105 /* JZBAccounts.m */,
 				224FB111134AAE02006DD105 /* JZBBudgets.h */,
@@ -687,6 +716,9 @@
 				22E0B67D1367FCB8009403D0 /* CatalogEditViewController.xib in Resources */,
 				227388AD13B475D7006D3B8E /* BillListCell.xib in Resources */,
 				22F1091B13B87DCC0044877B /* TableNameForModels.plist in Resources */,
+				224BB61313C86A2900D26FDF /* BudgetListViewController.xib in Resources */,
+				224BB61C13C898F300D26FDF /* BudgetListCell.xib in Resources */,
+				224BB62513C8B48F00D26FDF /* BudgetEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +774,6 @@
 				22DE878B1349CE2F0024EF6C /* LoginViewController.m in Sources */,
 				224FB113134AAE04006DD105 /* JZBBudgets.m in Sources */,
 				224FB116134AAE73006DD105 /* JZBAccounts.m in Sources */,
-				224FB119134AAE81006DD105 /* JZBBills.m in Sources */,
 				224FB11C134AAE8B006DD105 /* JZBBorrowers.m in Sources */,
 				224FB11F134AAE9A006DD105 /* JZBBudgetItems.m in Sources */,
 				224FB122134AAEA5006DD105 /* JZBCatalogs.m in Sources */,
@@ -779,6 +810,11 @@
 				22D9AC1113B86CAD003E8297 /* JZBAccounts_Deleted.m in Sources */,
 				22D9AC1413B86CAF003E8297 /* JZBCatalogs_Deleted.m in Sources */,
 				22D9AC1713B86CB3003E8297 /* JZBSubCatalogs_Deleted.m in Sources */,
+				222DCC6013C850B300B87F46 /* JZBBills.m in Sources */,
+				224BB61213C86A2900D26FDF /* BudgetListViewController.m in Sources */,
+				224BB61713C88A5500D26FDF /* BudgetListDataSource.m in Sources */,
+				224BB61A13C8976D00D26FDF /* BudgetListCell.m in Sources */,
+				224BB62413C8B48F00D26FDF /* BudgetEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +928,7 @@
 					DEBUG_MODE,
 				);
 				INFOPLIST_FILE = "JZB/JZB-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
@@ -906,6 +943,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JZB/JZB-Prefix.pch";
 				INFOPLIST_FILE = "JZB/JZB-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

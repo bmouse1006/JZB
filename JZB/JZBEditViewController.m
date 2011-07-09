@@ -36,7 +36,7 @@
             self.editObject = nil;
         }
         @finally {
-            if (!failed){
+            if (failed == NO){
                 //post a notification saying that new accout has been creatd
                 DebugLog(@"send notification with name %@", self.notificationName);
                 //need to send new created object also

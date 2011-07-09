@@ -141,7 +141,7 @@
     [self.statisticView sendSubviewToBack:statView];
     //add list sub view 
     UIView* listView = self.accountListController.view;
-    rect = self.accountListView.frame;
+    rect = listView.frame;
     rect.origin.y = 0;
     [listView setFrame:rect];
     [self.accountListView addSubview:listView];

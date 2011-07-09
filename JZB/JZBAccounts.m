@@ -17,9 +17,13 @@
 @dynamic kind;
 @dynamic name;
 @dynamic desc;
+//
+//+(NSArray*)objectsForName:(NSString*)name{
+//    return [JJObjectManager objectsByModelName:[[self class] modelName] withKey:@"name" andValue:name];
+//}
 
-+(NSArray*)objectsForName:(NSString*)name{
-    return [self objectsForKey:@"name" andValue:name];
++(NSArray*)objectsForID:(NSString*)ID{
+    return [JJObjectManager objectsByModelName:[[self class] modelName] withKey:@"account_id" andValue:ID];
 }
 
 //provide all keys for properties
@@ -51,14 +55,6 @@
     self.kind = ACCOUNT_KIND_CASH;
     self.version = [NSDate date];
     self.sort = [NSNumber numberWithInt:1];
-}
-
--(NSArray*)objectsForID:(NSString*)ID{
-    return [JJObjectManager objectsByModelName:[[self class] modelName] withKey:@"account_id" andValue:ID];
-}
-
--(NSArray*)objectsForName:(NSString*)name{
-    return [JJObjectManager objectsByModelName:[[self class] modelName] withKey:@"name" andValue:name];
 }
 
 //get names for columns

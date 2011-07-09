@@ -72,7 +72,11 @@ static NSMutableDictionary* cachedObjects = nil;
 													  predicate:(NSPredicate*)predicate
 												sortDescriptors:(NSArray*)descriptors
                                                         context:(NSManagedObjectContext*)mContext{
-    return [self fetchedResultsControllerFromModel:objectModel predicate:predicate sortDescriptors:descriptors sectionNameKeyPath:nil context:mContext];
+    return [self fetchedResultsControllerFromModel:objectModel
+                                         predicate:predicate 
+                                   sortDescriptors:descriptors 
+                                sectionNameKeyPath:nil 
+                                           context:mContext];
 }
 
 +(NSFetchedResultsController*)fetchedResultsControllerFromModel:(NSString*)objectModel 
@@ -80,12 +84,8 @@ static NSMutableDictionary* cachedObjects = nil;
 												sortDescriptors:(NSArray*)descriptors
                                              sectionNameKeyPath:(NSString*)keyPath
                                                         context:(NSManagedObjectContext*)mContext{
-    NSManagedObjectContext* context = nil;
-    if (!mContext){
-        context = [self context];
-    }else{
-        context = mContext;
-    }
+    
+    NSManagedObjectContext* context = (mContext)?mContext:[self context];
 	
 	NSFetchRequest* request = [[NSFetchRequest alloc] init];
 	NSEntityDescription* entity = [NSEntityDescription entityForName:objectModel 
@@ -117,7 +117,7 @@ static NSMutableDictionary* cachedObjects = nil;
 }
 
 +(NSArray*)objectsByModelName:(NSString*)modelName withKey:(NSString*)key andValue:(NSString*)value context:(NSManagedObjectContext*)context{
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K like %@", key, value];
+    NSPredicate* predicate = (key==nil||value==nil)?nil:[NSPredicate predicateWithFormat:@"%K like %@", key, value];
     DebugLog(@"predicate is %@", [predicate description]);
     NSFetchedResultsController* fetchController = [self fetchedResultsControllerFromModel:modelName 
                                                                                 predicate:predicate 
